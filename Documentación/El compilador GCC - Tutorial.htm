@@ -1,0 +1,409 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html><head>
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   <meta name="Author" content="V�ctor Gonz�lez Barbone">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (X11; U; Linux 2.2.18pre21 i686) [Netscape]">
+   <meta name="Keywords" content="GCC, C, C++, compilador, tutorial">
+   <title>El compilador GCC - Tutorial</title>
+<link href="El%20compilador%20GCC%20-%20Tutorial_archivos/translator.css" id="SL_Style" type="text/css" rel="stylesheet"></head>
+<body alink="#000088" bgcolor="#FFFFFF" link="#0000FF" text="#000000" vlink="#FF0000">
+
+<dt>
+<b>Tutorial.</b></dt>
+
+<center>
+<h2>
+El compilador GCC</h2></center>
+
+<dt>
+<a href="#Sintaxis">Sintaxis.</a></dt>
+
+<dd>
+<a href="#Ejemplos">Ejemplos.</a></dd>
+
+<dd>
+<a href="#Sufijos">Sufijos en nombres de archivo.</a></dd>
+
+<dd>
+<a href="#Opciones">Opciones.</a></dd>
+
+<dt>
+<a href="#EtapasCompilacion">Etapas de compilación.</a></dt>
+
+<dd>
+<a href="#1.Preprocesado">1. Preprocesado.</a></dd>
+
+<dd>
+<a href="#2.Compilacion">2.&nbsp; Compilación.</a></dd>
+
+<dd>
+<a href="#3.Ensamblado">3. Ensamblado.</a></dd>
+
+<dd>
+<a href="#4.Enlazado">4. Enlazado.</a></dd>
+
+<dd>
+<a href="#UnPaso">Todo en un solo paso</a></dd>
+
+<dt>
+<a href="#EnlaceDinamicoEstatico">Enlace dinámico y estático.</a></dt>
+
+<dt>
+<a href="#Resumen">Resumen.</a></dt>
+
+<dt>
+<a href="#InformacionAdicional">Información adicional.</a></dt>
+
+<p><br>GCC es un compilador integrado del proyecto GNU para C, C++, Objective
+C y Fortran; es capaz de recibir un programa fuente en cualquiera de estos
+lenguajes y generar un programa ejecutable binario en el lenguaje de la
+máquina donde ha de correr.
+<br>La sigla GCC significa "GNU Compiler Collection". Originalmente significaba
+"GNU C Compiler"; todavía se usa&nbsp; GCC para designar una compilación
+en C. G++ refiere a una compilación en C++.
+</p><h3>
+<a name="Sintaxis"></a>Sintaxis.</h3>
+<tt>&nbsp; gcc [ opción | archivo ] ...</tt>
+<br><tt>&nbsp; g++ [ opción | archivo ] ...</tt>
+<p>Las opciones van precedidas de un guión, como es habitual en
+UNIX, pero las opciones en sí pueden tener varias letras; no pueden
+agruparse varias opciones tras un mismo guión. Algunas opciones
+requieren después un nombre de archivo o directorio, otras no. Finalmente,
+pueden darse varios&nbsp; nombres de archivo a incluir en el proceso de
+compilación.
+</p><h4>
+<a name="Ejemplos"></a>Ejemplos.</h4>
+<tt>&nbsp; gcc hola.c</tt>
+<br>compila el programa en C hola.c, gener un archivo ejecutable a.out.
+<br><tt>&nbsp; gcc -o hola hola.c</tt>
+<br>compila el programa en C hola.c, gener un archivo ejecutable hola.
+<br><tt>&nbsp; g++ -o hola hola.cpp</tt>
+<br>compila el programa en C++ hola.c, gener un archivo ejecutable hola.
+<br>&nbsp; gcc -c hola.c
+<br>no genera el ejecutable, sino el código objeto, en el archivo
+hola.o. Si no s indica un nombre para el archivo objeto, usa el nombre
+del archivo en C y le cambia la extensión por .o.
+<br><tt>&nbsp; gcc -c -o objeto.o hola.c</tt>
+<br>genera el código objeto indicando el nombre de archivo.
+<br><tt>&nbsp; g++ -c hola.cpp</tt>
+<br>igual para un programa en C++.
+<br><tt>&nbsp; g++ -o ~/bin/hola hola.cpp</tt>
+<br>genera el ejecutable hola en el subdirectorio bin del directorio propio
+del usuario.
+<br><tt>&nbsp; g++ -L/lib -L/usr/lib hola.cpp</tt>
+<br>indica dos directorios donde han de buscarse bibliotecas. La opción
+-L debe repetirse para cada directorio de búsqueda de bibliotecas.
+<br><tt>&nbsp; g++ -I/usr/include hola.cpp</tt>
+<br>indica un directorio para buscar archivos de encabezado (de extensión
+.h).
+<h4>
+<a name="Sufijos"></a>Sufijos en nombres de archivo.</h4>
+Son habituales las siguientes extensiones o sufijos de los nombres de archivo:
+<br>&nbsp;
+<table nosave="" border="">
+<tbody><tr nosave="">
+<td nosave=""><tt>.c</tt></td>
+
+<td nosave="">fuente en C</td>
+</tr>
+
+<tr>
+<td><tt>.C .cc .cpp .c++ .cp .cxx&nbsp;</tt></td>
+
+<td>fuente en C++; se recomienda <tt>.cpp</tt></td>
+</tr>
+
+<tr>
+<td><tt>.m</tt></td>
+
+<td>fuente en Objective-C</td>
+</tr>
+
+<tr>
+<td><tt>.i</tt></td>
+
+<td>C preprocesado</td>
+</tr>
+
+<tr>
+<td><tt>.ii</tt></td>
+
+<td>C++ preprocesdo</td>
+</tr>
+
+<tr>
+<td><tt>.s</tt></td>
+
+<td>fuente en lenguaje ensamblador</td>
+</tr>
+
+<tr>
+<td><tt>.o</tt></td>
+
+<td>código objeto</td>
+</tr>
+
+<tr>
+<td><tt>.h</tt></td>
+
+<td>archivo para preprocesador (encabezados), no suele figurar en la linea
+de comando de gcc</td>
+</tr>
+</tbody></table>
+
+<h4>
+<a name="Opciones"></a>Opciones.</h4>
+- c
+<br>realiza preprocesamiento y compilación, obteniento el archivo
+en código objeto; no realiza el enlazado.
+<br>- E
+<br>realiza solamente el preprocesamiento, enviando el resultado a la salida
+estándar.
+<br>-o <i>archivo</i>
+<br>indica el nombre del archivo de salida, cualesquiera sean las etapas
+cumplidas.
+<br>-I<i>ruta</i>
+<br>especifica la ruta hacia el directorio donde se encuentran los archivos
+marcados para incluir en el programa fuente. No lleva espacio entre la
+I y la ruta, así: -I/usr/include
+<br>-L
+<br>especifica la ruta hacia el directorio donde se encuentran los archivos
+de biblioteca con el código objeto de las funciones referenciadas
+en el programa fuente.&nbsp; No lleva espacio entre la L y la ruta, así:
+-L/usr/lib
+<br>-Wall
+<br>muestra todos los mensajes de error y advertencia del compilador, incluso
+algunos cuestionables pero en definitiva fáciles de evitar escribiendo
+el código con cuidado.
+<br>-g
+<br>incluye en el ejecutable generado la información necesaria para
+poder rastrear los errores usando un depurador, tal como GDB (GNU Debugger).
+<br>-v
+<br>muestra los comandos ejecutados en cada etapa de compilación
+y la versión del compilador. Es un informe muy detallado.
+<h3>
+<a name="EtapasCompilacion"></a>Etapas de compilación.</h3>
+El proceso de compilación involucra cuatro etapas sucesivas: preprocesamiento,
+compilación, ensamblado y enlazado. Para pasar de un programa fuente
+escrito por un humano a un archivo ejecutable es necesario realizar estas
+cuatro etapas en forma sucesiva. Los comandos gcc y g++ son capaces de
+realizar todo el proceso de una sola vez.
+<h4>
+<a name="1.Preprocesado"></a>1. Preprocesado.</h4>
+En esta etapa se interpretan las directivas al preprocesador. Entre otras
+cosas, las variables inicializadas con <tt>#define</tt> son sustituídas
+en el código por su valor en todos los lugares donde aparece su
+nombre.
+<p>Usaremos como ejemplo este sencillo programa de prueba,<a href="http://iie.fing.edu.uy/%7Evagonbar/gcc-make/circulo.c">
+circulo.c</a>:
+</p><p><tt>/* Circulo.c: calcula el área de un círculo.</tt>
+<br><tt>&nbsp;&nbsp; Ejemplo para mostrar etapas de compilación.</tt>
+<br><tt>*/</tt>
+<br><tt>#define PI 3.1416</tt>
+</p><p><tt>main()</tt>
+<br><tt>{</tt>
+<br><tt>&nbsp; float area, radio;</tt>
+</p><p><tt>&nbsp; radio = 10;</tt>
+<br><tt>&nbsp; area = PI * (radio * radio);</tt>
+<br><tt>&nbsp; printf("Circulo.\n");</tt>
+<br><tt>&nbsp; printf("%s%f\n\n", "Area de circulo radio 10: ", area);</tt>
+</p><p><tt>}</tt>
+</p><p>El preprocesado puede pedirse con cualquiera de los siguientes comandos;
+cpp alude específicamente al preprocesador.
+<br><tt>&nbsp; $ gcc -E circulo.c &gt; circulo.pp</tt>
+<br><tt>&nbsp; $ cpp circulo.c &gt; circulo.pp</tt>
+<br>Examinando circulo.pp
+<br><tt>&nbsp; $ more circulo.pp</tt>
+<br>puede verse que la variable PI ha sido sustituída por su valor,
+3.1416, tal como había sido fijado en la sentencia #define.
+</p><h4>
+<a name="2.Compilacion"></a>2. Compilación.</h4>
+La compilación transforma el código C en el lenguaje ensamblador
+propio del procesador de nuestra máquina.
+<p><tt>&nbsp; $ gcc -S circulo.c</tt>
+<br>realiza las dos primeras etapas creando el archivo circulo.s;&nbsp;
+examinándolo con
+<br><tt>&nbsp; $ more circulo.s</tt>
+<br>puede verse el programa en lenguaje ensamblador.
+</p><h4>
+<a name="3.Ensamblado"></a>3. Ensamblado.</h4>
+El ensamblado transforma el programa escrito en lenguaje ensamblador a
+código objeto, un archivo binario en lenguaje de máquina
+ejecutable por el procesador.
+<p>El ensamblador se denomina as:
+<br><tt>&nbsp; $ as -o circulo.o circulo.s</tt>
+<br>crea el archivo en código objeto circulo.o a partir del archivo
+en lenguaje ensamblador circulo.s. No es frecuente realizar sólo
+el ensamblado; lo usual es realizar todas las etapas anteriores hasta obtener
+el código objeto así:
+<br><tt>&nbsp; $ gcc -c circulo.c</tt>
+<br>donde se crea el archivo circulo.o a partir de circulo.c. Puede verificarse
+el tipo de archivo usando el comando
+<br><tt>&nbsp;$ file circulo.o</tt>
+<br><tt>&nbsp; circulo.o: ELF 32-bit LSB relocatable, Intel 80386, version
+1, not stripped</tt>
+</p><p>En los programas extensos, donde se escriben muchos archivos fuente
+en código C, es muy frecuente usar gcc o g++ con la opción
+-c para compilar cada archivo fuente por separado, y luego enlazar todos
+los módulos objeto creados. Estas operaciones se automatizan colocándolas
+en un archivo llamado makefile, interpretable por el comando make, quien
+se ocupa de realizar las actualizaciones mínimas necesarias toda
+vez que se modifica alguna porción de código en cualquiera
+de los archivos fuente.
+</p><h4>
+<a name="4.Enlazado"></a>4. Enlazado</h4>
+Las funciones de C/C++ incluídas en nuestro código, tal como
+printf() en el ejemplo, se encuentran ya compiladas y ensambladas en bibliotecas
+existentes en el sistema. Es preciso incorporar de algún modo el
+código binario de estas funciones a nuestro ejecutable. En esto
+consiste la etapa de enlace, donde se reúnen uno o más módulos
+en código objeto con el código existente en las bibliotecas.
+<p>El enlazador se denomina ld. El comando para enlazar
+<br><tt>&nbsp; $ ld -o circulo circulo.o -lc</tt>
+<br><tt>&nbsp; ld: warning: cannot find entry symbol _start; defaulting
+to 08048184</tt>
+<br>da este error por falta de referencias. Es necesario escribir algo
+como
+<br><tt>&nbsp; $ ld -o circulo /usr/lib/gcc-lib/i386-linux/2.95.2/collect2
+-m elf_i386 -dynamic-linker /lib/ld-linux.so.2 -o circulo /usr/lib/crt1.o
+/usr/lib/crti.o /usr/lib/gcc-lib/i386-linux/2.95.2/crtbegin.o -L/usr/lib/gcc-lib/i386-linux/2.95.2
+circulo.o -lgcc -lc -lgcc /usr/lib/gcc-lib/i386-linux/2.95.2/crtend.o /usr/lib/crtn.o</tt>
+<br>para obtener un ejecutable.
+</p><p>El uso directo del enlazador ld es muy poco frecuente. En su lugar suele
+proveerse a gcc los códigos objeto directamente:
+<br><tt>&nbsp; $ gcc -o circulo circulo.o</tt>
+<br>crea el ejecutable circulo, que invocado por su nombre
+<br><tt>&nbsp; $ ./circulo</tt>
+<br><tt>&nbsp; Circulo.</tt>
+<br><tt>&nbsp; Area de circulo radio 10: 314.160004</tt>
+<br>da el resultado mostrado.
+</p><h4>
+<a name="UnPaso"></a>Todo en un solo paso.</h4>
+En programa con un único archivo fuente todo el proceso anterior
+puede hacerse en un solo paso:
+<br><tt>&nbsp; $ gcc -o circulo circulo.c</tt>
+<br>No se crea el archivo circulo.o; el código objeto intermedio
+se crea y destruye sin verlo el operador, pero el programa ejecutable aparece
+allí y funciona.
+<p>Es instructivo usar la opción -v de gcc para obtener un informe
+detallado de todos los pasos de compilación:
+<br><tt>&nbsp; $ gcc -v -o circulo circulo.c</tt>
+</p><h3>
+<a name="EnlaceDinamicoEstatico"></a>Enlace dinámico y estático.</h3>
+Existen dos modos de realizar el enlace:
+<br>- estático: los binarios de las funciones se incorporan al código
+binario de nuestro ejecutable.
+<br>- dinámico: el código de las funciones permanece en la
+biblioteca; nuestro ejecutable cargará en memoria la biblioteca
+y ejecutará la parte de código correspondiente en el momento
+de correr el programa.
+<br>El enlazado dinámico permite crear un ejecutable más
+chico, pero requiere disponible el acceso a las bibliotecas en el momento
+de correr el programa. El enlazado estático crea un programa autónomo,
+pero al precio de agrandar el tamaño del ejecutable binario.
+<p>Ejemplo de enlazado estático:
+<br><tt>&nbsp; $ gcc -static -o circulo circulo.c</tt>
+<br><tt>&nbsp; $ ls -l circulo</tt>
+<br><tt>&nbsp; -rwxr-xr-x&nbsp;&nbsp;&nbsp; 1 victor&nbsp;&nbsp; victor&nbsp;&nbsp;&nbsp;&nbsp;
+237321 ago&nbsp; 4 11:24 circulo</tt>
+<br>Si no se especifica -static el enlazado es dinámico por defecto.
+</p><p>Ejemplo de enlazado dinámico:
+<br><tt>&nbsp; $ gcc -o circulo circulo.c</tt>
+<br><tt>&nbsp; $ ls -l circulo</tt>
+<br><tt>&nbsp; -rwxr-xr-x&nbsp;&nbsp;&nbsp; 1 victor&nbsp;&nbsp; victor&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+4828 ago&nbsp; 4 11:26 circulo</tt>
+<br>Notar la diferencia en tamaño del ejecutable compilado estática
+o dinámicamente. Los valores pueden diferir en algo de los mostrados;
+dependen de la plataforma y la versión del compilador.
+</p><p>El comando ldd muestra las dependencias de bibliotecas compartidas que
+tiene un ejecutable:
+<br><tt>$ gcc -o circulo circulo.c</tt>
+<br><tt>$ ldd circulo</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; libc.so.6 =&gt; /lib/libc.so.6
+(0x40017000)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /lib/ld-linux.so.2 =&gt;
+/lib/ld-linux.so.2 (0x40000000)</tt>
+<br><tt>$ gcc -static -o circulo circulo.c</tt>
+<br><tt>$ ldd circulo</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; statically linked (ELF)</tt>
+<br>La compilación estática no muestra ninguna dependencia
+de biblioteca.
+</p><h3>
+<a name="Resumen"></a>Resumen.</h3>
+Para producir un ejecutable con fuente de un solo archivo:
+<br><tt>&nbsp; $ gcc -o circulo circulo.c</tt>
+<br>Para crear un módulo objeto, con el mismo nombre del fuente
+y extensión .o:
+<br><tt>&nbsp; $ gcc -c circulo.c</tt>
+<br>Para enlazar un módulos objeto:
+<br><tt>&nbsp; $ gcc -o circulo circulo.o</tt>
+<br>Para enlazar los módulos objeto verde.o, azul.o, rojo.o, ya
+compilados separadamente, en el archivo ejecutable colores:
+<br><tt>&nbsp; $ gcc -o colores verde.o azul.o rojo.o</tt>
+<h3>
+<a name="InformacionAdicional"></a>Información adicional.</h3>
+<b>Sobre GCC:</b>
+<dd>
+<tt>man gcc</tt></dd>
+
+<dd>
+<tt>info gcc</tt></dd>
+
+<dd>
+&nbsp;&nbsp;&nbsp; página info de GCC, más completa y actualizada
+que la página man.</dd>
+
+<br><b>Sobre el depurador:</b>
+<dd>
+<tt>man gdb</tt></dd>
+
+<dd>
+<tt>info gdb</tt></dd>
+
+<dd>
+&nbsp;&nbsp;&nbsp; página info de GDB, más completa y actualizada
+que la página man.</dd>
+
+<br>Sobre uso de info:
+<dd>
+info info</dd>
+
+<dd>
+&nbsp;&nbsp;&nbsp; ofrece un tutorial paso a paso.</dd>
+
+<dd>
+<a href="http://iie.fing.edu.uy/%7Evagonbar/unixbas/info.htm">GNU info</a></dd>
+
+<dd>
+&nbsp;&nbsp;&nbsp; un resumen de operación de info.</dd>
+
+<br>&nbsp;
+<p>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+</p><address>
+
+<hr width="99%"></address>
+
+<address>
+Víctor A. González Barbone <a href="mailto:%20vagonbar%20en%20fing%20edu%20uy">vagonbar en fing edu uy</a>&nbsp;
+
+<a href="mailto:%20vagonbar%20en%20fing%20edu%20uy">http://iie.fing.edu.uy/~vagonbar</a></address>
+
+<address>
+<a href="http://iie.fing.edu.uy/">Instituto de Ingeniería Eléctrica</a>
+- <a href="http://www.fing.edu.uy/">Facultad de Ingeniería</a> -
+Montevideo, Uruguay.</address>
+
+
+
+<div style="display: block;" id="SL_balloon_obj"><div style="background: transparent url(&quot;chrome://imtranslator/content/img/util/imtranslator-s.png&quot;) repeat scroll 0% 0%; display: none; width: 24px; height: 24px; position: absolute; cursor: pointer; opacity: 1;" id="SL_button"></div><div style="display: none; margin-top: 30px; margin-left: 1px; direction: ltr; text-align: left; min-height: 40px;" id="SL_shadow_translation_result2"><div></div></div><div id="SL_shadow_translator"><div id="SL_providers"><div id="SL_P0" title="Google" class="SL_BL_LABLE_ON">G</div><div id="SL_P1" title="Microsoft" class="SL_BL_LABLE_ON">M</div><div id="SL_P2" title="Translator" class="SL_BL_LABLE_ON">T</div></div><div style="background: rgb(244, 245, 245) url(&quot;chrome://imtranslator/content/img/util/bg2.png&quot;) repeat scroll 0% 0%;" id="SL_planshet"><div id="SL_arrow_up"></div><div id="SL_TB"><div style="background: transparent url(&quot;chrome://imtranslator/content/img/util/imtranslator-s.png&quot;) repeat scroll 0% 0%; display: block; width: 24px; height: 24px; position: absolute;" id="bubblelogo"></div><table id="SL_tables"><tr><td align="right" width="10%"><input title="Fijar idioma" id="SLloc" type="checkbox"></td><td align="left" width="20%"><select id="SL_lng_from"><option selected="selected" value="auto">Detectar idioma</option><option value="af">Afrikáans</option><option value="sq">Albanés</option><option value="de">Alemán</option><option value="ar">Árabe</option><option value="hy">Armenio</option><option value="az">Azerí</option><option value="bn">Bengalí</option><option value="be">Bielorruso</option><option value="my">Birmano</option><option value="bs">Bosnio</option><option value="bg">Búlgaro</option><option value="kn">Canarés</option><option value="ca">Catalán</option><option value="ceb">Cebuano</option><option value="cs">Checo</option><option value="ny">Chichewa</option><option value="zh-CN">Chino (Simp)</option><option value="zh-TW">Chino (Trad)</option><option value="si">Cincalés</option><option value="ko">Coreano</option><option value="ht">Criollo haitiano</option><option value="hr">Croata</option><option value="da">Danés</option><option value="sk">Eslovaco</option><option value="sl">Esloveno</option><option value="es">Español</option><option value="eo">Esperanto</option><option value="et">Estonio</option><option value="eu">Euskera</option><option value="fi">Finlandés</option><option value="fr">Francés</option><option value="cy">Galés</option><option value="gl">Gallego</option><option value="ka">Georgiano</option><option value="el">Griego</option><option value="gu">Gujarati</option><option value="ha">Hausa</option><option value="iw">Hebreo</option><option value="hi">Hindi</option><option value="hmn">Hmong</option><option value="nl">Holandés</option><option value="hu">Húngaro</option><option value="ig">Igbo</option><option value="id">Indonesio</option><option value="en">Inglés</option><option value="ga">Irlandés</option><option value="is">Islandés</option><option value="it">Italiano</option><option value="ja">Japonés</option><option value="jw">Javanés</option><option value="km">Jemer</option><option value="kk">Kazajo</option><option value="lo">Lao</option><option value="la">Latín</option><option value="lv">Letón</option><option value="lt">Lituano</option><option value="mk">Macedonio</option><option value="ml">Malayalam</option><option value="ms">Malayo</option><option value="mg">Malgache</option><option value="mt">Maltés</option><option value="mi">Maorí</option><option value="mr">Maratí</option><option value="mn">Mongol</option><option value="ne">Nepalí</option><option value="no">Noruego</option><option value="fa">Persa</option><option value="pl">Polaco</option><option value="pt">Portugués</option><option value="pa">Punjabí</option><option value="ro">Rumano</option><option value="ru">Ruso</option><option value="sr">Serbio</option><option value="st">Sesoto</option><option value="so">Somalí</option><option value="sw">Suajili</option><option value="sv">Sueco</option><option value="su">Sundanés</option><option value="tl">Tagalo</option><option value="th">Tailandés</option><option value="ta">Tamil</option><option value="tg">Tayiko</option><option value="te">Telugu</option><option value="tr">Turco</option><option value="uk">Ucraniano</option><option value="ur">Urdu</option><option value="uz">Uzbeco</option><option value="vi">Vietnamita</option><option value="yi">Yidis</option><option value="yo">Yoruba</option><option value="zu">Zulú</option></select></td><td align="center" width="5%"><div style="background: transparent url(&quot;chrome://imtranslator/content/img/util/switchb.png&quot;) repeat scroll 0% 0%; display: block; width: 10px; height: 10px; cursor: pointer;" title="Intercambiar idiomas" id="SL_switch_b" align="center"></div></td><td align="left" width="20%"><select id="SL_lng_to"><option value="af">Afrikáans</option><option value="sq">Albanés</option><option value="de">Alemán</option><option value="ar">Árabe</option><option value="hy">Armenio</option><option value="az">Azerí</option><option value="bn">Bengalí</option><option value="be">Bielorruso</option><option value="my">Birmano</option><option value="bs">Bosnio</option><option value="bg">Búlgaro</option><option value="kn">Canarés</option><option value="ca">Catalán</option><option value="ceb">Cebuano</option><option value="cs">Checo</option><option value="ny">Chichewa</option><option value="zh-CN">Chino (Simp)</option><option value="zh-TW">Chino (Trad)</option><option value="si">Cincalés</option><option value="ko">Coreano</option><option value="ht">Criollo haitiano</option><option value="hr">Croata</option><option value="da">Danés</option><option value="sk">Eslovaco</option><option value="sl">Esloveno</option><option selected="selected" value="es">Español</option><option value="eo">Esperanto</option><option value="et">Estonio</option><option value="eu">Euskera</option><option value="fi">Finlandés</option><option value="fr">Francés</option><option value="cy">Galés</option><option value="gl">Gallego</option><option value="ka">Georgiano</option><option value="el">Griego</option><option value="gu">Gujarati</option><option value="ha">Hausa</option><option value="iw">Hebreo</option><option value="hi">Hindi</option><option value="hmn">Hmong</option><option value="nl">Holandés</option><option value="hu">Húngaro</option><option value="ig">Igbo</option><option value="id">Indonesio</option><option value="en">Inglés</option><option value="ga">Irlandés</option><option value="is">Islandés</option><option value="it">Italiano</option><option value="ja">Japonés</option><option value="jw">Javanés</option><option value="km">Jemer</option><option value="kk">Kazajo</option><option value="lo">Lao</option><option value="la">Latín</option><option value="lv">Letón</option><option value="lt">Lituano</option><option value="mk">Macedonio</option><option value="ml">Malayalam</option><option value="ms">Malayo</option><option value="mg">Malgache</option><option value="mt">Maltés</option><option value="mi">Maorí</option><option value="mr">Maratí</option><option value="mn">Mongol</option><option value="ne">Nepalí</option><option value="no">Noruego</option><option value="fa">Persa</option><option value="pl">Polaco</option><option value="pt">Portugués</option><option value="pa">Punjabí</option><option value="ro">Rumano</option><option value="ru">Ruso</option><option value="sr">Serbio</option><option value="st">Sesoto</option><option value="so">Somalí</option><option value="sw">Suajili</option><option value="sv">Sueco</option><option value="su">Sundanés</option><option value="tl">Tagalo</option><option value="th">Tailandés</option><option value="ta">Tamil</option><option value="tg">Tayiko</option><option value="te">Telugu</option><option value="tr">Turco</option><option value="uk">Ucraniano</option><option value="ur">Urdu</option><option value="uz">Uzbeco</option><option value="vi">Vietnamita</option><option value="yi">Yidis</option><option value="yo">Yoruba</option><option value="zu">Zulú</option></select></td><td align="center" width="5%"> </td><td align="center" width="6%"><div style="background: transparent url(&quot;chrome://imtranslator/content/img/util/tts-voice.png&quot;) repeat scroll 0% 0%;" title="Escuchar" id="SL_TTS_voice"></div></td><td align="center" width="6%"><div style="background: transparent url(&quot;chrome://imtranslator/content/img/util/copy_hand.png&quot;) repeat scroll 0% 0%;" title="Copiar" id="SL_copy"></div></td><td align="center" width="6%"><div title="Esta función está deshabilitada en el Diccionario" id="SL_bbl_font_patch"></div><div style="background: transparent url(&quot;chrome://imtranslator/content/img/util/font-off.png&quot;) repeat scroll 0% 0%;" title="Тamaño de fuente" id="SL_bbl_font"></div></td><td align="center" width="6%"><div style="background: transparent url(&quot;chrome://imtranslator/content/img/util/history.png&quot;) repeat scroll 0% 0%;" title="Historial de traducciones" id="SL_TH"></div></td><td width="10%"></td><td align="right" width="6%"><div style="background: transparent url(&quot;chrome://imtranslator/content/img/util/pin-off.png&quot;) repeat scroll 0% 0%; display: block; width: 16px; height: 16px; cursor: pointer;" title="Fijar la ventana de traducción" id="SL_pin"></div></td></tr></table></div><div style="display: none;" id="SL_alert_bbl"><div id="SLHKclose"></div><div id="SL_alert_cont"></div></div></div><div style="background: rgb(255, 255, 255) url(&quot;chrome://imtranslator/content/img/util/bg.png&quot;) repeat scroll 0% 0%; visibility: visible; min-height: 40px;" id="SL_shadow_translation_result"><div></div></div><div style="background: transparent url(&quot;chrome://imtranslator/content/img/util/indicator.gif&quot;) repeat scroll 0% 0%; display: block; position: absolute; width: 35px; margin-left: 180px; margin-top: -40px; height: 35px;" id="SL_loading"></div><div style="display: none; height: 0px; width: 0px;" id="SL_player2"></div><div style="background: transparent url(&quot;chrome://imtranslator/content/img/util/bg2.png&quot;) repeat scroll 0% 0%; display: none;" id="SL_alert100">La función de sonido está limitada a 100 caracteres</div><div style="background: rgb(255, 255, 255) none repeat scroll 0% 0%;" id="SL_Balloon_options"><div id="SL_arrow_down"></div><table width="100%"><tr><td align="left" height="16" width="18%"><div style="background: transparent url(&quot;chrome://imtranslator/content/img/util/donate2.png&quot;) repeat scroll 0% 0%;" title="Hacer una contribución" id="SL_bbl_donate"></div></td><td align="center" width="68%"><a title="Mostrar opciones" id="OPlnk" href="#">Opciones</a> : <a title="Historial de traducciones" id="HISTlnk" href="#">Historia</a> : <a title="Ayuda" id="HELPlnk" target="_blank" href="http://about.imtranslator.net/tutorials/presentations/imtranslator-translator-for-firefox/popup-bubble-application/">Ayuda</a> : <a title="Feedback" id="FBlnk" href="#">Feedback</a></td><td align="right" width="15%"><a title="Cerrar" href="#" id="SL_Balloon_Close">Cerrar</a></td></tr></table></div></div></div></body></html>
