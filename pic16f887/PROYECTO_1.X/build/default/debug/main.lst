@@ -1,0 +1,57 @@
+MPASM 5.70  /HOME/GAME/PIC16F887/PROYECTO_1.   3-1-2017  9:41:25         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00001 ; TODO INSERT CONFIG CODE HERE USING CONFIG BITS GENERATOR
+  00020007            00002 __CONFIG1 EQU H'20007'
+  00000086            00003 TRISB EQU  H'0086'
+  00000006            00004 PORTB   EQU H'0006'
+  00000003            00005 STATUS  EQU H'0003'
+                      00006         
+                      00007 RES_VECT  CODE    0x0000            ; processor reset vector
+0000   2???           00008     GOTO    START                   ; go to beginning of program
+                      00009 
+                      00010 ; TODO ADD INTERRUPTS HERE IF USED
+                      00011 
+                      00012 MAIN_PROG CODE                      ; let linker place main program
+                      00013 
+0000                  00014 START
+                      00015  
+0000   1683           00016     BSF STATUS,5
+0001   3000           00017     MOVLW   0X00
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0002   0086           00018     MOVWF   TRISB
+0003   1283           00019     BCF     STATUS,5
+                      00020     
+0004   30FF           00021     MOVLW   0XFF
+0005   0086           00022     MOVWF    PORTB
+                      00023     
+0006   30F0           00024     MOVLW   0XF0
+0007   0086           00025     MOVWF    PORTB
+                      00026     
+0008   2???           00027     GOTO $                          ; loop forever
+                      00028 
+                      00029     END
+MPASM 5.70  /HOME/GAME/PIC16F887/PROYECTO_1.   3-1-2017  9:41:25         PAGE  2
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+PORTB                             00000006
+START                             00000000
+STATUS                            00000003
+TRISB                             00000086
+_MAIN_PROG_0008                   00000008
+__16F887                          00000001
+__CONFIG1                         00020007
+__DEBUG                           
+__MPLAB_DEBUGGER_SIMULATOR        1
+
+Errors   :     0
+Warnings :     0 reported,     0 suppressed
+Messages :     1 reported,     0 suppressed
+
+
