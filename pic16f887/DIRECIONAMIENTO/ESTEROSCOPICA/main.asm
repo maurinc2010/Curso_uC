@@ -12,20 +12,24 @@ INCLUDE	"p16f887.inc"
 ;cristal 8MHz
  
 CBLOCK 0X20
- R1
  REG1
  REG2	
  REG3
  REG4
+ REG5
  FLAG
+ENDC
+CBLOCK 0X28
  UNIDADES
  DECENAS
+ CENTENAS 
+ MIL
 ENDC
  
-CBLOCK	0XA0
- REG5
- REG6
-ENDC
+;CBLOCK	0XA0
+; REG5
+; REG6
+;ENDC
  
  
     
@@ -68,45 +72,70 @@ START
     BCF	    STATUS,5		;BANCO 0
     CLRF    UNIDADES
     CLRF    DECENAS
+    CLRF    CENTENAS
+    CLRF    MIL
     CLRF    FLAG
+    CLRF    REG4
     CLRF    PORTB
     CLRF    PORTC
     CLRF    PORTD
-    MOVLW   .76
-    MOVWF   R1
+    MOVLW   0XFE
+    MOVWF   REG5
+   
+BUCLE:
+    CALL    ESTEROSCO
+    INCF    REG4
+    BTFSS   STATUS,Z
+    ;BTFSS   REG4,7
+    GOTO    BUCLE
+    CALL    BCDD
+    GOTO    BUCLE
     
-BCDD:    
-    CALL    RETARDO
-    MOVF    UNIDADES,W
-    BCF	    FLAG,0
-    CALL    CONTADOR
-    MOVWF   UNIDADES
-    CALL    TABLA
-    MOVWF   PORTC
-    MOVLW   0X20
+      
+    
+    
+    GOTO $                          ; loop forever
+    
+;+++++++++++++++++++++++++++++++++++++++++++++++++++++
+ESTEROSCO   
+	    MOVLW   0X27
+	    MOVWF   FSR
+	    MOVLW   0XFE
+	    MOVWF   REG5
+EST
+	    MOVF    REG5,W
+	    MOVWF   PORTD
+	    INCF    FSR
+	    MOVF    INDF,W
+	    CALL    TABLA
+	    MOVWF   PORTC
+	    CALL    RETARDO
+	    CLRF    PORTC
+	    BSF	    STATUS,C
+	    RLF	    REG5,1
+	    BTFSC   REG5,4
+	    GOTO    EST
+	    RETURN
+;-----------------------------------------------------
+    
+;......................................................+
+BCDD 
+    MOVLW   0X28
     MOVWF   FSR
-    MOVF    INDF,W
-    INCF    FSR
-    MOVF    INDF,W
-    BTFSS   FLAG,0
-    GOTO    BCDD
-    CLRF    UNIDADES
-    MOVF    DECENAS,W
+BCCC
     BCF	    FLAG,0
+    MOVF    INDF,W
     CALL    CONTADOR
-    MOVWF   DECENAS
-    CALL    TABLA
-    MOVWF   PORTD
+    MOVWF   INDF
     BTFSS   FLAG,0
-    GOTO    BCDD
-    CLRF    DECENAS
-    GOTO    BCDD
-    
-    
-    
-    
-    GOTO $                          ; loop forever    
-    
+    RETURN
+    CLRF    INDF
+    INCF    FSR
+    GOTO    BCCC
+;.....................................................    
+
+
+;*++++++CONTADOR DE 0 A 9 +++++++++++++++++++++    
 CONTADOR    MOVWF    REG3
 	    INCF     REG3
 	    MOVF     REG3,W
@@ -118,13 +147,14 @@ CONTADOR    MOVWF    REG3
 	    RETURN
 MENOR	    MOVF    REG3,W
 	    RETURN
+;++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 ;----------RUTINA DE RETARDO---------------
-RETARDO		MOVLW	.5
+RETARDO		MOVLW	.1
 		MOVWF	REG3
-DOS		MOVLW	.255
+DOS		MOVLW	.28
 		MOVWF	REG2
-UNO		MOVLW	.255
+UNO		MOVLW	.230
 		MOVWF	REG1
 		DECFSZ	REG1,1
 		GOTO	$-1
