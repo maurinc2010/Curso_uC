@@ -48,38 +48,36 @@ MAIN_PROG CODE                      ; let linker place main program
 ORG 0X05
 
 START
-    BSF	    STATUS,5		;BANCO 1
-    CLRF    TRISB
+    BSF	    STATUS,5
     CLRF    TRISD
     CLRF    TRISC
     BCF	    STATUS,5		;BANCO 0
-    CLRF    UNIDADES
-    CLRF    DECENAS
-    CLRF    CENTENAS
-    CLRF    MIL
     CLRF    FLAG
     CLRF    REG4
-    CLRF    PORTB
     CLRF    PORTC
-    CLRF    PORTD
-    MOVLW   0XFF
-    MOVWF   REG5
-    MOVLW   .16
-    MOVWF   LONG
+    CLR;CLRF    PORTBF    PORTD  
+    MOVLW   .32
+    MOVWF   LONG 
     
-    
-    
+    CLRF   REG5
+DD:    
+    MOVF    REG5,W
+    CALL    NUMEROS
+    ;MOVWF   REG4
+    ;COMF    REG4,W
+    MOVWF   PORTC
     CALL    INI74HC
-BUCLE:
+FF:
+    INCF    REG5
+    MOVF    REG5,W
+    CALL    NUMEROS
+    MOVWF   PORTC
     CALL    L74HC
-    ;CALL    RETARDO
-    ;CALL    ESTEROSCO
-   ; INCF    MIL
-   ; BTFSS   STATUS,Z
-    ;BTFSS   MIL,7
+    BTFSS   REG5,3
+    GOTO    FF
+    CLRF    REG5
+    GOTO    DD
     ;GOTO    BUCLE
-    ;CALL    BCDD
-    GOTO    BUCLE
 
 
 
@@ -92,17 +90,19 @@ L74HC
     GOTO    $+3
     CALL    INI74HC
     RETURN
-    BSF	    PORTC,0 ;CLOCK
-    ;RETARDO
-    BCF	    PORTC,0 ;CLOCK
+    BSF	    PORTD,0 ;CLOCK
+    ;CALL    RETARDO
+    BCF	    PORTD,0 ;CLOCK
     RETURN
     
 INI74HC
-    BCF	    PORTC,0 ;CLOCK
-    BSF	    PORTC,1 ;DATA
-    BSF	    PORTC,0 ;CLOCK
-    BCF	    PORTC,0 ;CLOCK
-    BCF	    PORTC,1 ;DATA
+    MOVLW   .32
+    MOVWF   LONG 
+    BCF	    PORTD,0 ;CLOCK
+    BSF	    PORTD,1 ;DATA
+    BSF	    PORTD,0 ;CLOCK
+    BCF	    PORTD,0 ;CLOCK
+    BCF	    PORTD,1 ;DATA
     RETURN
 	    
     
@@ -194,9 +194,9 @@ MENOR	    MOVF    REG3,W
 ;++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 ;----------RUTINA DE RETARDO---------------
-RETARDO		MOVLW	.255
+RETARDO		MOVLW	.2
 		MOVWF	REG3
-DOS		MOVLW	.255
+DOS		MOVLW	.25
 		MOVWF	REG2
 UNO		MOVLW	.255
 		MOVWF	REG1
@@ -210,7 +210,7 @@ UNO		MOVLW	.255
 ;------------------------------------------
 NUMEROS:		
     ADDWF	PCL,1
-	DT	.63,.63,.51,.51,.51,.51,.63,.63 ;NUMERO 0
+	DT	.0,.0,.60,.60,.60,.60,.0,.0 ;NUMERO 0
 	DT	.4,.12,.4,.4,.4,.4,.63,.63	;NUMERO 1
 	DT	.6,.9,.9,.2,.4,.8,.63,.63	;NUMERO 2
 	DT	.63,.1,.2,.4,.2,.1,.1,.63	;NUEMR0 3
