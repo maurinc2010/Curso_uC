@@ -21,7 +21,7 @@ CBLOCK 0X20
  REG7
  REG8
  FLAG
- LONG  ;NUMERO DE LINEAS DE LA MATRICES 32
+ LONG  ;32
 ENDC
 CBLOCK 0X35
  UNIDADES
@@ -30,9 +30,18 @@ CBLOCK 0X35
  MIL
 ENDC
 
+;CBLOCK	0XA0
+; REG5
+; REG6
+;ENDC
+
+
+
 
 RES_VECT  CODE    0x0000            ; processor reset vector
     GOTO    START                   ; go to beginning of program
+
+; TODO ADD INTERRUPTS HERE IF USED
 
 MAIN_PROG CODE                      ; let linker place main program
 
@@ -47,54 +56,55 @@ START
     CLRF    REG4
     CLRF    PORTC
     CLRF    PORTD  
-    CLRF    REG5
-    CLRF    REG7
-DD: 
-    INCF    REG7    ;SE INCREMENTA CADA VES QUE SE ACTUALIZA LAS MATRICES
-    BTFSS   REG7,7  ;SE USA COMO TIEMPO DE INCREMENTO DEL CONTADOR
-    GOTO    $+3
-    CLRF    REG7
-    CALL    BCDD
-    MOVLW   0X35
-    MOVWF   FSR
-    CALL    DIRE
-    CALL    L_TABLA
+    MOVLW   .32
+    MOVWF   LONG 
+    
+    CLRF   REG5
+DD:    
+    MOVLW   .16
+    MOVWF   PCLATH
+    MOVF    REG5,W
+    CALL    NUMEROS
+    MOVWF   PORTC
+    MOVLW   .0
+    MOVWF   PCLATH
     CALL    INI74HC
     CALL    RETARDO
 FF:
-    ;--SE USA PARA APAGAR LA COLUMNA DE LA MATRIZ
+    INCF    REG5
+    BTFSS   REG5,3
+    GOTO    $+6
+    CLRF    REG5
+    ;MOVF    LONG,W
+    BTFSS   LONG,1
+    GOTO    $-5
+    GOTO    DD
     MOVLW   .255
     MOVWF   PORTC
     CALL    L74HC
-INCDD:
-    INCF    REG5    ;SE INCREMENTA HASTA 8
-    BTFSS   REG5,3  ;DETERMINA SI ES 8 O MENOR
-    GOTO    TAL
-    ;SI ES MAYOR QUE 8, ES QUE CAMBIAMOS DE MATRIZ, ES DECIR DE UNIDADES A DECENAS
-    ;O DE DECENAS A CENTENENAS O DE CENTENAS A MIL
-    INCF    FSR
-    CLRF    REG5 ;SE REINCIA PARA INDICAR QUE ES LA PRIMERA COLUMNA DE UNA MATRIZ
-    CALL    DIRE ;CALCULA LA POSICION, 0X1000+8*(INDF)   
-    BTFSS   FLAG,1 ; SE USA PARA DETERMINAR QUE SE HAN RECORRIDO LAS 32 LINEAS DE LAS MATRICES
-    GOTO    TAL
-    GOTO    DD
-TAL:
-    ;SE LEE EL DATO CORRESPONDIENTE A LA COLUMNA
-    CALL    L_TABLA
+    ;MOVF    REG5,W
+    MOVLW   .16
+    MOVWF   PCLATH
+    MOVF    REG5,W
+    CALL    NUMEROS
+    MOVWF   PORTC
+    MOVLW   .0
+    MOVWF   PCLATH
     CALL    RETARDO
+    CALL    BCDD
     GOTO    FF
     
     
     GOTO $                          ; loop forever
-;.......DESPLAZAMIENTO DE BIT  MATRIZ................
+
 L74HC
     DECF    LONG    
     BTFSS   STATUS,Z
     GOTO    $+3
-    BSF	    FLAG,1  ;INDICA QUE SE RECORRIERON LAS 32 LINEAS DE LAS MATRICES
+    CALL    INI74HC
     RETURN
-    BCF	    FLAG,1  ;INDICA QUE NO SE HAN RECORIODO LAS 32 LINEAS DE LAS MATRICES
     BSF	    PORTD,0 ;CLOCK
+    ;CALL    RETARDO
     BCF	    PORTD,0 ;CLOCK
     RETURN
     
@@ -107,31 +117,8 @@ INI74HC
     BCF	    PORTD,0 ;CLOCK
     BCF	    PORTD,1 ;DATA
     RETURN
+	    
     
-;-------------------------------------------------
-;---LEE LA TABLA,MODIFICA EL PCH PARA PODER ACEDER----------
-L_TABLA
-    MOVLW   .16	    
-    MOVWF   PCLATH  ;SE CAMBIA EL PC A LA POSICION 0X1000
-    MOVF    REG8,W
-    ADDWF   REG5,W
-    CALL    NUMEROS
-    CLRF    PCLATH
-    MOVWF   PORTC
-    RETURN
-;..................................................
-;------CALCULA LA DIRECION DE LA TABLA CORRESPONDIENTE AL CARACTER-------------	
-DIRE
-    MOVLW   .8
-    MOVWF   REG4
-    MOVF    INDF,W
-    MOVWF   REG3
-    CALL    MULTI
-    MOVF    REG3,W
-    MOVWF   REG8    
-    RETURN
-;..................................................
-;.....MULTIPLICACION...............................   
 MULTI
 	    MOVF   REG3,W
 	    DECF   REG4,F
@@ -141,10 +128,54 @@ ESTADO
 	    BTFSS   STATUS,Z
 	    GOTO    $-3
 	    RETURN
-;..................................................
 	    
 
-;........CONTADOR BCD.......................................+
+;+++++++++++++++++++++++++++++++++++++++++++++++++++++
+ESTEROSCO
+	    ;AND ROT (REG5) AND 0XFF
+	    MOVLW   0XFF
+	    MOVWF   REG5
+	    BCF     REG5,0
+	    ;REG8=DECENAS*8
+	    MOVF    DECENAS,W
+	    MOVWF   REG3
+	    MOVLW   .8
+	    MOVWF   REG4
+	    CALL    MULTI
+	    MOVF    REG3,W
+	    MOVWF   REG7
+	    ;REG7=UNIDADES*8
+	    MOVF    UNIDADES,W
+	    MOVWF   REG3
+	    MOVLW   .8
+	    MOVWF   REG4
+	    CALL    MULTI
+	    MOVF    REG3,W
+	    MOVWF   REG8
+	    
+EST
+	    MOVF    REG5,W
+	    MOVWF   PORTB
+TSR
+	    MOVF    REG7,W
+	    CALL    NUMEROS
+	    MOVWF   PORTD
+	    MOVF    REG8,W
+	    CALL    NUMEROS
+	    MOVWF   PORTC
+	    CALL    RETARDO
+	    INCF    REG7
+	    INCF    REG8
+	    BSF	    STATUS,C
+	    RLF	    REG5,F
+	    BTFSC   STATUS,C
+	    GOTO    EST
+	    ;CLRF    REG4
+	    ;CLRF    REG6
+	    RETURN
+;-----------------------------------------------------
+
+;......................................................+
 BCDD
     MOVLW   0X35
     MOVWF   FSR
@@ -190,7 +221,7 @@ UNO		MOVLW	.25
 		GOTO	DOS
 		RETURN
 ;------------------------------------------
-ORG 0X1000		
+ORG 0X1000
 NUMEROS:		
     ADDWF	PCL,1
 	DT	.0,.0,.60,.60,.60,.0,.0,.255		    ;NUMERO 0
@@ -203,4 +234,8 @@ NUMEROS:
 	DT	.255,.31,.111,.112,.127,.63,.255,.255	    ;NUMERO 7
 	DT	.255,.145,.110,.110,.110,.145,.255,.255	    ;NUMERO 8
 	DT	.255,.131,.109,.110,.111,.159,.255,.255	    ;NUMERO 9
+
+
+
+
 END
