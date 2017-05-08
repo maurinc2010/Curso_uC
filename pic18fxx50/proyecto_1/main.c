@@ -18,6 +18,8 @@ void set_leds(){
     TRISD=0xF0;         //PARTE ALTA DEL PUERTO ENTRADA, BAJA SALIDA   
     //ANSEL=0XE0;     
     TRISA=0XFF;
+    TRISC=0;
+    PORTC=0;
 }
 
 void port(unsigned char c){
@@ -27,24 +29,61 @@ void port(unsigned char c){
     LATB |=(c>>4);
 }
 
-void ss(){
+unsigned char input_d(){
     unsigned char d;
-    d=PORTD & 0XF0;
-    LATB|=d;
+    d=(PORTD & 0XF0)>>4;
+    LATC=d;
+    return d;
+}
+
+unsigned char contador(unsigned char i){
+    //unsigned char m;
+    ///contador----
+        //for (m=i;m<=255;m++){
+        
+           port(i++);
+          __delay_ms(90);
+        //}
+          return i;
+}
+
+unsigned char comparar(unsigned char i){
+    if(i==0XFF)
+        return 0xF0;
+    else if (i==0x0F)
+       return 0;
+    else 
+       return 0xAA;              
 }
 
 
 void main(void) {
-    //OSCCONbits.IRCF=7;
+    OSCCONbits.IRCF=7;
     set_leds();
-    //while(1){
-        ss();
-        port(0xFF);
-        __delay_ms(10);
-        port(0x00);
-        __delay_ms(10);
+    unsigned char i;
+    while(1){
+        ///ss();        
+        switch (input_d()){
+            case 0:
+            {
+                i=contador(i);
+
+                break;
+            }
+            case 1:
+            {
+                i=comparar(i);
+                port(i);
+                __delay_ms(90);
+                break;
+            }
+            
+            default:
+                break;
+        }
+        
     
         
-    //}
+    }
     return;
 }
