@@ -18,77 +18,97 @@ void set_timer(u32 time, u8 unidad){
     u16 t=2;
     switch (unidad){
             case ms:{
-                    if (periodo>=1 && periodo<131){
+                    if (periodo>=1 && periodo<65){
                         T0CONbits.T0PS=0;
-                        t=2;
+                        t=1;
                     }
-                    else if (periodo>=131 && periodo<196)
+                    else if (periodo>=65 && periodo<131)
                     {
                         T0CONbits.T0PS=1;
-                        t=3;
+                        t=2;
                     }
-                    else if (periodo>=196 && periodo<327)
+                    else if (periodo>=131 && periodo<262)
                     {
                         T0CONbits.T0PS=2;
-                        t=5;
+                        t=4;
                     }
-                    else if (periodo>=327 && periodo<589)
+                    else if (periodo>=262 && periodo<524)
                     {
                         T0CONbits.T0PS=3;
-                        t=9;
+                        t=8;
                     }
-                    else if (periodo>=589 && periodo<1110)
+                    else if (periodo>=524 && periodo<1040)
                     {
                         T0CONbits.T0PS=4;
-                        t=17;
+                        t=16;
                     }
-                    else if (periodo>=1110 && periodo<2160)
+                    else if (periodo>=1040 && periodo<2090)
                     {
                         T0CONbits.T0PS=5;
-                        t=33;
+                        t=32;
                     }
-                    else if (periodo>=2160 && periodo<4120){
+                    else if (periodo>=2090 && periodo<4190){
                         T0CONbits.T0PS=6;
-                        t=65;
+                        t=64;
                     }
-                    else if (periodo>=4120 && periodo<8450)
+                    else if (periodo>=4190 && periodo<8380)
                     {
                         T0CONbits.T0PS=7;
-                        t=129;
+                        t=128;
                     }
                     //calculo de Tmr0l  y Tmr0l
-            aux=aux-(1000*periodo/t);
+            aux=aux-(((1000*periodo)-2)/t);
                 break;
             }
             case us:{
-                if (periodo>=2 && periodo<131000)
+                if (periodo>=1 && periodo<65000){
                         T0CONbits.T0PS=0;
-                    else if (periodo>=131000 && periodo<196000)
+                        t=1;
+                }
+                    else if (periodo>=65000 && periodo<131000){
                         T0CONbits.T0PS=1;
-                    else if (periodo>=196000 && periodo<327000)
+                        t=2;
+                    }
+                    else if (periodo>=131000 && periodo<262000){
                         T0CONbits.T0PS=2;
-                    else if (periodo>=327000 && periodo<589000)
+                        t=4;
+                    }
+                    else if (periodo>=262000 && periodo<524000){
                         T0CONbits.T0PS=3;
-                    else if (periodo>=589000 && periodo<1110000)
+                        t=8;
+                    }
+                    else if (periodo>=524000 && periodo<1040000){
                         T0CONbits.T0PS=4;
-                    else if (periodo>=1110000 && periodo<2160000)
+                        t=16;
+                    }
+                    else if (periodo>=1040000 && periodo<2090000){
                         T0CONbits.T0PS=5;
-                    else if (periodo>=2160000 && periodo<4120000)
+                        t=32;
+                    }        
+                    else if (periodo>=2090000 && periodo<4190000){
                         T0CONbits.T0PS=6;
-                    else if (periodo>=4120000 && periodo<8450000)
+                        t=64;
+                    }
+                    else if (periodo>=4190000 && periodo<8380000){
                         T0CONbits.T0PS=7;
+                        t=128;
+                    }
+                    aux=aux-((periodo-2)/t);
                     break;
                     //calculo de Tmr0l  y Tmr0l
-            aux=aux-(periodo/t);
             }
     }
     tl=aux;
     th=aux>>8;
+    T0CONbits.T08BIT=0;
+    T0CONbits.PSA=0;
+    T0CONbits.T0CS=0;
+    set_time();
     
 }
 void set_time(){
-    TMR0L=tl;
     TMR0H=th;
+    TMR0L=tl;
 }
 void init_timer(unsigned char state){
     T0CONbits.TMR0ON=state;
