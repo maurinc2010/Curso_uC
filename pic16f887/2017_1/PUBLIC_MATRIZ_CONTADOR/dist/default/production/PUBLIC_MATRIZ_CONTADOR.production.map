@@ -1,0 +1,85 @@
+MPLINK 5.08, LINKER
+Linker Map File - Created Thu Apr 13 20:44:20 2017
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                 RES_VECT       code   0x000000    program   0x000002
+                   .cinit    romdata   0x000001    program   0x000004
+                   .org_0       code   0x000005    program   0x000108
+                   .org_1       code   0x001000    program   0x0000a2
+.config_2007_BUILD/DEFAULT/PRODUCTION/MAIN.O       code   0x002007    program   0x000002
+.config_2008_BUILD/DEFAULT/PRODUCTION/MAIN.O       code   0x002008    program   0x000002
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000002      
+                            0x000005    0x000088      
+                            0x001000    0x001050      
+                            0x002007    0x002008      
+            218 out of 8455 program addresses used, program memory utilization is 2%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                     BCCC   0x000068    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/PUBLIC_MATRIZ_CONTADOR/main.asm
+                     BCDD   0x000066    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/PUBLIC_MATRIZ_CONTADOR/main.asm
+                 CONTADOR   0x000071    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/PUBLIC_MATRIZ_CONTADOR/main.asm
+                       DD   0x000010    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/PUBLIC_MATRIZ_CONTADOR/main.asm
+                      DOS   0x00007e    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/PUBLIC_MATRIZ_CONTADOR/main.asm
+                      EST   0x000056    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/PUBLIC_MATRIZ_CONTADOR/main.asm
+                   ESTADO   0x000040    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/PUBLIC_MATRIZ_CONTADOR/main.asm
+                ESTEROSCO   0x000045    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/PUBLIC_MATRIZ_CONTADOR/main.asm
+                       FF   0x000019    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/PUBLIC_MATRIZ_CONTADOR/main.asm
+                  INI74HC   0x000036    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/PUBLIC_MATRIZ_CONTADOR/main.asm
+                    L74HC   0x00002e    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/PUBLIC_MATRIZ_CONTADOR/main.asm
+                    MENOR   0x00007a    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/PUBLIC_MATRIZ_CONTADOR/main.asm
+                    MULTI   0x00003e    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/PUBLIC_MATRIZ_CONTADOR/main.asm
+                  NUMEROS   0x001000    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/PUBLIC_MATRIZ_CONTADOR/main.asm
+                  RETARDO   0x00007c    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/PUBLIC_MATRIZ_CONTADOR/main.asm
+                    START   0x000005    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/PUBLIC_MATRIZ_CONTADOR/main.asm
+                      TSR   0x000058    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/PUBLIC_MATRIZ_CONTADOR/main.asm
+                      UNO   0x000080    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/PUBLIC_MATRIZ_CONTADOR/main.asm
+             _.org_0_001B   0x00001b    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/PUBLIC_MATRIZ_CONTADOR/main.asm
+             _.org_0_001E   0x00001e    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/PUBLIC_MATRIZ_CONTADOR/main.asm
+             _.org_0_002D   0x00002d    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/PUBLIC_MATRIZ_CONTADOR/main.asm
+             _.org_0_0030   0x000030    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/PUBLIC_MATRIZ_CONTADOR/main.asm
+             _.org_0_0043   0x000043    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/PUBLIC_MATRIZ_CONTADOR/main.asm
+             _.org_0_0083   0x000083    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/PUBLIC_MATRIZ_CONTADOR/main.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                    START   0x000005    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/PUBLIC_MATRIZ_CONTADOR/main.asm
+                       DD   0x000010    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/PUBLIC_MATRIZ_CONTADOR/main.asm
+                       FF   0x000019    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/PUBLIC_MATRIZ_CONTADOR/main.asm
+             _.org_0_001B   0x00001b    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/PUBLIC_MATRIZ_CONTADOR/main.asm
+             _.org_0_001E   0x00001e    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/PUBLIC_MATRIZ_CONTADOR/main.asm
+             _.org_0_002D   0x00002d    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/PUBLIC_MATRIZ_CONTADOR/main.asm
+                    L74HC   0x00002e    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/PUBLIC_MATRIZ_CONTADOR/main.asm
+             _.org_0_0030   0x000030    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/PUBLIC_MATRIZ_CONTADOR/main.asm
+                  INI74HC   0x000036    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/PUBLIC_MATRIZ_CONTADOR/main.asm
+                    MULTI   0x00003e    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/PUBLIC_MATRIZ_CONTADOR/main.asm
+                   ESTADO   0x000040    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/PUBLIC_MATRIZ_CONTADOR/main.asm
+             _.org_0_0043   0x000043    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/PUBLIC_MATRIZ_CONTADOR/main.asm
+                ESTEROSCO   0x000045    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/PUBLIC_MATRIZ_CONTADOR/main.asm
+                      EST   0x000056    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/PUBLIC_MATRIZ_CONTADOR/main.asm
+                      TSR   0x000058    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/PUBLIC_MATRIZ_CONTADOR/main.asm
+                     BCDD   0x000066    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/PUBLIC_MATRIZ_CONTADOR/main.asm
+                     BCCC   0x000068    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/PUBLIC_MATRIZ_CONTADOR/main.asm
+                 CONTADOR   0x000071    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/PUBLIC_MATRIZ_CONTADOR/main.asm
+                    MENOR   0x00007a    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/PUBLIC_MATRIZ_CONTADOR/main.asm
+                  RETARDO   0x00007c    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/PUBLIC_MATRIZ_CONTADOR/main.asm
+                      DOS   0x00007e    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/PUBLIC_MATRIZ_CONTADOR/main.asm
+                      UNO   0x000080    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/PUBLIC_MATRIZ_CONTADOR/main.asm
+             _.org_0_0083   0x000083    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/PUBLIC_MATRIZ_CONTADOR/main.asm
+                  NUMEROS   0x001000    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/PUBLIC_MATRIZ_CONTADOR/main.asm
+
+

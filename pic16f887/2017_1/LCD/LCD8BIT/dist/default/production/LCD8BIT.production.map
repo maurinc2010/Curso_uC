@@ -1,0 +1,65 @@
+MPLINK 5.08, LINKER
+Linker Map File - Created Wed Mar 29 22:46:48 2017
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                 RES_VECT       code   0x000000    program   0x000002
+                   .cinit    romdata   0x000001    program   0x000004
+                   .org_0       code   0x000005    program   0x0000fe
+.config_2007_BUILD/DEFAULT/PRODUCTION/MAIN.O       code   0x002007    program   0x000002
+.config_2008_BUILD/DEFAULT/PRODUCTION/MAIN.O       code   0x002008    program   0x000002
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000002      
+                            0x000005    0x000083      
+                            0x002007    0x002008      
+            132 out of 8455 program addresses used, program memory utilization is 1%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                  COMAND8   0x000060    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/LCD/LCD8BIT/main.asm
+                    DATO8   0x000062    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/LCD/LCD8BIT/main.asm
+                      DOS   0x00006c    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/LCD/LCD8BIT/main.asm
+                       L1   0x00004d    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/LCD/LCD8BIT/main.asm
+                       L2   0x000058    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/LCD/LCD8BIT/main.asm
+                     LIN1   0x000005    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/LCD/LCD8BIT/main.asm
+                     LIN2   0x000019    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/LCD/LCD8BIT/main.asm
+                  RETARDO   0x00006a    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/LCD/LCD8BIT/main.asm
+                   RETLCD   0x000077    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/LCD/LCD8BIT/main.asm
+                  RETLCD1   0x000079    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/LCD/LCD8BIT/main.asm
+                    START   0x00002d    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/LCD/LCD8BIT/main.asm
+                      UNO   0x00006e    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/LCD/LCD8BIT/main.asm
+             _.org_0_005F   0x00005f    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/LCD/LCD8BIT/main.asm
+             _.org_0_0061   0x000061    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/LCD/LCD8BIT/main.asm
+             _.org_0_0071   0x000071    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/LCD/LCD8BIT/main.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                     LIN1   0x000005    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/LCD/LCD8BIT/main.asm
+                     LIN2   0x000019    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/LCD/LCD8BIT/main.asm
+                    START   0x00002d    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/LCD/LCD8BIT/main.asm
+                       L1   0x00004d    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/LCD/LCD8BIT/main.asm
+                       L2   0x000058    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/LCD/LCD8BIT/main.asm
+             _.org_0_005F   0x00005f    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/LCD/LCD8BIT/main.asm
+                  COMAND8   0x000060    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/LCD/LCD8BIT/main.asm
+             _.org_0_0061   0x000061    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/LCD/LCD8BIT/main.asm
+                    DATO8   0x000062    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/LCD/LCD8BIT/main.asm
+                  RETARDO   0x00006a    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/LCD/LCD8BIT/main.asm
+                      DOS   0x00006c    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/LCD/LCD8BIT/main.asm
+                      UNO   0x00006e    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/LCD/LCD8BIT/main.asm
+             _.org_0_0071   0x000071    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/LCD/LCD8BIT/main.asm
+                   RETLCD   0x000077    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/LCD/LCD8BIT/main.asm
+                  RETLCD1   0x000079    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/LCD/LCD8BIT/main.asm
+
+

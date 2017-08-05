@@ -1,0 +1,24 @@
+Warning[205] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/TECLADO/TECLADO/main.asm 2 : Found directive in column 1. (list)
+Warning[205] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/TECLADO/TECLADO/main.asm 3 : Found directive in column 1. (INCLUDE)
+Warning[205] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/TECLADO/TECLADO/main.asm 20 : Found directive in column 1. (CBLOCK)
+Warning[205] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/TECLADO/TECLADO/main.asm 37 : Found directive in column 1. (ENDC)
+Warning[205] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/TECLADO/TECLADO/main.asm 42 : Found directive in column 1. (ORG)
+Message[302] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/TECLADO/TECLADO/main.asm 49 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/TECLADO/TECLADO/main.asm 50 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/TECLADO/TECLADO/main.asm 52 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/TECLADO/TECLADO/main.asm 53 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/TECLADO/TECLADO/main.asm 55 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/TECLADO/TECLADO/main.asm 57 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/TECLADO/TECLADO/main.asm 61 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/TECLADO/TECLADO/main.asm 62 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[305] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/TECLADO/TECLADO/main.asm 99 : Using default destination of 1 (file).
+Message[305] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/TECLADO/TECLADO/main.asm 101 : Using default destination of 1 (file).
+Message[305] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/TECLADO/TECLADO/main.asm 102 : Using default destination of 1 (file).
+Message[305] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/TECLADO/TECLADO/main.asm 117 : Using default destination of 1 (file).
+Message[305] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/TECLADO/TECLADO/main.asm 122 : Using default destination of 1 (file).
+Message[305] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/TECLADO/TECLADO/main.asm 127 : Using default destination of 1 (file).
+Message[305] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/TECLADO/TECLADO/main.asm 132 : Using default destination of 1 (file).
+Message[305] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/TECLADO/TECLADO/main.asm 162 : Using default destination of 1 (file).
+Message[305] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/TECLADO/TECLADO/main.asm 189 : Using default destination of 1 (file).
+Message[305] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/TECLADO/TECLADO/main.asm 216 : Using default destination of 1 (file).
+Warning[205] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/TECLADO/TECLADO/main.asm 284 : Found directive in column 1. (END)

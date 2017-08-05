@@ -1,0 +1,461 @@
+
+
+Microchip Technology PIC18 LITE Macro Assembler V1.35 build -356382666 
+                                                                                               Wed May  3 13:50:18 2017
+
+Microchip Technology Omniscient Code Generator v1.35 (Free mode) build 201507080246
+     1                           	processor	18F4550
+     2                           	fnconf	rparam,??,?,0
+     3                           	opt	pw 120
+     4                           	opt	lm
+     5                           	psect	cinit,global,reloc=2,class=CODE,delta=1
+     6                           	psect	cstackCOMRAM,global,class=COMRAM,space=1,delta=1
+     7                           	psect	text0,global,reloc=2,class=CODE,delta=1
+     8                           	psect	text1,global,reloc=2,class=CODE,delta=1
+     9                           	psect	text2,global,reloc=2,class=CODE,delta=1
+    10                           	psect	text3,global,reloc=2,class=CODE,delta=1
+    11                           	psect	intsave_regs,global,class=BIGRAM,space=1,delta=1
+    12                           	psect	rparam,global,class=COMRAM,space=1,delta=1
+    13  0000                     _LATB	set	3978
+    14  0000                     _LATD	set	3980
+    15  0000                     _PORTB	set	3969
+    16  0000                     _PORTD	set	3971
+    17  0000                     _TRISA	set	3986
+    18  0000                     _TRISB	set	3987
+    19  0000                     _TRISD	set	3989
+    20                           
+    21                           ; #config settings
+    22  0000                     
+    23                           	psect	cinit
+    24  007F9C                     __pcinit:
+    25                           	opt stack 0
+    26  007F9C                     start_initialization:
+    27                           	opt stack 0
+    28  007F9C                     __initialization:
+    29                           	opt stack 0
+    30  007F9C                     end_of_initialization:
+    31                           	opt stack 0
+    32  007F9C                     __end_of__initialization:
+    33                           	opt stack 0
+    34  007F9C  0100               	movlb	0
+    35  007F9E  EFEF  F03F         	goto	_main	;jump to C main() function
+    36                           
+    37                           	psect	cstackCOMRAM
+    38  000001                     __pcstackCOMRAM:
+    39                           	opt stack 0
+    40  000001                     port@c:
+    41                           	opt stack 0
+    42  000001                     ss@d:
+    43                           	opt stack 0
+    44                           
+    45                           ; 1 bytes @ 0x0
+    46  000001                     	ds	1
+    47  000002                     ??_main:
+    48                           
+    49                           ; 0 bytes @ 0x1
+    50  000002                     	ds	1
+    51                           
+    52 ;;
+    53 ;;Main: autosize = 0, tempsize = 1, incstack = 0, save=0
+    54 ;;
+    55 ;; *************** function _main *****************
+    56 ;; Defined at:
+    57 ;;		line 37 in file "main.c"
+    58 ;; Parameters:    Size  Location     Type
+    59 ;;		None
+    60 ;; Auto vars:     Size  Location     Type
+    61 ;;		None
+    62 ;; Return value:  Size  Location     Type
+    63 ;;		None               void
+    64 ;; Registers used:
+    65 ;;		wreg, status,2, status,0, cstack
+    66 ;; Tracked objects:
+    67 ;;		On entry : 0/0
+    68 ;;		On exit  : 0/0
+    69 ;;		Unchanged: 0/0
+    70 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+    71 ;;      Params:         0       0       0       0       0       0       0       0       0
+    72 ;;      Locals:         0       0       0       0       0       0       0       0       0
+    73 ;;      Temps:          1       0       0       0       0       0       0       0       0
+    74 ;;      Totals:         1       0       0       0       0       0       0       0       0
+    75 ;;Total ram usage:        1 bytes
+    76 ;; Hardware stack levels required when called:    1
+    77 ;; This function calls:
+    78 ;;		_port
+    79 ;;		_set_leds
+    80 ;;		_ss
+    81 ;; This function is called by:
+    82 ;;		Startup code after reset
+    83 ;; This function uses a non-reentrant model
+    84 ;;
+    85                           
+    86                           	psect	text0
+    87  007FDE                     __ptext0:
+    88                           	opt stack 0
+    89  007FDE                     _main:
+    90                           	opt stack 30
+    91                           
+    92                           ;main.c: 38: set_leds();
+    93                           
+    94                           ;incstack = 0
+    95  007FDE  ECE3  F03F         	call	_set_leds	;wreg free
+    96                           
+    97                           ;main.c: 39: ss();
+    98  007FE2  ECD1  F03F         	call	_ss	;wreg free
+    99                           
+   100                           ;main.c: 40: port(0xA1);
+   101  007FE6  0EA1               	movlw	161
+   102  007FE8  ECD7  F03F         	call	_port
+   103                           
+   104                           ;main.c: 42: _delay((unsigned long)((10)*(8000000/4000.0)));
+   105  007FEC  0E1A               	movlw	26
+   106  007FEE  6E02               	movwf	??_main& (0+255),c
+   107  007FF0  0EF8               	movlw	248
+   108  007FF2                     u17:
+   109  007FF2  2EE8               	decfsz	wreg,f,c
+   110  007FF4  D7FE               	goto	u17
+   111  007FF6  2E02               	decfsz	??_main& (0+255),f,c
+   112  007FF8  D7FC               	goto	u17
+   113  007FFA  D000               	nop2	
+   114                           
+   115                           ;main.c: 43: return;
+   116  007FFC  EF00  F000         	goto	start
+   117  008000                     __end_of_main:
+   118                           	opt stack 0
+   119                           wreg	equ	0xFE8
+   120                           
+   121 ;; *************** function _ss *****************
+   122 ;; Defined at:
+   123 ;;		line 30 in file "main.c"
+   124 ;; Parameters:    Size  Location     Type
+   125 ;;		None
+   126 ;; Auto vars:     Size  Location     Type
+   127 ;;  d               1    0[COMRAM] unsigned char 
+   128 ;; Return value:  Size  Location     Type
+   129 ;;		None               void
+   130 ;; Registers used:
+   131 ;;		wreg, status,2, status,0
+   132 ;; Tracked objects:
+   133 ;;		On entry : 0/0
+   134 ;;		On exit  : 0/0
+   135 ;;		Unchanged: 0/0
+   136 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   137 ;;      Params:         0       0       0       0       0       0       0       0       0
+   138 ;;      Locals:         1       0       0       0       0       0       0       0       0
+   139 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   140 ;;      Totals:         1       0       0       0       0       0       0       0       0
+   141 ;;Total ram usage:        1 bytes
+   142 ;; Hardware stack levels used:    1
+   143 ;; This function calls:
+   144 ;;		Nothing
+   145 ;; This function is called by:
+   146 ;;		_main
+   147 ;; This function uses a non-reentrant model
+   148 ;;
+   149                           
+   150                           	psect	text1
+   151  007FA2                     __ptext1:
+   152                           	opt stack 0
+   153  007FA2                     _ss:
+   154                           	opt stack 30
+   155                           
+   156                           ;main.c: 31: unsigned char d;
+   157                           ;main.c: 32: d=PORTD & 0XF0;
+   158                           
+   159                           ;incstack = 0
+   160  007FA2  5083               	movf	3971,w,c	;volatile
+   161  007FA4  0BF0               	andlw	240
+   162  007FA6  6E01               	movwf	ss@d,c
+   163                           
+   164                           ;main.c: 33: LATB|=d;
+   165  007FA8  5001               	movf	ss@d,w,c
+   166  007FAA  128A               	iorwf	3978,f,c	;volatile
+   167  007FAC  0012               	return		;funcret
+   168  007FAE                     __end_of_ss:
+   169                           	opt stack 0
+   170                           wreg	equ	0xFE8
+   171                           
+   172 ;; *************** function _set_leds *****************
+   173 ;; Defined at:
+   174 ;;		line 13 in file "main.c"
+   175 ;; Parameters:    Size  Location     Type
+   176 ;;		None
+   177 ;; Auto vars:     Size  Location     Type
+   178 ;;		None
+   179 ;; Return value:  Size  Location     Type
+   180 ;;		None               void
+   181 ;; Registers used:
+   182 ;;		wreg, status,2
+   183 ;; Tracked objects:
+   184 ;;		On entry : 0/0
+   185 ;;		On exit  : 0/0
+   186 ;;		Unchanged: 0/0
+   187 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   188 ;;      Params:         0       0       0       0       0       0       0       0       0
+   189 ;;      Locals:         0       0       0       0       0       0       0       0       0
+   190 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   191 ;;      Totals:         0       0       0       0       0       0       0       0       0
+   192 ;;Total ram usage:        0 bytes
+   193 ;; Hardware stack levels used:    1
+   194 ;; This function calls:
+   195 ;;		Nothing
+   196 ;; This function is called by:
+   197 ;;		_main
+   198 ;; This function uses a non-reentrant model
+   199 ;;
+   200                           
+   201                           	psect	text2
+   202  007FC6                     __ptext2:
+   203                           	opt stack 0
+   204  007FC6                     _set_leds:
+   205                           	opt stack 30
+   206                           
+   207                           ;main.c: 14: PORTD=0;
+   208                           
+   209                           ;incstack = 0
+   210  007FC6  0E00               	movlw	0
+   211  007FC8  6E83               	movwf	3971,c	;volatile
+   212                           
+   213                           ;main.c: 15: LATD=0;
+   214  007FCA  0E00               	movlw	0
+   215  007FCC  6E8C               	movwf	3980,c	;volatile
+   216                           
+   217                           ;main.c: 16: PORTB=0;
+   218  007FCE  0E00               	movlw	0
+   219  007FD0  6E81               	movwf	3969,c	;volatile
+   220                           
+   221                           ;main.c: 17: TRISB=0;
+   222  007FD2  0E00               	movlw	0
+   223  007FD4  6E93               	movwf	3987,c	;volatile
+   224                           
+   225                           ;main.c: 18: TRISD=0xF0;
+   226  007FD6  0EF0               	movlw	240
+   227  007FD8  6E95               	movwf	3989,c	;volatile
+   228                           
+   229                           ;main.c: 20: TRISA=0XFF;
+   230  007FDA  6892               	setf	3986,c	;volatile
+   231  007FDC  0012               	return		;funcret
+   232  007FDE                     __end_of_set_leds:
+   233                           	opt stack 0
+   234                           wreg	equ	0xFE8
+   235                           
+   236 ;; *************** function _port *****************
+   237 ;; Defined at:
+   238 ;;		line 23 in file "main.c"
+   239 ;; Parameters:    Size  Location     Type
+   240 ;;  c               1    wreg     unsigned char 
+   241 ;; Auto vars:     Size  Location     Type
+   242 ;;  c               1    0[COMRAM] unsigned char 
+   243 ;; Return value:  Size  Location     Type
+   244 ;;		None               void
+   245 ;; Registers used:
+   246 ;;		wreg, status,2, status,0
+   247 ;; Tracked objects:
+   248 ;;		On entry : 0/0
+   249 ;;		On exit  : 0/0
+   250 ;;		Unchanged: 0/0
+   251 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   252 ;;      Params:         0       0       0       0       0       0       0       0       0
+   253 ;;      Locals:         1       0       0       0       0       0       0       0       0
+   254 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   255 ;;      Totals:         1       0       0       0       0       0       0       0       0
+   256 ;;Total ram usage:        1 bytes
+   257 ;; Hardware stack levels used:    1
+   258 ;; This function calls:
+   259 ;;		Nothing
+   260 ;; This function is called by:
+   261 ;;		_main
+   262 ;; This function uses a non-reentrant model
+   263 ;;
+   264                           
+   265                           	psect	text3
+   266  007FAE                     __ptext3:
+   267                           	opt stack 0
+   268  007FAE                     _port:
+   269                           	opt stack 30
+   270                           
+   271                           ;incstack = 0
+   272                           ;port@c stored from wreg
+   273  007FAE  6E01               	movwf	port@c,c
+   274                           
+   275                           ;main.c: 24: LATD &=0XF0;
+   276  007FB0  0EF0               	movlw	240
+   277  007FB2  168C               	andwf	3980,f,c	;volatile
+   278                           
+   279                           ;main.c: 25: LATB &= 0XF0;
+   280  007FB4  0EF0               	movlw	240
+   281  007FB6  168A               	andwf	3978,f,c	;volatile
+   282                           
+   283                           ;main.c: 26: LATD |=(c & 0x0F);
+   284  007FB8  5001               	movf	port@c,w,c
+   285  007FBA  0B0F               	andlw	15
+   286  007FBC  128C               	iorwf	3980,f,c	;volatile
+   287                           
+   288                           ;main.c: 27: LATB |=(c>>4);
+   289  007FBE  3801               	swapf	port@c,w,c
+   290  007FC0  0B0F               	andlw	15
+   291  007FC2  128A               	iorwf	3978,f,c	;volatile
+   292  007FC4  0012               	return		;funcret
+   293  007FC6                     __end_of_port:
+   294                           	opt stack 0
+   295  0000                     wreg	equ	0xFE8
+   296                           wreg	equ	0xFE8
+   297                           
+   298                           	psect	rparam
+   299  0000                     wreg	equ	0xFE8
+
+
+Data Sizes:
+    Strings     0
+    Constant    0
+    Data        0
+    BSS         0
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMRAM           95      2       2
+    BANK0           160      0       0
+    BANK1           256      0       0
+    BANK2           256      0       0
+    BANK3           256      0       0
+    BANK4           256      0       0
+    BANK5           256      0       0
+    BANK6           256      0       0
+    BANK7           256      0       0
+
+Pointer List with Targets:
+
+    None.
+
+Critical Paths under _main in COMRAM
+
+    _main->_port
+    _main->_ss
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Critical Paths under _main in BANK3
+
+    None.
+
+Critical Paths under _main in BANK4
+
+    None.
+
+Critical Paths under _main in BANK5
+
+    None.
+
+Critical Paths under _main in BANK6
+
+    None.
+
+Critical Paths under _main in BANK7
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 1     1      0      45
+                                              1 COMRAM     1     1      0
+                               _port
+                           _set_leds
+                                 _ss
+ ---------------------------------------------------------------------------------
+ (1) _ss                                                   1     1      0      15
+                                              0 COMRAM     1     1      0
+ ---------------------------------------------------------------------------------
+ (1) _set_leds                                             0     0      0       0
+ ---------------------------------------------------------------------------------
+ (1) _port                                                 1     1      0      30
+                                              0 COMRAM     1     1      0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 1
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   _port
+   _set_leds
+   _ss
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BITCOMRAM           5F      0       0       0        0.0%
+EEDATA             100      0       0       0        0.0%
+NULL                 0      0       0       0        0.0%
+CODE                 0      0       0       0        0.0%
+COMRAM              5F      2       2       1        2.1%
+STACK                0      0       0       2        0.0%
+DATA                 0      0       0       3        0.0%
+BITBANK0            A0      0       0       4        0.0%
+BANK0               A0      0       0       5        0.0%
+BITBANK1           100      0       0       6        0.0%
+BANK1              100      0       0       7        0.0%
+BITBANK2           100      0       0       8        0.0%
+BANK2              100      0       0       9        0.0%
+BITBANK3           100      0       0      10        0.0%
+BANK3              100      0       0      11        0.0%
+BITBANK4           100      0       0      12        0.0%
+BANK4              100      0       0      13        0.0%
+BITBANK5           100      0       0      14        0.0%
+BANK5              100      0       0      15        0.0%
+BITBANK6           100      0       0      16        0.0%
+BANK6              100      0       0      17        0.0%
+BITBANK7           100      0       0      18        0.0%
+BANK7              100      0       0      19        0.0%
+ABS                  0      0       0      20        0.0%
+BIGRAM             7FF      0       0      21        0.0%
+BITSFR               0      0       0      40        0.0%
+SFR                  0      0       0      40        0.0%
+
+
+Microchip Technology PIC18 Macro Assembler V1.35 build -356382666 
+Symbol Table                                                                                   Wed May  3 13:50:18 2017
+
+                     u17 7FF2              __CFG_BOR$ON 000000                       _ss 7FA2  
+            __CFG_BORV$3 000000             __CFG_CP0$OFF 000000             __CFG_CP1$OFF 000000  
+           __CFG_CP2$OFF 000000             __CFG_CP3$OFF 000000              __CFG_LVP$ON 000000  
+                    ?_ss 0001             __CFG_CPB$OFF 000000             __CFG_CPD$OFF 000000  
+                    ss@d 0001                      wreg 000FE8                     ??_ss 0001  
+           __CFG_WDT$OFF 000000                     _LATB 000F8A                     _LATD 000F8C  
+                   _main 7FDE                     _port 7FAE                     start 0000  
+          __CFG_IESO$OFF 000000            __CFG_MCLRE$ON 000000             ___param_bank 000010  
+          __CFG_PLLDIV$1 000000           __CFG_CCP2MX$ON 000000                    ?_main 0001  
+                  ?_port 0001                    _PORTB 000F81                    _PORTD 000F83  
+          __CFG_USBDIV$1 000000                    _TRISA 000F92                    _TRISB 000F93  
+                  _TRISD 000F95            __CFG_PWRT$OFF 000000            __CFG_WRT0$OFF 000000  
+          __CFG_WRT1$OFF 000000            __CFG_WRT2$OFF 000000            __CFG_WRT3$OFF 000000  
+         __CFG_EBTR0$OFF 000000           __CFG_FCMEN$OFF 000000           __CFG_EBTR1$OFF 000000  
+         __CFG_EBTR2$OFF 000000           __CFG_EBTR3$OFF 000000            __CFG_WRTB$OFF 000000  
+          __CFG_WRTC$OFF 000000            __CFG_WRTD$OFF 000000           __CFG_EBTRB$OFF 000000  
+                  port@c 0001           __CFG_ICPRT$OFF 000000           __CFG_PBADEN$ON 000000  
+        __initialization 7F9C             __end_of_main 8000             __end_of_port 7FC6  
+                 ??_main 0002                   ??_port 0001            __activetblptr 000000  
+         __CFG_XINST$OFF 000000           __CFG_STVREN$ON 000000         __end_of_set_leds 7FDE  
+             __accesstop 0060  __end_of__initialization 7F9C            ___rparam_used 000001  
+         __pcstackCOMRAM 0001               __end_of_ss 7FAE          __CFG_VREGEN$OFF 000000  
+                __Hparam 0000                  __Lparam 0000                ?_set_leds 0001  
+                __pcinit 7F9C                  __ramtop 0800                  __ptext0 7FDE  
+                __ptext1 7FA2                  __ptext2 7FC6                  __ptext3 7FAE  
+   end_of_initialization 7F9C               ??_set_leds 0001      start_initialization 7F9C  
+       __CFG_LPT1OSC$OFF 000000        __size_of_set_leds 0018              __size_of_ss 000C  
+       __CFG_WDTPS$32768 000000                 __Hrparam 0000                 __Lrparam 0000  
+          __size_of_main 0022            __size_of_port 0018                 _set_leds 7FC6  
+  __CFG_CPUDIV$OSC1_PLL2 000000      __CFG_FOSC$INTOSC_EC 000000  

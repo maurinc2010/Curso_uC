@@ -1,0 +1,1004 @@
+MPASM 5.70  /MEDIA/GAME/C1570FAF-5FE1-4385-A   4-13-2017  20:17:36         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00001 ; TODO INSERT CONFIG CODE HERE USING CONFIG BITS GENERATOR
+Warning[205]: Found directive in column 1. (list)
+                      00002 list    p=16f887
+Warning[205]: Found directive in column 1. (INCLUDE)
+                      00003 INCLUDE "p16f887.inc"
+                      00001         LIST
+                      00002 
+                      00003 ;==========================================================================
+                      00004 ; Build date : Sep 13 2016
+                      00005 ;  MPASM PIC16F887 processor include
+                      00006 ; 
+                      00007 ;  (c) Copyright 1999-2016 Microchip Technology, All rights reserved
+                      00008 ;==========================================================================
+                      00009 
+                      00810         LIST
+                      00004 
+                      00005 ; CONFIG1
+                      00006 ; __config 0xFBF2
+2007   3BF2           00007  __CONFIG _CONFIG1, _FOSC_HS & _WDTE_OFF & _PWRTE_OFF & _MCLRE_ON & _CP_OFF & _CPD_OFF & _BOREN_ON & _IE
+                            SO_OFF & _FCMEN_ON & _LVP_ON
+                      00008 ; CONFIG2
+                      00009 ; __config 0xFFFF
+2008   3FFF           00010  __CONFIG _CONFIG2, _BOR4V_BOR40V & _WRT_OFF
+                      00011 
+                      00012 ;cristal 8MHz
+                      00013 
+                      00014 RES_VECT  CODE    0x0000            ; processor reset vector
+0000   2???           00015     GOTO    START                   ; go to beginning of program
+                      00016     
+                      00017 INTE_VECT CODE 0x0004
+0004   2???           00018     GOTO    INTER
+                      00019 
+Warning[205]: Found directive in column 1. (CBLOCK)
+                      00020 CBLOCK 0X20
+  00000020            00021  SW
+  00000021            00022  SS
+  00000022            00023  TECLA
+  00000023            00024  COL
+  00000024            00025  FILA
+  00000025            00026  REG1
+  00000026            00027  REG2
+  00000027            00028  REG3
+  00000028            00029  REG4
+  00000029            00030  REG5
+  0000002A            00031  REG6
+  0000002B            00032  REG7
+  0000002C            00033  REG8
+  0000002D            00034  FLAG
+  0000002E            00035  LONG 
+                      00036 
+Warning[205]: Found directive in column 1. (ENDC)
+                      00037 ENDC
+                      00038  
+MPASM 5.70  /MEDIA/GAME/C1570FAF-5FE1-4385-A   4-13-2017  20:17:36         PAGE  2
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00039     
+                      00040 MAIN_PROG CODE                      ; let linker place main program
+                      00041 
+Warning[205]: Found directive in column 1. (ORG)
+                      00042 ORG 0X05
+                      00043  
+                      00044 
+0005                  00045 START
+                      00046 ;CONFIGURACIÓN DE PUERTOS C Y E COMO SALIDA
+                      00047    
+0005   1683 1703      00048     BANKSEL ANSEL
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0007   0188           00049     CLRF    ANSEL
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0008   0189           00050     CLRF    ANSELH
+0009   1683 1303      00051     BANKSEL TRISE
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+000B   0187           00052     CLRF    TRISC
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+000C   0188           00053     CLRF    TRISD
+000D   30F0           00054     MOVLW   0XF0
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+000E   0086           00055     MOVWF   TRISB
+000F   3007           00056     MOVLW   B'00000111'
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0010   0081           00057     MOVWF   OPTION_REG  
+                      00058     
+0011   1683 1303      00059     BANKSEL WPUB
+0013   30F0           00060     MOVLW   0XF0
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0014   0095           00061     MOVWF   WPUB        ;RESISTENCIAS DE PULL-UP
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0015   0096           00062     MOVWF   IOCB        ;INT CAMBIO DE ESTADO
+0016   3088           00063     MOVLW   0X88        ; ACTIVA GLOBAL INT Y EL PORTB
+0017   008B           00064     MOVWF   INTCON
+0018   1283 1303      00065     BANKSEL PORTB
+001A   30F0           00066     MOVLW   0XF0
+001B   0086           00067     MOVWF   PORTB
+                      00068   
+                      00069    
+001C                  00070 CC
+                      00071     
+                      00072     ;MOVWF   PORTB
+001C   2???           00073     GOTO    CC
+                      00074     
+                      00075   
+                      00076     
+                      00077     
+                      00078 ;.............................................
+001D                  00079 INTER
+                      00080     ;BCF            INTCON,7
+                      00081     ;---SE SALVA W Y STATUS
+001D   00A0           00082     MOVWF   SW
+MPASM 5.70  /MEDIA/GAME/C1570FAF-5FE1-4385-A   4-13-2017  20:17:36         PAGE  3
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+001E   0E03           00083     SWAPF   STATUS,W
+001F   00A1           00084     MOVWF   SS
+                      00085  ;RUTINA DE GESTION DE INTERRUPCIONES-----
+                      00086  ;----------------------------------------
+                      00087  ;....RUTINA DE TECLADO........
+0020   2???           00088     CALL    RETARDO
+0021   30FF           00089     MOVLW   0XFF
+0022   0086           00090     MOVWF   PORTB
+0023   1006           00091     BCF     PORTB,0
+0024   01A4           00092     CLRF    FILA
+0025   01A3           00093     CLRF    COL
+0026   2???           00094     GOTO    COLUMNA
+                      00095     ;........................
+                      00096 
+0027                  00097 FN_1:
+0027   1403           00098     BSF     STATUS,C
+Message[305]: Using default destination of 1 (file).
+0028   0D86           00099     RLF     PORTB
+0029   3004           00100     MOVLW   0X04
+Message[305]: Using default destination of 1 (file).
+002A   07A3           00101     ADDWF   COL
+Message[305]: Using default destination of 1 (file).
+002B   0AA4           00102     INCF    FILA
+002C   1DA4           00103     BTFSS   FILA,3
+002D   2???           00104     GOTO    COLUMNA
+002E   2???           00105     GOTO    RET
+                      00106     
+                      00107     
+                      00108     
+                      00109     
+                      00110 
+                      00111    
+                      00112 ;---TESTEO DE COLUMNA
+002F                  00113 COLUMNA:
+002F   1A06           00114     BTFSC   PORTB,4
+0030   2???           00115     GOTO    $+4
+0031   3000           00116     MOVLW   0
+Message[305]: Using default destination of 1 (file).
+0032   07A3           00117     ADDWF   COL
+0033   2???           00118     GOTO    RET
+0034   1A86           00119     BTFSC   PORTB,5
+0035   2???           00120     GOTO    $+4
+0036   3001           00121     MOVLW   1
+Message[305]: Using default destination of 1 (file).
+0037   07A3           00122     ADDWF   COL
+0038   2???           00123     GOTO    RET
+0039   1B06           00124     BTFSC   PORTB,6
+003A   2???           00125     GOTO    $+4
+003B   3002           00126     MOVLW   2
+Message[305]: Using default destination of 1 (file).
+003C   07A3           00127     ADDWF   COL
+003D   2???           00128     GOTO    RET
+003E   1B86           00129     BTFSC   PORTB,7
+MPASM 5.70  /MEDIA/GAME/C1570FAF-5FE1-4385-A   4-13-2017  20:17:36         PAGE  4
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+003F   2???           00130     GOTO    FN_1
+0040   3003           00131     MOVLW   3
+Message[305]: Using default destination of 1 (file).
+0041   07A3           00132     ADDWF   COL
+0042   2???           00133     GOTO    RET
+                      00134     
+                      00135     
+0043                  00136 RB4_RB0:    
+0043   1A06           00137     BTFSC   PORTB,4
+                      00138     ;11101110
+0044   2???           00139     GOTO    RB5_RB0
+0045   3007           00140     MOVLW   0X07
+0046   2???           00141     GOTO    RET
+0047                  00142 RB5_RB0:
+0047   1A86           00143     BTFSC   PORTB,5  ;11011110
+0048   2???           00144     GOTO    RB6_RB0
+0049   3008           00145     MOVLW   0X08
+004A   2???           00146     GOTO    RET
+                      00147     
+004B                  00148 RB6_RB0:
+004B   1B06           00149     BTFSC   PORTB,6  ;10111110
+004C   2???           00150     GOTO    RB7_RB0
+004D   3009           00151     MOVLW   0X09
+004E   2???           00152     GOTO    RET
+                      00153     
+004F                  00154 RB7_RB0:
+004F   1B86           00155     BTFSC   PORTB,7  ;11011110
+0050   2???           00156     GOTO    RB4_RB1
+0051   300A           00157     MOVLW   0X0A
+0052   2???           00158     GOTO    RET
+                      00159     
+0053                  00160 RB4_RB1:
+0053   1403           00161     BSF     STATUS,C
+Message[305]: Using default destination of 1 (file).
+0054   0D86           00162     RLF     PORTB
+0055   1A06           00163     BTFSC   PORTB,4
+                      00164     ;11101110
+0056   2???           00165     GOTO    RB5_RB1
+0057   3004           00166     MOVLW   0X04
+0058   2???           00167     GOTO    RET
+                      00168     
+0059                  00169 RB5_RB1:
+0059   1A86           00170     BTFSC   PORTB,5  ;11011110
+005A   2???           00171     GOTO    RB6_RB1
+005B   3005           00172     MOVLW   0X05
+005C   2???           00173     GOTO    RET
+                      00174     
+005D                  00175 RB6_RB1:
+005D   1B06           00176     BTFSC   PORTB,6  ;10111110
+005E   2???           00177     GOTO    RB7_RB1
+005F   3006           00178     MOVLW   0X06
+0060   2???           00179     GOTO    RET
+                      00180     
+MPASM 5.70  /MEDIA/GAME/C1570FAF-5FE1-4385-A   4-13-2017  20:17:36         PAGE  5
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0061                  00181 RB7_RB1:
+0061   1B86           00182     BTFSC   PORTB,7  ;11011110
+0062   2???           00183     GOTO    RB4_RB2
+0063   300B           00184     MOVLW   0X0B
+0064   2???           00185     GOTO    RET
+                      00186 
+0065                  00187 RB4_RB2:
+0065   1403           00188     BSF     STATUS,C
+Message[305]: Using default destination of 1 (file).
+0066   0D86           00189     RLF     PORTB
+0067   1A06           00190     BTFSC   PORTB,4
+                      00191     ;11101110
+0068   2???           00192     GOTO    RB5_RB2
+0069   3001           00193     MOVLW   0X01
+006A   2???           00194     GOTO    RET
+                      00195     
+006B                  00196 RB5_RB2:
+006B   1A86           00197     BTFSC   PORTB,5  ;11011110
+006C   2???           00198     GOTO    RB6_RB2
+006D   3002           00199     MOVLW   0X02
+006E   2???           00200     GOTO    RET
+                      00201     
+006F                  00202 RB6_RB2:
+006F   1B06           00203     BTFSC   PORTB,6  ;10111110
+0070   2???           00204     GOTO    RB7_RB2
+0071   3003           00205     MOVLW   0X03
+0072   2???           00206     GOTO    RET
+                      00207     
+0073                  00208 RB7_RB2:
+0073   1B86           00209     BTFSC   PORTB,7  ;11011110
+0074   2???           00210     GOTO    RB4_RB3
+0075   300C           00211     MOVLW   0X0C
+0076   2???           00212     GOTO    RET
+                      00213     
+0077                  00214 RB4_RB3:
+0077   1403           00215     BSF     STATUS,C
+Message[305]: Using default destination of 1 (file).
+0078   0D86           00216     RLF     PORTB
+0079   1A06           00217     BTFSC   PORTB,4
+                      00218     ;11101110
+007A   2???           00219     GOTO    RB5_RB3
+007B   300D           00220     MOVLW   0X0D
+007C   2???           00221     GOTO    RET
+                      00222     
+007D                  00223 RB5_RB3:
+007D   1A86           00224     BTFSC   PORTB,5  ;11011110
+007E   2???           00225     GOTO    RB6_RB3
+007F   3000           00226     MOVLW   0X00
+0080   2???           00227     GOTO    RET
+                      00228     
+0081                  00229 RB6_RB3:
+0081   1B06           00230     BTFSC   PORTB,6  ;10111110
+0082   2???           00231     GOTO    RB7_RB3
+MPASM 5.70  /MEDIA/GAME/C1570FAF-5FE1-4385-A   4-13-2017  20:17:36         PAGE  6
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0083   300E           00232     MOVLW   0X0E
+0084   2???           00233     GOTO    RET
+                      00234     
+0085                  00235 RB7_RB3:
+0085   1B86           00236     BTFSC   PORTB,7  ;11011110
+0086   2???           00237     GOTO    RET
+0087   300F           00238     MOVLW   0X0F
+0088   2???           00239     GOTO    RET
+                      00240 
+                      00241 
+                      00242     
+                      00243     
+                      00244     
+                      00245 ;....RESTAURA W Y STATUS......
+0089                  00246 RET
+0089   0823           00247     MOVF    COL,W
+                      00248     ;ADDWF   COL,W
+008A   0087           00249     MOVWF   PORTC
+008B   30F0           00250     MOVLW   0XF0
+008C   0086           00251     MOVWF   PORTB
+                      00252    
+008D   100B           00253     BCF     INTCON,0
+008E   0E21           00254     SWAPF   SS,W
+008F   0083           00255     MOVWF   STATUS
+0090   0820           00256     MOVF    SW,W
+0091   0009           00257     RETFIE
+                      00258     
+0092                  00259 MULTI
+0092   0827           00260             MOVF   REG3,W
+0093   03A8           00261             DECF   REG4,F
+0094                  00262 ESTADO      
+0094   07A7           00263             ADDWF   REG3,F
+0095   03A8           00264             DECF    REG4,F
+0096   1D03           00265             BTFSS   STATUS,Z
+0097   2???           00266             GOTO    $-3
+0098   0008           00267             RETURN
+                      00268 ;----------RUTINA DE RETARDO---------------
+0099   3002           00269 RETARDO         MOVLW   .2
+009A   00A7           00270                 MOVWF   REG3
+009B   3002           00271 DOS             MOVLW   .2
+009C   00A6           00272                 MOVWF   REG2
+009D   3002           00273 UNO             MOVLW   .2
+009E   00A5           00274                 MOVWF   REG1
+009F   0BA5           00275                 DECFSZ  REG1,1
+00A0   2???           00276                 GOTO    $-1
+00A1   0BA6           00277                 DECFSZ  REG2,1
+00A2   2???           00278                 GOTO    UNO
+00A3   0BA7           00279                 DECFSZ  REG3,1
+00A4   2???           00280                 GOTO    DOS
+00A5   0008           00281                 RETURN
+                      00282 ;------------------------------------------
+                      00283 
+Warning[205]: Found directive in column 1. (END)
+MPASM 5.70  /MEDIA/GAME/C1570FAF-5FE1-4385-A   4-13-2017  20:17:36         PAGE  7
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+3BF2 3FFF             00284 END
+MPASM 5.70  /MEDIA/GAME/C1570FAF-5FE1-4385-A   4-13-2017  20:17:36         PAGE  8
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+ABDEN                             00000000
+ABDOVF                            00000007
+ACKDT                             00000005
+ACKEN                             00000004
+ACKSTAT                           00000006
+ADCON0                            0000001F
+ADCON1                            0000009F
+ADCS0                             00000006
+ADCS1                             00000007
+ADDEN                             00000003
+ADFM                              00000007
+ADIE                              00000006
+ADIF                              00000006
+ADON                              00000000
+ADRESH                            0000001E
+ADRESL                            0000009E
+ANS0                              00000000
+ANS1                              00000001
+ANS10                             00000002
+ANS11                             00000003
+ANS12                             00000004
+ANS13                             00000005
+ANS2                              00000002
+ANS3                              00000003
+ANS4                              00000004
+ANS5                              00000005
+ANS6                              00000006
+ANS7                              00000007
+ANS8                              00000000
+ANS9                              00000001
+ANSEL                             00000188
+ANSELH                            00000189
+BAUDCTL                           00000187
+BCLIE                             00000003
+BCLIF                             00000003
+BF                                00000000
+BRG0                              00000000
+BRG1                              00000001
+BRG10                             00000002
+BRG11                             00000003
+BRG12                             00000004
+BRG13                             00000005
+BRG14                             00000006
+BRG15                             00000007
+BRG16                             00000003
+BRG2                              00000002
+BRG3                              00000003
+BRG4                              00000004
+BRG5                              00000005
+BRG6                              00000006
+BRG7                              00000007
+BRG8                              00000000
+BRG9                              00000001
+MPASM 5.70  /MEDIA/GAME/C1570FAF-5FE1-4385-A   4-13-2017  20:17:36         PAGE  9
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+BRGH                              00000002
+C                                 00000000
+C1CH0                             00000000
+C1CH1                             00000001
+C1IE                              00000005
+C1IF                              00000005
+C1OE                              00000005
+C1ON                              00000007
+C1OUT                             00000006
+C1POL                             00000004
+C1R                               00000002
+C1RSEL                            00000005
+C1SEN                             00000005
+C2CH0                             00000000
+C2CH1                             00000001
+C2IE                              00000006
+C2IF                              00000006
+C2OE                              00000005
+C2ON                              00000007
+C2OUT                             00000006
+C2POL                             00000004
+C2R                               00000002
+C2REN                             00000004
+C2RSEL                            00000004
+C2SYNC                            00000000
+CC                                0000001C
+CCP1CON                           00000017
+CCP1IE                            00000002
+CCP1IF                            00000002
+CCP1M0                            00000000
+CCP1M1                            00000001
+CCP1M2                            00000002
+CCP1M3                            00000003
+CCP1X                             00000005
+CCP1Y                             00000004
+CCP2CON                           0000001D
+CCP2IE                            00000000
+CCP2IF                            00000000
+CCP2M0                            00000000
+CCP2M1                            00000001
+CCP2M2                            00000002
+CCP2M3                            00000003
+CCP2X                             00000005
+CCP2Y                             00000004
+CCPR1                             00000015
+CCPR1H                            00000016
+CCPR1L                            00000015
+CCPR2                             0000001B
+CCPR2H                            0000001C
+CCPR2L                            0000001B
+CHS0                              00000002
+CHS1                              00000003
+CHS2                              00000004
+MPASM 5.70  /MEDIA/GAME/C1570FAF-5FE1-4385-A   4-13-2017  20:17:36         PAGE 10
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+CHS3                              00000005
+CKE                               00000006
+CKP                               00000004
+CM1CON0                           00000107
+CM2CON0                           00000108
+CM2CON1                           00000109
+COL                               00000023
+COLUMNA                           0000002F
+CREN                              00000004
+CSRC                              00000007
+D                                 00000005
+DATA_ADDRESS                      00000005
+DC                                00000001
+DC1B0                             00000004
+DC1B1                             00000005
+DC2B0                             00000004
+DC2B1                             00000005
+DOS                               0000009B
+D_A                               00000005
+D_NOT_A                           00000005
+ECCPAS                            0000009C
+ECCPAS0                           00000004
+ECCPAS1                           00000005
+ECCPAS2                           00000006
+ECCPASE                           00000007
+EEADR                             0000010D
+EEADRH                            0000010F
+EECON1                            0000018C
+EECON2                            0000018D
+EEDAT                             0000010C
+EEDATA                            0000010C
+EEDATH                            0000010E
+EEIE                              00000004
+EEIF                              00000004
+EEPGD                             00000007
+ESTADO                            00000094
+F                                 00000001
+FERR                              00000002
+FILA                              00000024
+FLAG                              0000002D
+FN_1                              00000027
+FSR                               00000004
+FVREN                             00000000
+GCEN                              00000007
+GIE                               00000007
+GO                                00000001
+GO_DONE                           00000001
+GO_NOT_DONE                       00000001
+HTS                               00000002
+I2C_DATA                          00000005
+I2C_READ                          00000002
+I2C_START                         00000003
+I2C_STOP                          00000004
+MPASM 5.70  /MEDIA/GAME/C1570FAF-5FE1-4385-A   4-13-2017  20:17:36         PAGE 11
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+INDF                              00000000
+INTCON                            0000000B
+INTE                              00000004
+INTEDG                            00000006
+INTER                             0000001D
+INTF                              00000001
+IOCB                              00000096
+IOCB0                             00000000
+IOCB1                             00000001
+IOCB2                             00000002
+IOCB3                             00000003
+IOCB4                             00000004
+IOCB5                             00000005
+IOCB6                             00000006
+IOCB7                             00000007
+IRCF0                             00000004
+IRCF1                             00000005
+IRCF2                             00000006
+IRP                               00000007
+LONG                              0000002E
+LTS                               00000001
+MC1OUT                            00000007
+MC2OUT                            00000006
+MSK                               00000093
+MSK0                              00000000
+MSK1                              00000001
+MSK2                              00000002
+MSK3                              00000003
+MSK4                              00000004
+MSK5                              00000005
+MSK6                              00000006
+MSK7                              00000007
+MULTI                             00000092
+NOT_A                             00000005
+NOT_ADDRESS                       00000005
+NOT_BO                            00000000
+NOT_BOR                           00000000
+NOT_DONE                          00000001
+NOT_PD                            00000003
+NOT_POR                           00000001
+NOT_RBPU                          00000007
+NOT_RC8                           00000006
+NOT_T1SYNC                        00000002
+NOT_TO                            00000004
+NOT_TX8                           00000006
+NOT_W                             00000002
+NOT_WRITE                         00000002
+OERR                              00000001
+OPTION_REG                        00000081
+OSCCON                            0000008F
+OSCTUNE                           00000090
+OSFIE                             00000007
+OSFIF                             00000007
+MPASM 5.70  /MEDIA/GAME/C1570FAF-5FE1-4385-A   4-13-2017  20:17:36         PAGE 12
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+OSTS                              00000003
+P                                 00000004
+P1M0                              00000006
+P1M1                              00000007
+PCL                               00000002
+PCLATH                            0000000A
+PCON                              0000008E
+PDC0                              00000000
+PDC1                              00000001
+PDC2                              00000002
+PDC3                              00000003
+PDC4                              00000004
+PDC5                              00000005
+PDC6                              00000006
+PEIE                              00000006
+PEN                               00000002
+PIE1                              0000008C
+PIE2                              0000008D
+PIR1                              0000000C
+PIR2                              0000000D
+PORTA                             00000005
+PORTB                             00000006
+PORTC                             00000007
+PORTD                             00000008
+PORTE                             00000009
+PR2                               00000092
+PRSEN                             00000007
+PS0                               00000000
+PS1                               00000001
+PS2                               00000002
+PSA                               00000003
+PSSAC0                            00000002
+PSSAC1                            00000003
+PSSBD0                            00000000
+PSSBD1                            00000001
+PSTRCON                           0000009D
+PULSR                             00000002
+PULSS                             00000003
+PWM1CON                           0000009B
+R                                 00000002
+RA0                               00000000
+RA1                               00000001
+RA2                               00000002
+RA3                               00000003
+RA4                               00000004
+RA5                               00000005
+RA6                               00000006
+RA7                               00000007
+RB0                               00000000
+RB1                               00000001
+RB2                               00000002
+RB3                               00000003
+RB4                               00000004
+MPASM 5.70  /MEDIA/GAME/C1570FAF-5FE1-4385-A   4-13-2017  20:17:36         PAGE 13
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+RB4_RB0                           00000043
+RB4_RB1                           00000053
+RB4_RB2                           00000065
+RB4_RB3                           00000077
+RB5                               00000005
+RB5_RB0                           00000047
+RB5_RB1                           00000059
+RB5_RB2                           0000006B
+RB5_RB3                           0000007D
+RB6                               00000006
+RB6_RB0                           0000004B
+RB6_RB1                           0000005D
+RB6_RB2                           0000006F
+RB6_RB3                           00000081
+RB7                               00000007
+RB7_RB0                           0000004F
+RB7_RB1                           00000061
+RB7_RB2                           00000073
+RB7_RB3                           00000085
+RBIE                              00000003
+RBIF                              00000000
+RC0                               00000000
+RC1                               00000001
+RC2                               00000002
+RC3                               00000003
+RC4                               00000004
+RC5                               00000005
+RC6                               00000006
+RC7                               00000007
+RC8_9                             00000006
+RC9                               00000006
+RCD8                              00000000
+RCEN                              00000003
+RCIDL                             00000006
+RCIE                              00000005
+RCIF                              00000005
+RCREG                             0000001A
+RCSTA                             00000018
+RD                                00000000
+RD0                               00000000
+RD1                               00000001
+RD2                               00000002
+RD3                               00000003
+RD4                               00000004
+RD5                               00000005
+RD6                               00000006
+RD7                               00000007
+RE0                               00000000
+RE1                               00000001
+RE2                               00000002
+RE3                               00000003
+READ_WRITE                        00000002
+REG1                              00000025
+MPASM 5.70  /MEDIA/GAME/C1570FAF-5FE1-4385-A   4-13-2017  20:17:36         PAGE 14
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+REG2                              00000026
+REG3                              00000027
+REG4                              00000028
+REG5                              00000029
+REG6                              0000002A
+REG7                              0000002B
+REG8                              0000002C
+RET                               00000089
+RETARDO                           00000099
+RP0                               00000005
+RP1                               00000006
+RSEN                              00000001
+RX9                               00000006
+RX9D                              00000000
+R_NOT_W                           00000002
+R_W                               00000002
+S                                 00000003
+SBOREN                            00000004
+SCKP                              00000004
+SCS                               00000000
+SEN                               00000000
+SENDB                             00000003
+SMP                               00000007
+SPBRG                             00000099
+SPBRGH                            0000009A
+SPEN                              00000007
+SR0                               00000006
+SR1                               00000007
+SRCON                             00000185
+SREN                              00000005
+SS                                00000021
+SSPADD                            00000093
+SSPBUF                            00000013
+SSPCON                            00000014
+SSPCON2                           00000091
+SSPEN                             00000005
+SSPIE                             00000003
+SSPIF                             00000003
+SSPM0                             00000000
+SSPM1                             00000001
+SSPM2                             00000002
+SSPM3                             00000003
+SSPMSK                            00000093
+SSPOV                             00000006
+SSPSTAT                           00000094
+START                             00000005
+STATUS                            00000003
+STRA                              00000000
+STRB                              00000001
+STRC                              00000002
+STRD                              00000003
+STRSYNC                           00000004
+SW                                00000020
+MPASM 5.70  /MEDIA/GAME/C1570FAF-5FE1-4385-A   4-13-2017  20:17:36         PAGE 15
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+SWDTEN                            00000000
+SYNC                              00000004
+T0CS                              00000005
+T0IE                              00000005
+T0IF                              00000002
+T0SE                              00000004
+T1CKPS0                           00000004
+T1CKPS1                           00000005
+T1CON                             00000010
+T1GINV                            00000007
+T1GIV                             00000007
+T1GSS                             00000001
+T1INSYNC                          00000002
+T1OSCEN                           00000003
+T1SYNC                            00000002
+T2CKPS0                           00000000
+T2CKPS1                           00000001
+T2CON                             00000012
+TECLA                             00000022
+TMR0                              00000001
+TMR0IE                            00000005
+TMR0IF                            00000002
+TMR1                              0000000E
+TMR1CS                            00000001
+TMR1GE                            00000006
+TMR1H                             0000000F
+TMR1IE                            00000000
+TMR1IF                            00000000
+TMR1L                             0000000E
+TMR1ON                            00000000
+TMR2                              00000011
+TMR2IE                            00000001
+TMR2IF                            00000001
+TMR2ON                            00000002
+TOUTPS0                           00000003
+TOUTPS1                           00000004
+TOUTPS2                           00000005
+TOUTPS3                           00000006
+TRISA                             00000085
+TRISA0                            00000000
+TRISA1                            00000001
+TRISA2                            00000002
+TRISA3                            00000003
+TRISA4                            00000004
+TRISA5                            00000005
+TRISA6                            00000006
+TRISA7                            00000007
+TRISB                             00000086
+TRISB0                            00000000
+TRISB1                            00000001
+TRISB2                            00000002
+TRISB3                            00000003
+TRISB4                            00000004
+MPASM 5.70  /MEDIA/GAME/C1570FAF-5FE1-4385-A   4-13-2017  20:17:36         PAGE 16
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+TRISB5                            00000005
+TRISB6                            00000006
+TRISB7                            00000007
+TRISC                             00000087
+TRISC0                            00000000
+TRISC1                            00000001
+TRISC2                            00000002
+TRISC3                            00000003
+TRISC4                            00000004
+TRISC5                            00000005
+TRISC6                            00000006
+TRISC7                            00000007
+TRISD                             00000088
+TRISD0                            00000000
+TRISD1                            00000001
+TRISD2                            00000002
+TRISD3                            00000003
+TRISD4                            00000004
+TRISD5                            00000005
+TRISD6                            00000006
+TRISD7                            00000007
+TRISE                             00000089
+TRISE0                            00000000
+TRISE1                            00000001
+TRISE2                            00000002
+TRISE3                            00000003
+TRMT                              00000001
+TUN0                              00000000
+TUN1                              00000001
+TUN2                              00000002
+TUN3                              00000003
+TUN4                              00000004
+TX8_9                             00000006
+TX9                               00000006
+TX9D                              00000000
+TXD8                              00000000
+TXEN                              00000005
+TXIE                              00000004
+TXIF                              00000004
+TXREG                             00000019
+TXSTA                             00000098
+UA                                00000001
+ULPWUE                            00000005
+ULPWUIE                           00000002
+ULPWUIF                           00000002
+UNO                               0000009D
+VCFG0                             00000004
+VCFG1                             00000005
+VR0                               00000000
+VR1                               00000001
+VR2                               00000002
+VR3                               00000003
+VRCON                             00000097
+MPASM 5.70  /MEDIA/GAME/C1570FAF-5FE1-4385-A   4-13-2017  20:17:36         PAGE 17
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+VREN                              00000007
+VROE                              00000006
+VRR                               00000005
+VRSS                              00000004
+W                                 00000000
+WCOL                              00000007
+WDTCON                            00000105
+WDTPS0                            00000001
+WDTPS1                            00000002
+WDTPS2                            00000003
+WDTPS3                            00000004
+WPUB                              00000095
+WPUB0                             00000000
+WPUB1                             00000001
+WPUB2                             00000002
+WPUB3                             00000003
+WPUB4                             00000004
+WPUB5                             00000005
+WPUB6                             00000006
+WPUB7                             00000007
+WR                                00000001
+WREN                              00000002
+WRERR                             00000003
+WUE                               00000001
+Z                                 00000002
+_.org_0_0030                      00000030
+_.org_0_0035                      00000035
+_.org_0_003A                      0000003A
+_.org_0_0097                      00000097
+_.org_0_00A0                      000000A0
+_BOR21V                           00003EFF
+_BOR40V                           00003FFF
+_BOR4V_BOR21V                     00003EFF
+_BOR4V_BOR40V                     00003FFF
+_BOREN_NSLEEP                     00003EFF
+_BOREN_OFF                        00003CFF
+_BOREN_ON                         00003FFF
+_BOREN_SBODEN                     00003DFF
+_BOR_NSLEEP                       00003EFF
+_BOR_OFF                          00003CFF
+_BOR_ON                           00003FFF
+_BOR_SBODEN                       00003DFF
+_CONFIG1                          00002007
+_CONFIG2                          00002008
+_CPD_OFF                          00003FFF
+_CPD_ON                           00003F7F
+_CP_OFF                           00003FFF
+_CP_ON                            00003FBF
+_DEBUG_OFF                        00003FFF
+_DEBUG_ON                         00001FFF
+_DEVID1                           00002006
+_EC_OSC                           00003FFB
+_EXTRC                            00003FFF
+MPASM 5.70  /MEDIA/GAME/C1570FAF-5FE1-4385-A   4-13-2017  20:17:36         PAGE 18
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+_EXTRCIO                          00003FFE
+_EXTRC_OSC_CLKOUT                 00003FFF
+_EXTRC_OSC_NOCLKOUT               00003FFE
+_FCMEN_OFF                        000037FF
+_FCMEN_ON                         00003FFF
+_FOSC_EC                          00003FFB
+_FOSC_EXTRC_CLKOUT                00003FFF
+_FOSC_EXTRC_NOCLKOUT              00003FFE
+_FOSC_HS                          00003FFA
+_FOSC_INTRC_CLKOUT                00003FFD
+_FOSC_INTRC_NOCLKOUT              00003FFC
+_FOSC_LP                          00003FF8
+_FOSC_XT                          00003FF9
+_HS_OSC                           00003FFA
+_IDLOC0                           00002000
+_IDLOC1                           00002001
+_IDLOC2                           00002002
+_IDLOC3                           00002003
+_IESO_OFF                         00003BFF
+_IESO_ON                          00003FFF
+_INTOSC                           00003FFD
+_INTOSCIO                         00003FFC
+_INTRC_OSC_CLKOUT                 00003FFD
+_INTRC_OSC_NOCLKOUT               00003FFC
+_LP_OSC                           00003FF8
+_LVP_OFF                          00002FFF
+_LVP_ON                           00003FFF
+_MCLRE_OFF                        00003FDF
+_MCLRE_ON                         00003FFF
+_PWRTE_OFF                        00003FFF
+_PWRTE_ON                         00003FEF
+_WDTE_OFF                         00003FF7
+_WDTE_ON                          00003FFF
+_WDT_OFF                          00003FF7
+_WDT_ON                           00003FFF
+_WRT_1FOURTH                      00003BFF
+_WRT_256                          00003DFF
+_WRT_HALF                         000039FF
+_WRT_OFF                          00003FFF
+_XT_OSC                           00003FF9
+__16F887                          00000001
+
+Errors   :     0
+Warnings :     6 reported,     0 suppressed
+Messages :    18 reported,     0 suppressed
+
+

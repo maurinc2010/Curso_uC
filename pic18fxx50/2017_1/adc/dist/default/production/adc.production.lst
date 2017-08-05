@@ -1,0 +1,695 @@
+
+
+Microchip Technology PIC18 LITE Macro Assembler V1.35 build -356382666 
+                                                                                               Wed May 24 18:17:36 2017
+
+Microchip Technology Omniscient Code Generator v1.35 (Free mode) build 201507080246
+     1                           	processor	18F4550
+     2                           	fnconf	rparam,??,?,0
+     3                           	opt	pw 120
+     4                           	opt	lm
+     5                           	psect	cinit,global,reloc=2,class=CODE,delta=1
+     6                           	psect	cstackCOMRAM,global,class=COMRAM,space=1,delta=1
+     7                           	psect	text0,global,reloc=2,class=CODE,delta=1
+     8                           	psect	text1,global,reloc=2,class=CODE,delta=1
+     9                           	psect	text2,global,reloc=2,class=CODE,delta=1
+    10                           	psect	text3,global,reloc=2,class=CODE,delta=1
+    11                           	psect	text4,global,reloc=2,class=CODE,delta=1
+    12                           	psect	text5,global,reloc=2,class=CODE,delta=1
+    13                           	psect	text6,global,reloc=2,class=CODE,delta=1
+    14                           	psect	text7,global,reloc=2,class=CODE,delta=1
+    15                           	psect	intsave_regs,global,class=BIGRAM,space=1,delta=1
+    16                           	psect	rparam,global,class=COMRAM,space=1,delta=1
+    17  0000                     _ADCON0bits	set	4034
+    18  0000                     _ADCON1	set	4033
+    19  0000                     _ADCON2bits	set	4032
+    20  0000                     _ADRESH	set	4036
+    21  0000                     _ADRESL	set	4035
+    22  0000                     _OSCCONbits	set	4051
+    23  0000                     _PIR1bits	set	3998
+    24  0000                     _PORTB	set	3969
+    25  0000                     _PORTC	set	3970
+    26  0000                     _PORTD	set	3971
+    27  0000                     _TRISAbits	set	3986
+    28  0000                     _TRISB	set	3987
+    29  0000                     _TRISC	set	3988
+    30  0000                     _TRISD	set	3989
+    31                           
+    32                           ; #config settings
+    33  0000                     
+    34                           	psect	cinit
+    35  007F7A                     __pcinit:
+    36                           	opt stack 0
+    37  007F7A                     start_initialization:
+    38                           	opt stack 0
+    39  007F7A                     __initialization:
+    40                           	opt stack 0
+    41  007F7A                     end_of_initialization:
+    42                           	opt stack 0
+    43  007F7A                     __end_of__initialization:
+    44                           	opt stack 0
+    45  007F7A  0100               	movlb	0
+    46  007F7C  EFEC  F03F         	goto	_main	;jump to C main() function
+    47                           
+    48                           	psect	cstackCOMRAM
+    49  000001                     __pcstackCOMRAM:
+    50                           	opt stack 0
+    51  000001                     set_adc@x:
+    52                           	opt stack 0
+    53                           
+    54                           ; 1 bytes @ 0x0
+    55  000001                     	ds	1
+    56  000002                     
+    57                           ; 0 bytes @ 0x1
+    58 ;;
+    59 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+    60 ;;
+    61 ;; *************** function _main *****************
+    62 ;; Defined at:
+    63 ;;		line 32 in file "main.c"
+    64 ;; Parameters:    Size  Location     Type
+    65 ;;		None
+    66 ;; Auto vars:     Size  Location     Type
+    67 ;;		None
+    68 ;; Return value:  Size  Location     Type
+    69 ;;		None               void
+    70 ;; Registers used:
+    71 ;;		wreg, status,2, cstack
+    72 ;; Tracked objects:
+    73 ;;		On entry : 0/0
+    74 ;;		On exit  : 0/0
+    75 ;;		Unchanged: 0/0
+    76 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+    77 ;;      Params:         0       0       0       0       0       0       0       0       0
+    78 ;;      Locals:         0       0       0       0       0       0       0       0       0
+    79 ;;      Temps:          0       0       0       0       0       0       0       0       0
+    80 ;;      Totals:         0       0       0       0       0       0       0       0       0
+    81 ;;Total ram usage:        0 bytes
+    82 ;; Hardware stack levels required when called:    1
+    83 ;; This function calls:
+    84 ;;		_conf_adc
+    85 ;;		_dato_8
+    86 ;;		_final_convercion
+    87 ;;		_set_adc
+    88 ;;		_set_clock
+    89 ;;		_set_port
+    90 ;;		_star_convercion
+    91 ;; This function is called by:
+    92 ;;		Startup code after reset
+    93 ;; This function uses a non-reentrant model
+    94 ;;
+    95                           
+    96                           	psect	text0
+    97  007FD8                     __ptext0:
+    98                           	opt stack 0
+    99  007FD8                     _main:
+   100                           	opt stack 30
+   101                           
+   102                           ;main.c: 33: set_clock();
+   103                           
+   104                           ;incstack = 0
+   105  007FD8  ECC0  F03F         	call	_set_clock	;wreg free
+   106                           
+   107                           ;main.c: 34: set_port();
+   108  007FDC  ECD2  F03F         	call	_set_port	;wreg free
+   109                           
+   110                           ;main.c: 35: conf_adc();
+   111  007FE0  ECDB  F03F         	call	_conf_adc	;wreg free
+   112                           
+   113                           ;main.c: 36: set_adc(1);
+   114  007FE4  0E01               	movlw	1
+   115  007FE6  ECCB  F03F         	call	_set_adc
+   116  007FEA                     l735:
+   117                           
+   118                           ;main.c: 38: star_convercion();
+   119  007FEA  ECBB  F03F         	call	_star_convercion	;wreg free
+   120  007FEE                     l737:
+   121  007FEE  ECC4  F03F         	call	_final_convercion	;wreg free
+   122  007FF2  0900               	iorlw	0
+   123  007FF4  B4D8               	btfsc	status,2,c
+   124  007FF6  D7FB               	goto	l737
+   125                           
+   126                           ;main.c: 41: PORTB=dato_8();
+   127  007FF8  ECB9  F03F         	call	_dato_8	;wreg free
+   128  007FFC  6E81               	movwf	3969,c	;volatile
+   129  007FFE  D7F5               	goto	l735
+   130  008000                     __end_of_main:
+   131                           	opt stack 0
+   132                           status	equ	0xFD8
+   133                           
+   134 ;; *************** function _star_convercion *****************
+   135 ;; Defined at:
+   136 ;;		line 25 in file "adc.c"
+   137 ;; Parameters:    Size  Location     Type
+   138 ;;		None
+   139 ;; Auto vars:     Size  Location     Type
+   140 ;;		None
+   141 ;; Return value:  Size  Location     Type
+   142 ;;		None               void
+   143 ;; Registers used:
+   144 ;;		None
+   145 ;; Tracked objects:
+   146 ;;		On entry : 0/0
+   147 ;;		On exit  : 0/0
+   148 ;;		Unchanged: 0/0
+   149 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   150 ;;      Params:         0       0       0       0       0       0       0       0       0
+   151 ;;      Locals:         0       0       0       0       0       0       0       0       0
+   152 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   153 ;;      Totals:         0       0       0       0       0       0       0       0       0
+   154 ;;Total ram usage:        0 bytes
+   155 ;; Hardware stack levels used:    1
+   156 ;; This function calls:
+   157 ;;		Nothing
+   158 ;; This function is called by:
+   159 ;;		_main
+   160 ;; This function uses a non-reentrant model
+   161 ;;
+   162                           
+   163                           	psect	text1
+   164  007F76                     __ptext1:
+   165                           	opt stack 0
+   166  007F76                     _star_convercion:
+   167                           	opt stack 30
+   168                           
+   169                           ;adc.c: 26: ADCON0bits.GO=1;
+   170                           
+   171                           ;incstack = 0
+   172  007F76  82C2               	bsf	4034,1,c	;volatile
+   173  007F78  0012               	return		;funcret
+   174  007F7A                     __end_of_star_convercion:
+   175                           	opt stack 0
+   176                           status	equ	0xFD8
+   177                           
+   178 ;; *************** function _set_port *****************
+   179 ;; Defined at:
+   180 ;;		line 14 in file "main.c"
+   181 ;; Parameters:    Size  Location     Type
+   182 ;;		None
+   183 ;; Auto vars:     Size  Location     Type
+   184 ;;		None
+   185 ;; Return value:  Size  Location     Type
+   186 ;;		None               void
+   187 ;; Registers used:
+   188 ;;		wreg, status,2
+   189 ;; Tracked objects:
+   190 ;;		On entry : 0/0
+   191 ;;		On exit  : 0/0
+   192 ;;		Unchanged: 0/0
+   193 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   194 ;;      Params:         0       0       0       0       0       0       0       0       0
+   195 ;;      Locals:         0       0       0       0       0       0       0       0       0
+   196 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   197 ;;      Totals:         0       0       0       0       0       0       0       0       0
+   198 ;;Total ram usage:        0 bytes
+   199 ;; Hardware stack levels used:    1
+   200 ;; This function calls:
+   201 ;;		Nothing
+   202 ;; This function is called by:
+   203 ;;		_main
+   204 ;; This function uses a non-reentrant model
+   205 ;;
+   206                           
+   207                           	psect	text2
+   208  007FA4                     __ptext2:
+   209                           	opt stack 0
+   210  007FA4                     _set_port:
+   211                           	opt stack 30
+   212                           
+   213                           ;main.c: 15: TRISC=0;
+   214                           
+   215                           ;incstack = 0
+   216  007FA4  0E00               	movlw	0
+   217  007FA6  6E94               	movwf	3988,c	;volatile
+   218                           
+   219                           ;main.c: 16: TRISD=0;
+   220  007FA8  0E00               	movlw	0
+   221  007FAA  6E95               	movwf	3989,c	;volatile
+   222                           
+   223                           ;main.c: 17: TRISB=0;
+   224  007FAC  0E00               	movlw	0
+   225  007FAE  6E93               	movwf	3987,c	;volatile
+   226                           
+   227                           ;main.c: 18: PORTC=255;
+   228  007FB0  6882               	setf	3970,c	;volatile
+   229                           
+   230                           ;main.c: 19: PORTD=255;
+   231  007FB2  6883               	setf	3971,c	;volatile
+   232  007FB4  0012               	return		;funcret
+   233  007FB6                     __end_of_set_port:
+   234                           	opt stack 0
+   235                           status	equ	0xFD8
+   236                           
+   237 ;; *************** function _set_clock *****************
+   238 ;; Defined at:
+   239 ;;		line 21 in file "main.c"
+   240 ;; Parameters:    Size  Location     Type
+   241 ;;		None
+   242 ;; Auto vars:     Size  Location     Type
+   243 ;;		None
+   244 ;; Return value:  Size  Location     Type
+   245 ;;		None               void
+   246 ;; Registers used:
+   247 ;;		None
+   248 ;; Tracked objects:
+   249 ;;		On entry : 0/0
+   250 ;;		On exit  : 0/0
+   251 ;;		Unchanged: 0/0
+   252 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   253 ;;      Params:         0       0       0       0       0       0       0       0       0
+   254 ;;      Locals:         0       0       0       0       0       0       0       0       0
+   255 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   256 ;;      Totals:         0       0       0       0       0       0       0       0       0
+   257 ;;Total ram usage:        0 bytes
+   258 ;; Hardware stack levels used:    1
+   259 ;; This function calls:
+   260 ;;		Nothing
+   261 ;; This function is called by:
+   262 ;;		_main
+   263 ;; This function uses a non-reentrant model
+   264 ;;
+   265                           
+   266                           	psect	text3
+   267  007F80                     __ptext3:
+   268                           	opt stack 0
+   269  007F80                     _set_clock:
+   270                           	opt stack 30
+   271                           
+   272                           ;main.c: 22: OSCCONbits.IRCF=7;
+   273                           
+   274                           ;incstack = 0
+   275  007F80  88D3               	bsf	4051,4,c	;volatile
+   276  007F82  8AD3               	bsf	4051,5,c	;volatile
+   277  007F84  8CD3               	bsf	4051,6,c	;volatile
+   278  007F86  0012               	return		;funcret
+   279  007F88                     __end_of_set_clock:
+   280                           	opt stack 0
+   281                           status	equ	0xFD8
+   282                           
+   283 ;; *************** function _set_adc *****************
+   284 ;; Defined at:
+   285 ;;		line 21 in file "adc.c"
+   286 ;; Parameters:    Size  Location     Type
+   287 ;;  x               1    wreg     unsigned char 
+   288 ;; Auto vars:     Size  Location     Type
+   289 ;;  x               1    0[COMRAM] unsigned char 
+   290 ;; Return value:  Size  Location     Type
+   291 ;;		None               void
+   292 ;; Registers used:
+   293 ;;		wreg
+   294 ;; Tracked objects:
+   295 ;;		On entry : 0/0
+   296 ;;		On exit  : 0/0
+   297 ;;		Unchanged: 0/0
+   298 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   299 ;;      Params:         0       0       0       0       0       0       0       0       0
+   300 ;;      Locals:         1       0       0       0       0       0       0       0       0
+   301 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   302 ;;      Totals:         1       0       0       0       0       0       0       0       0
+   303 ;;Total ram usage:        1 bytes
+   304 ;; Hardware stack levels used:    1
+   305 ;; This function calls:
+   306 ;;		Nothing
+   307 ;; This function is called by:
+   308 ;;		_main
+   309 ;; This function uses a non-reentrant model
+   310 ;;
+   311                           
+   312                           	psect	text4
+   313  007F96                     __ptext4:
+   314                           	opt stack 0
+   315  007F96                     _set_adc:
+   316                           	opt stack 30
+   317                           
+   318                           ;incstack = 0
+   319                           ;set_adc@x stored from wreg
+   320  007F96  6E01               	movwf	set_adc@x,c
+   321                           
+   322                           ;adc.c: 22: ADCON0bits.ADON=x;
+   323  007F98  B001               	btfsc	set_adc@x,0,c
+   324  007F9A  D002               	bra	u15
+   325  007F9C  90C2               	bcf	4034,0,c	;volatile
+   326  007F9E  D001               	bra	u16
+   327  007FA0                     u15:
+   328  007FA0  80C2               	bsf	4034,0,c	;volatile
+   329  007FA2                     u16:
+   330  007FA2  0012               	return		;funcret
+   331  007FA4                     __end_of_set_adc:
+   332                           	opt stack 0
+   333                           status	equ	0xFD8
+   334                           
+   335 ;; *************** function _final_convercion *****************
+   336 ;; Defined at:
+   337 ;;		line 29 in file "adc.c"
+   338 ;; Parameters:    Size  Location     Type
+   339 ;;		None
+   340 ;; Auto vars:     Size  Location     Type
+   341 ;;		None
+   342 ;; Return value:  Size  Location     Type
+   343 ;;                  1    wreg      unsigned char 
+   344 ;; Registers used:
+   345 ;;		wreg
+   346 ;; Tracked objects:
+   347 ;;		On entry : 0/0
+   348 ;;		On exit  : 0/0
+   349 ;;		Unchanged: 0/0
+   350 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   351 ;;      Params:         0       0       0       0       0       0       0       0       0
+   352 ;;      Locals:         0       0       0       0       0       0       0       0       0
+   353 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   354 ;;      Totals:         0       0       0       0       0       0       0       0       0
+   355 ;;Total ram usage:        0 bytes
+   356 ;; Hardware stack levels used:    1
+   357 ;; This function calls:
+   358 ;;		Nothing
+   359 ;; This function is called by:
+   360 ;;		_main
+   361 ;; This function uses a non-reentrant model
+   362 ;;
+   363                           
+   364                           	psect	text5
+   365  007F88                     __ptext5:
+   366                           	opt stack 0
+   367  007F88                     _final_convercion:
+   368                           	opt stack 30
+   369                           
+   370                           ;adc.c: 30: if (PIR1bits.ADIF){
+   371                           
+   372                           ;incstack = 0
+   373  007F88  AC9E               	btfss	3998,6,c	;volatile
+   374  007F8A  D003               	goto	l699
+   375                           
+   376                           ;adc.c: 31: PIR1bits.ADIF=0;
+   377  007F8C  9C9E               	bcf	3998,6,c	;volatile
+   378                           
+   379                           ;adc.c: 32: return 1;
+   380  007F8E  0E01               	movlw	1
+   381                           
+   382                           ;adc.c: 33: }
+   383  007F90  0012               	return	
+   384  007F92                     l699:
+   385                           
+   386                           ;adc.c: 34: else
+   387                           ;adc.c: 35: return 0;
+   388  007F92  0E00               	movlw	0
+   389  007F94  0012               	return	
+   390  007F96                     __end_of_final_convercion:
+   391                           	opt stack 0
+   392                           status	equ	0xFD8
+   393                           
+   394 ;; *************** function _dato_8 *****************
+   395 ;; Defined at:
+   396 ;;		line 39 in file "adc.c"
+   397 ;; Parameters:    Size  Location     Type
+   398 ;;		None
+   399 ;; Auto vars:     Size  Location     Type
+   400 ;;		None
+   401 ;; Return value:  Size  Location     Type
+   402 ;;                  1    wreg      unsigned char 
+   403 ;; Registers used:
+   404 ;;		wreg, status,2
+   405 ;; Tracked objects:
+   406 ;;		On entry : 0/0
+   407 ;;		On exit  : 0/0
+   408 ;;		Unchanged: 0/0
+   409 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   410 ;;      Params:         0       0       0       0       0       0       0       0       0
+   411 ;;      Locals:         0       0       0       0       0       0       0       0       0
+   412 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   413 ;;      Totals:         0       0       0       0       0       0       0       0       0
+   414 ;;Total ram usage:        0 bytes
+   415 ;; Hardware stack levels used:    1
+   416 ;; This function calls:
+   417 ;;		Nothing
+   418 ;; This function is called by:
+   419 ;;		_main
+   420 ;; This function uses a non-reentrant model
+   421 ;;
+   422                           
+   423                           	psect	text6
+   424  007F72                     __ptext6:
+   425                           	opt stack 0
+   426  007F72                     _dato_8:
+   427                           	opt stack 30
+   428                           
+   429                           ;adc.c: 40: return (ADRESL);
+   430                           
+   431                           ;incstack = 0
+   432  007F72  50C3               	movf	4035,w,c	;volatile
+   433  007F74  0012               	return	
+   434  007F76                     __end_of_dato_8:
+   435                           	opt stack 0
+   436                           status	equ	0xFD8
+   437                           
+   438 ;; *************** function _conf_adc *****************
+   439 ;; Defined at:
+   440 ;;		line 12 in file "adc.c"
+   441 ;; Parameters:    Size  Location     Type
+   442 ;;		None
+   443 ;; Auto vars:     Size  Location     Type
+   444 ;;		None
+   445 ;; Return value:  Size  Location     Type
+   446 ;;		None               void
+   447 ;; Registers used:
+   448 ;;		wreg, status,2
+   449 ;; Tracked objects:
+   450 ;;		On entry : 0/0
+   451 ;;		On exit  : 0/0
+   452 ;;		Unchanged: 0/0
+   453 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   454 ;;      Params:         0       0       0       0       0       0       0       0       0
+   455 ;;      Locals:         0       0       0       0       0       0       0       0       0
+   456 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   457 ;;      Totals:         0       0       0       0       0       0       0       0       0
+   458 ;;Total ram usage:        0 bytes
+   459 ;; Hardware stack levels used:    1
+   460 ;; This function calls:
+   461 ;;		Nothing
+   462 ;; This function is called by:
+   463 ;;		_main
+   464 ;; This function uses a non-reentrant model
+   465 ;;
+   466                           
+   467                           	psect	text7
+   468  007FB6                     __ptext7:
+   469                           	opt stack 0
+   470  007FB6                     _conf_adc:
+   471                           	opt stack 30
+   472                           
+   473                           ;adc.c: 13: TRISAbits.RA0=1;
+   474                           
+   475                           ;incstack = 0
+   476  007FB6  8092               	bsf	3986,0,c	;volatile
+   477                           
+   478                           ;adc.c: 14: ADCON2bits.ADCS=1;
+   479  007FB8  50C0               	movf	4032,w,c	;volatile
+   480  007FBA  0BF8               	andlw	-8
+   481  007FBC  0901               	iorlw	1
+   482  007FBE  6EC0               	movwf	4032,c	;volatile
+   483                           
+   484                           ;adc.c: 15: ADCON2bits.ACQT=2;
+   485  007FC0  50C0               	movf	4032,w,c	;volatile
+   486  007FC2  0BC7               	andlw	-57
+   487  007FC4  0910               	iorlw	16
+   488  007FC6  6EC0               	movwf	4032,c	;volatile
+   489                           
+   490                           ;adc.c: 16: ADCON1=0;
+   491  007FC8  0E00               	movlw	0
+   492  007FCA  6EC1               	movwf	4033,c	;volatile
+   493                           
+   494                           ;adc.c: 17: ADCON0bits.CHS=0;
+   495  007FCC  94C2               	bcf	4034,2,c	;volatile
+   496  007FCE  96C2               	bcf	4034,3,c	;volatile
+   497  007FD0  98C2               	bcf	4034,4,c	;volatile
+   498  007FD2  9AC2               	bcf	4034,5,c	;volatile
+   499                           
+   500                           ;adc.c: 18: ADCON2bits.ADFM=1;;
+   501  007FD4  8EC0               	bsf	4032,7,c	;volatile
+   502  007FD6  0012               	return		;funcret
+   503  007FD8                     __end_of_conf_adc:
+   504                           	opt stack 0
+   505  0000                     status	equ	0xFD8
+   506                           status	equ	0xFD8
+   507                           
+   508                           	psect	rparam
+   509  0000                     status	equ	0xFD8
+
+
+Data Sizes:
+    Strings     0
+    Constant    0
+    Data        0
+    BSS         0
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMRAM           95      1       1
+    BANK0           160      0       0
+    BANK1           256      0       0
+    BANK2           256      0       0
+    BANK3           256      0       0
+    BANK4           256      0       0
+    BANK5           256      0       0
+    BANK6           256      0       0
+    BANK7           256      0       0
+
+Pointer List with Targets:
+
+    None.
+
+Critical Paths under _main in COMRAM
+
+    _main->_set_adc
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Critical Paths under _main in BANK3
+
+    None.
+
+Critical Paths under _main in BANK4
+
+    None.
+
+Critical Paths under _main in BANK5
+
+    None.
+
+Critical Paths under _main in BANK6
+
+    None.
+
+Critical Paths under _main in BANK7
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 0     0      0      15
+                           _conf_adc
+                             _dato_8
+                   _final_convercion
+                            _set_adc
+                          _set_clock
+                           _set_port
+                    _star_convercion
+ ---------------------------------------------------------------------------------
+ (1) _star_convercion                                      0     0      0       0
+ ---------------------------------------------------------------------------------
+ (1) _set_port                                             0     0      0       0
+ ---------------------------------------------------------------------------------
+ (1) _set_clock                                            0     0      0       0
+ ---------------------------------------------------------------------------------
+ (1) _set_adc                                              1     1      0      15
+                                              0 COMRAM     1     1      0
+ ---------------------------------------------------------------------------------
+ (1) _final_convercion                                     0     0      0       0
+ ---------------------------------------------------------------------------------
+ (1) _dato_8                                               0     0      0       0
+ ---------------------------------------------------------------------------------
+ (1) _conf_adc                                             0     0      0       0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 1
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   _conf_adc
+   _dato_8
+   _final_convercion
+   _set_adc
+   _set_clock
+   _set_port
+   _star_convercion
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BITCOMRAM           5F      0       0       0        0.0%
+EEDATA             100      0       0       0        0.0%
+NULL                 0      0       0       0        0.0%
+CODE                 0      0       0       0        0.0%
+COMRAM              5F      1       1       1        1.1%
+STACK                0      0       0       2        0.0%
+DATA                 0      0       0       3        0.0%
+BITBANK0            A0      0       0       4        0.0%
+BANK0               A0      0       0       5        0.0%
+BITBANK1           100      0       0       6        0.0%
+BANK1              100      0       0       7        0.0%
+BITBANK2           100      0       0       8        0.0%
+BANK2              100      0       0       9        0.0%
+BITBANK3           100      0       0      10        0.0%
+BANK3              100      0       0      11        0.0%
+BITBANK4           100      0       0      12        0.0%
+BANK4              100      0       0      13        0.0%
+BITBANK5           100      0       0      14        0.0%
+BANK5              100      0       0      15        0.0%
+BITBANK6           100      0       0      16        0.0%
+BANK6              100      0       0      17        0.0%
+BITBANK7           100      0       0      18        0.0%
+BANK7              100      0       0      19        0.0%
+ABS                  0      0       0      20        0.0%
+BIGRAM             7FF      0       0      21        0.0%
+BITSFR               0      0       0      40        0.0%
+SFR                  0      0       0      40        0.0%
+
+
+Microchip Technology PIC18 Macro Assembler V1.35 build -356382666 
+Symbol Table                                                                                   Wed May 24 18:17:36 2017
+
+                       u15 7FA0                         u16 7FA2                __CFG_BOR$ON 000000  
+              __CFG_BORV$3 000000               __CFG_CP0$OFF 000000               __CFG_CP1$OFF 000000  
+             __CFG_CP2$OFF 000000               __CFG_CP3$OFF 000000                __CFG_LVP$ON 000000  
+                      l735 7FEA                        l737 7FEE                        l699 7F92  
+             __CFG_CPB$OFF 000000               __CFG_CPD$OFF 000000               __CFG_WDT$OFF 000000  
+                     _main 7FD8                       start 0000              __CFG_IESO$OFF 000000  
+            __CFG_MCLRE$ON 000000               ___param_bank 000010              __CFG_PLLDIV$1 000000  
+           __CFG_CCP2MX$ON 000000                      ?_main 0001                      _PORTB 000F81  
+                    _PORTC 000F82                      _PORTD 000F83              __CFG_USBDIV$1 000000  
+                    _TRISB 000F93                      _TRISC 000F94                      _TRISD 000F95  
+            __CFG_PWRT$OFF 000000              __CFG_WRT0$OFF 000000              __CFG_WRT1$OFF 000000  
+            __CFG_WRT2$OFF 000000              __CFG_WRT3$OFF 000000             __CFG_EBTR0$OFF 000000  
+           __CFG_FCMEN$OFF 000000             __CFG_EBTR1$OFF 000000             __CFG_EBTR2$OFF 000000  
+           __CFG_EBTR3$OFF 000000              __CFG_WRTB$OFF 000000              __CFG_WRTC$OFF 000000  
+            __CFG_WRTD$OFF 000000             __CFG_EBTRB$OFF 000000            __end_of_set_adc 7FA4  
+         _final_convercion 7F88                      status 000FD8             __CFG_ICPRT$OFF 000000  
+           __CFG_PBADEN$ON 000000            _star_convercion 7F76            __initialization 7F7A  
+             __end_of_main 8000                     ??_main 0002              __activetblptr 000000  
+                   _ADCON1 000FC1                     _ADRESH 000FC4                     _ADRESL 000FC3  
+           __CFG_XINST$OFF 000000           __end_of_conf_adc 7FD8             __CFG_STVREN$ON 000000  
+                   _dato_8 7F72           __end_of_set_port 7FB6                  ??_set_adc 0001  
+  __end_of_star_convercion 7F7A                 __accesstop 0060    __end_of__initialization 7F7A  
+            ___rparam_used 000001             __pcstackCOMRAM 0001                    ?_dato_8 0001  
+ __end_of_final_convercion 7F96         __size_of_set_clock 0008                  ?_conf_adc 0001  
+         ?_star_convercion 0001            __CFG_VREGEN$OFF 000000                    __Hparam 0000  
+                  __Lparam 0000                  ?_set_port 0001            __size_of_dato_8 0004  
+                  __pcinit 7F7A                    __ramtop 0800                    __ptext0 7FD8  
+                  __ptext1 7F76                    __ptext2 7FA4                    __ptext3 7F80  
+                  __ptext4 7F96                    __ptext5 7F88                    __ptext6 7F72  
+                  __ptext7 7FB6                    _set_adc 7F96                 ??_conf_adc 0001  
+     end_of_initialization 7F7A          __end_of_set_clock 7F88                 ??_set_port 0001  
+                _TRISAbits 000F92             __end_of_dato_8 7F76        start_initialization 7F7A  
+                 ??_dato_8 0001           __CFG_LPT1OSC$OFF 000000          ?_final_convercion 0001  
+       ??_final_convercion 0001          __size_of_conf_adc 0022          __size_of_set_port 0012  
+                 ?_set_adc 0001                  _set_clock 7F80   __size_of_star_convercion 0004  
+                 _PIR1bits 000F9E           __CFG_WDTPS$32768 000000                 _ADCON0bits 000FC2  
+               _ADCON2bits 000FC0                   __Hrparam 0000                 ?_set_clock 0001  
+                 __Lrparam 0000           __size_of_set_adc 000E                   _conf_adc 7FB6  
+            __size_of_main 0028                   _set_port 7FA4          ??_star_convercion 0001  
+    __CFG_CPUDIV$OSC1_PLL2 000000  __size_of_final_convercion 000E                   set_adc@x 0001  
+               _OSCCONbits 000FD3                ??_set_clock 0001        __CFG_FOSC$INTOSC_EC 000000  

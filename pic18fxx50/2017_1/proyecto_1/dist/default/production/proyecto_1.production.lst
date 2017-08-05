@@ -1,0 +1,707 @@
+
+
+Microchip Technology PIC18 LITE Macro Assembler V1.35 build -356382666 
+                                                                                               Thu May  4 04:25:20 2017
+
+Microchip Technology Omniscient Code Generator v1.35 (Free mode) build 201507080246
+     1                           	processor	18F4550
+     2                           	fnconf	rparam,??,?,0
+     3                           	opt	pw 120
+     4                           	opt	lm
+     5                           	psect	cinit,global,reloc=2,class=CODE,delta=1
+     6                           	psect	cstackCOMRAM,global,class=COMRAM,space=1,delta=1
+     7                           	psect	text0,global,reloc=2,class=CODE,delta=1
+     8                           	psect	text1,global,reloc=2,class=CODE,delta=1
+     9                           	psect	text2,global,reloc=2,class=CODE,delta=1
+    10                           	psect	text3,global,reloc=2,class=CODE,delta=1
+    11                           	psect	text4,global,reloc=2,class=CODE,delta=1
+    12                           	psect	text5,global,reloc=2,class=CODE,delta=1
+    13                           	psect	intsave_regs,global,class=BIGRAM,space=1,delta=1
+    14                           	psect	rparam,global,class=COMRAM,space=1,delta=1
+    15  0000                     _LATB	set	3978
+    16  0000                     _LATC	set	3979
+    17  0000                     _LATD	set	3980
+    18  0000                     _OSCCONbits	set	4051
+    19  0000                     _PORTB	set	3969
+    20  0000                     _PORTC	set	3970
+    21  0000                     _PORTD	set	3971
+    22  0000                     _TRISA	set	3986
+    23  0000                     _TRISB	set	3987
+    24  0000                     _TRISC	set	3988
+    25  0000                     _TRISD	set	3989
+    26                           
+    27                           ; #config settings
+    28  0000                     
+    29                           	psect	cinit
+    30  007F2E                     __pcinit:
+    31                           	opt stack 0
+    32  007F2E                     start_initialization:
+    33                           	opt stack 0
+    34  007F2E                     __initialization:
+    35                           	opt stack 0
+    36  007F2E                     end_of_initialization:
+    37                           	opt stack 0
+    38  007F2E                     __end_of__initialization:
+    39                           	opt stack 0
+    40  007F2E  0E00               	movlw	low (__Lmediumconst shr (0+16))
+    41  007F30  6EF8               	movwf	tblptru,c
+    42  007F32  0100               	movlb	0
+    43  007F34  EFDD  F03F         	goto	_main	;jump to C main() function
+    44                           tblptru	equ	0xFF8
+    45                           
+    46                           	psect	cstackCOMRAM
+    47  000001                     __pcstackCOMRAM:
+    48                           	opt stack 0
+    49  000001                     port@c:
+    50                           	opt stack 0
+    51  000001                     input_d@d:
+    52                           	opt stack 0
+    53  000001                     comparar@i:
+    54                           	opt stack 0
+    55                           
+    56                           ; 1 bytes @ 0x0
+    57  000001                     	ds	1
+    58  000002                     ??_contador:
+    59                           
+    60                           ; 0 bytes @ 0x1
+    61  000002                     	ds	1
+    62  000003                     contador@i:
+    63                           	opt stack 0
+    64                           
+    65                           ; 1 bytes @ 0x2
+    66  000003                     	ds	1
+    67  000004                     ??_main:
+    68                           
+    69                           ; 0 bytes @ 0x3
+    70  000004                     	ds	1
+    71  000005                     main@i:
+    72                           	opt stack 0
+    73                           
+    74                           ; 1 bytes @ 0x4
+    75  000005                     	ds	1
+    76                           tblptru	equ	0xFF8
+    77                           
+    78 ;;
+    79 ;;Main: autosize = 0, tempsize = 1, incstack = 0, save=0
+    80 ;;
+    81 ;; *************** function _main *****************
+    82 ;; Defined at:
+    83 ;;		line 60 in file "main.c"
+    84 ;; Parameters:    Size  Location     Type
+    85 ;;		None
+    86 ;; Auto vars:     Size  Location     Type
+    87 ;;  i               1    4[COMRAM] unsigned char 
+    88 ;; Return value:  Size  Location     Type
+    89 ;;		None               void
+    90 ;; Registers used:
+    91 ;;		wreg, status,2, status,0, cstack
+    92 ;; Tracked objects:
+    93 ;;		On entry : 0/0
+    94 ;;		On exit  : 0/0
+    95 ;;		Unchanged: 0/0
+    96 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+    97 ;;      Params:         0       0       0       0       0       0       0       0       0
+    98 ;;      Locals:         1       0       0       0       0       0       0       0       0
+    99 ;;      Temps:          1       0       0       0       0       0       0       0       0
+   100 ;;      Totals:         2       0       0       0       0       0       0       0       0
+   101 ;;Total ram usage:        2 bytes
+   102 ;; Hardware stack levels required when called:    2
+   103 ;; This function calls:
+   104 ;;		_comparar
+   105 ;;		_contador
+   106 ;;		_input_d
+   107 ;;		_port
+   108 ;;		_set_leds
+   109 ;; This function is called by:
+   110 ;;		Startup code after reset
+   111 ;; This function uses a non-reentrant model
+   112 ;;
+   113                           
+   114                           	psect	text0
+   115  007FBA                     __ptext0:
+   116                           	opt stack 0
+   117  007FBA                     _main:
+   118                           	opt stack 29
+   119                           
+   120                           ;main.c: 61: OSCCONbits.IRCF=7;
+   121                           
+   122                           ;incstack = 0
+   123  007FBA  88D3               	bsf	4051,4,c	;volatile
+   124  007FBC  8AD3               	bsf	4051,5,c	;volatile
+   125  007FBE  8CD3               	bsf	4051,6,c	;volatile
+   126                           
+   127                           ;main.c: 62: set_leds();
+   128  007FC0  ECCD  F03F         	call	_set_leds	;wreg free
+   129                           
+   130                           ;main.c: 66: switch (input_d()){
+   131                           
+   132                           ;main.c: 63: unsigned char i;
+   133                           ;main.c: 64: while(1){
+   134  007FC4  D014               	goto	l708
+   135  007FC6                     l700:
+   136                           
+   137                           ;main.c: 68: {
+   138                           ;main.c: 69: i=contador(i);
+   139  007FC6  5005               	movf	main@i,w,c
+   140  007FC8  ECBE  F03F         	call	_contador
+   141  007FCC  6E05               	movwf	main@i,c
+   142                           
+   143                           ;main.c: 71: break;
+   144  007FCE  D00F               	goto	l708
+   145  007FD0                     l702:
+   146                           
+   147                           ;main.c: 74: {
+   148                           ;main.c: 75: i=comparar(i);
+   149  007FD0  5005               	movf	main@i,w,c
+   150  007FD2  ECB0  F03F         	call	_comparar
+   151  007FD6  6E05               	movwf	main@i,c
+   152                           
+   153                           ;main.c: 76: port(i);
+   154  007FD8  5005               	movf	main@i,w,c
+   155  007FDA  ECA4  F03F         	call	_port
+   156                           
+   157                           ;main.c: 77: _delay((unsigned long)((90)*(8000000/4000.0)));
+   158  007FDE  0EEA               	movlw	234
+   159  007FE0  6E04               	movwf	??_main& (0+255),c
+   160  007FE2  0EC3               	movlw	195
+   161  007FE4                     u37:
+   162  007FE4  2EE8               	decfsz	wreg,f,c
+   163  007FE6  D7FE               	goto	u37
+   164  007FE8  2E04               	decfsz	??_main& (0+255),f,c
+   165  007FEA  D7FC               	goto	u37
+   166  007FEC  F000               	nop	
+   167  007FEE                     l708:
+   168  007FEE  EC9C  F03F         	call	_input_d	;wreg free
+   169                           
+   170                           ; Switch size 1, requested type "space"
+   171                           ; Number of cases is 2, Range of values is 0 to 1
+   172                           ; switch strategies available:
+   173                           ; Name         Instructions Cycles
+   174                           ; simple_byte            7     4 (average)
+   175                           ;	Chosen strategy is simple_byte
+   176  007FF2  0A00               	xorlw	0	; case 0
+   177  007FF4  B4D8               	btfsc	status,2,c
+   178  007FF6  D7E7               	goto	l700
+   179  007FF8  0A01               	xorlw	1	; case 1
+   180  007FFA  B4D8               	btfsc	status,2,c
+   181  007FFC  D7E9               	goto	l702
+   182  007FFE  D7F7               	goto	l708
+   183  008000                     __end_of_main:
+   184                           	opt stack 0
+   185                           tblptru	equ	0xFF8
+   186                           wreg	equ	0xFE8
+   187                           status	equ	0xFD8
+   188                           
+   189 ;; *************** function _set_leds *****************
+   190 ;; Defined at:
+   191 ;;		line 13 in file "main.c"
+   192 ;; Parameters:    Size  Location     Type
+   193 ;;		None
+   194 ;; Auto vars:     Size  Location     Type
+   195 ;;		None
+   196 ;; Return value:  Size  Location     Type
+   197 ;;		None               void
+   198 ;; Registers used:
+   199 ;;		wreg, status,2
+   200 ;; Tracked objects:
+   201 ;;		On entry : 0/0
+   202 ;;		On exit  : 0/0
+   203 ;;		Unchanged: 0/0
+   204 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   205 ;;      Params:         0       0       0       0       0       0       0       0       0
+   206 ;;      Locals:         0       0       0       0       0       0       0       0       0
+   207 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   208 ;;      Totals:         0       0       0       0       0       0       0       0       0
+   209 ;;Total ram usage:        0 bytes
+   210 ;; Hardware stack levels used:    1
+   211 ;; This function calls:
+   212 ;;		Nothing
+   213 ;; This function is called by:
+   214 ;;		_main
+   215 ;; This function uses a non-reentrant model
+   216 ;;
+   217                           
+   218                           	psect	text1
+   219  007F9A                     __ptext1:
+   220                           	opt stack 0
+   221  007F9A                     _set_leds:
+   222                           	opt stack 30
+   223                           
+   224                           ;main.c: 14: PORTD=0;
+   225                           
+   226                           ;incstack = 0
+   227  007F9A  0E00               	movlw	0
+   228  007F9C  6E83               	movwf	3971,c	;volatile
+   229                           
+   230                           ;main.c: 15: LATD=0;
+   231  007F9E  0E00               	movlw	0
+   232  007FA0  6E8C               	movwf	3980,c	;volatile
+   233                           
+   234                           ;main.c: 16: PORTB=0;
+   235  007FA2  0E00               	movlw	0
+   236  007FA4  6E81               	movwf	3969,c	;volatile
+   237                           
+   238                           ;main.c: 17: TRISB=0;
+   239  007FA6  0E00               	movlw	0
+   240  007FA8  6E93               	movwf	3987,c	;volatile
+   241                           
+   242                           ;main.c: 18: TRISD=0xF0;
+   243  007FAA  0EF0               	movlw	240
+   244  007FAC  6E95               	movwf	3989,c	;volatile
+   245                           
+   246                           ;main.c: 20: TRISA=0XFF;
+   247  007FAE  6892               	setf	3986,c	;volatile
+   248                           
+   249                           ;main.c: 21: TRISC=0;
+   250  007FB0  0E00               	movlw	0
+   251  007FB2  6E94               	movwf	3988,c	;volatile
+   252                           
+   253                           ;main.c: 22: PORTC=0;
+   254  007FB4  0E00               	movlw	0
+   255  007FB6  6E82               	movwf	3970,c	;volatile
+   256  007FB8  0012               	return		;funcret
+   257  007FBA                     __end_of_set_leds:
+   258                           	opt stack 0
+   259                           tblptru	equ	0xFF8
+   260                           wreg	equ	0xFE8
+   261                           status	equ	0xFD8
+   262                           
+   263 ;; *************** function _input_d *****************
+   264 ;; Defined at:
+   265 ;;		line 32 in file "main.c"
+   266 ;; Parameters:    Size  Location     Type
+   267 ;;		None
+   268 ;; Auto vars:     Size  Location     Type
+   269 ;;  d               1    0[COMRAM] unsigned char 
+   270 ;; Return value:  Size  Location     Type
+   271 ;;                  1    wreg      unsigned char 
+   272 ;; Registers used:
+   273 ;;		wreg, status,2, status,0
+   274 ;; Tracked objects:
+   275 ;;		On entry : 0/0
+   276 ;;		On exit  : 0/0
+   277 ;;		Unchanged: 0/0
+   278 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   279 ;;      Params:         0       0       0       0       0       0       0       0       0
+   280 ;;      Locals:         1       0       0       0       0       0       0       0       0
+   281 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   282 ;;      Totals:         1       0       0       0       0       0       0       0       0
+   283 ;;Total ram usage:        1 bytes
+   284 ;; Hardware stack levels used:    1
+   285 ;; This function calls:
+   286 ;;		Nothing
+   287 ;; This function is called by:
+   288 ;;		_main
+   289 ;; This function uses a non-reentrant model
+   290 ;;
+   291                           
+   292                           	psect	text2
+   293  007F38                     __ptext2:
+   294                           	opt stack 0
+   295  007F38                     _input_d:
+   296                           	opt stack 30
+   297                           
+   298                           ;main.c: 33: unsigned char d;
+   299                           ;main.c: 34: d=(PORTD & 0XF0)>>4;
+   300                           
+   301                           ;incstack = 0
+   302  007F38  3883               	swapf	3971,w,c	;volatile
+   303  007F3A  0B0F               	andlw	15
+   304  007F3C  0B0F               	andlw	15
+   305  007F3E  6E01               	movwf	input_d@d,c
+   306                           
+   307                           ;main.c: 35: LATC=d;
+   308  007F40  C001  FF8B         	movff	input_d@d,3979	;volatile
+   309                           
+   310                           ;main.c: 36: return d;
+   311  007F44  5001               	movf	input_d@d,w,c
+   312  007F46  0012               	return	
+   313  007F48                     __end_of_input_d:
+   314                           	opt stack 0
+   315                           tblptru	equ	0xFF8
+   316                           wreg	equ	0xFE8
+   317                           status	equ	0xFD8
+   318                           
+   319 ;; *************** function _contador *****************
+   320 ;; Defined at:
+   321 ;;		line 39 in file "main.c"
+   322 ;; Parameters:    Size  Location     Type
+   323 ;;  i               1    wreg     unsigned char 
+   324 ;; Auto vars:     Size  Location     Type
+   325 ;;  i               1    2[COMRAM] unsigned char 
+   326 ;; Return value:  Size  Location     Type
+   327 ;;                  1    wreg      unsigned char 
+   328 ;; Registers used:
+   329 ;;		wreg, status,2, status,0, cstack
+   330 ;; Tracked objects:
+   331 ;;		On entry : 0/0
+   332 ;;		On exit  : 0/0
+   333 ;;		Unchanged: 0/0
+   334 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   335 ;;      Params:         0       0       0       0       0       0       0       0       0
+   336 ;;      Locals:         1       0       0       0       0       0       0       0       0
+   337 ;;      Temps:          1       0       0       0       0       0       0       0       0
+   338 ;;      Totals:         2       0       0       0       0       0       0       0       0
+   339 ;;Total ram usage:        2 bytes
+   340 ;; Hardware stack levels used:    1
+   341 ;; Hardware stack levels required when called:    1
+   342 ;; This function calls:
+   343 ;;		_port
+   344 ;; This function is called by:
+   345 ;;		_main
+   346 ;; This function uses a non-reentrant model
+   347 ;;
+   348                           
+   349                           	psect	text3
+   350  007F7C                     __ptext3:
+   351                           	opt stack 0
+   352  007F7C                     _contador:
+   353                           	opt stack 29
+   354                           
+   355                           ;incstack = 0
+   356                           ;contador@i stored from wreg
+   357  007F7C  6E03               	movwf	contador@i,c
+   358                           
+   359                           ;main.c: 44: port(i++);
+   360  007F7E  5003               	movf	contador@i,w,c
+   361  007F80  ECA4  F03F         	call	_port
+   362  007F84  2A03               	incf	contador@i,f,c
+   363                           
+   364                           ;main.c: 45: _delay((unsigned long)((90)*(8000000/4000.0)));
+   365  007F86  0EEA               	movlw	234
+   366  007F88  6E02               	movwf	??_contador& (0+255),c
+   367  007F8A  0EC3               	movlw	195
+   368  007F8C                     u47:
+   369  007F8C  2EE8               	decfsz	wreg,f,c
+   370  007F8E  D7FE               	goto	u47
+   371  007F90  2E02               	decfsz	??_contador& (0+255),f,c
+   372  007F92  D7FC               	goto	u47
+   373  007F94  F000               	nop	
+   374                           
+   375                           ;main.c: 47: return i;
+   376  007F96  5003               	movf	contador@i,w,c
+   377  007F98  0012               	return	
+   378  007F9A                     __end_of_contador:
+   379                           	opt stack 0
+   380                           tblptru	equ	0xFF8
+   381                           wreg	equ	0xFE8
+   382                           status	equ	0xFD8
+   383                           
+   384 ;; *************** function _port *****************
+   385 ;; Defined at:
+   386 ;;		line 25 in file "main.c"
+   387 ;; Parameters:    Size  Location     Type
+   388 ;;  c               1    wreg     unsigned char 
+   389 ;; Auto vars:     Size  Location     Type
+   390 ;;  c               1    0[COMRAM] unsigned char 
+   391 ;; Return value:  Size  Location     Type
+   392 ;;		None               void
+   393 ;; Registers used:
+   394 ;;		wreg, status,2, status,0
+   395 ;; Tracked objects:
+   396 ;;		On entry : 0/0
+   397 ;;		On exit  : 0/0
+   398 ;;		Unchanged: 0/0
+   399 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   400 ;;      Params:         0       0       0       0       0       0       0       0       0
+   401 ;;      Locals:         1       0       0       0       0       0       0       0       0
+   402 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   403 ;;      Totals:         1       0       0       0       0       0       0       0       0
+   404 ;;Total ram usage:        1 bytes
+   405 ;; Hardware stack levels used:    1
+   406 ;; This function calls:
+   407 ;;		Nothing
+   408 ;; This function is called by:
+   409 ;;		_contador
+   410 ;;		_main
+   411 ;; This function uses a non-reentrant model
+   412 ;;
+   413                           
+   414                           	psect	text4
+   415  007F48                     __ptext4:
+   416                           	opt stack 0
+   417  007F48                     _port:
+   418                           	opt stack 30
+   419                           
+   420                           ;incstack = 0
+   421                           ;port@c stored from wreg
+   422  007F48  6E01               	movwf	port@c,c
+   423                           
+   424                           ;main.c: 26: LATD &=0XF0;
+   425  007F4A  0EF0               	movlw	240
+   426  007F4C  168C               	andwf	3980,f,c	;volatile
+   427                           
+   428                           ;main.c: 27: LATB &= 0XF0;
+   429  007F4E  0EF0               	movlw	240
+   430  007F50  168A               	andwf	3978,f,c	;volatile
+   431                           
+   432                           ;main.c: 28: LATD |=(c & 0x0F);
+   433  007F52  5001               	movf	port@c,w,c
+   434  007F54  0B0F               	andlw	15
+   435  007F56  128C               	iorwf	3980,f,c	;volatile
+   436                           
+   437                           ;main.c: 29: LATB |=(c>>4);
+   438  007F58  3801               	swapf	port@c,w,c
+   439  007F5A  0B0F               	andlw	15
+   440  007F5C  128A               	iorwf	3978,f,c	;volatile
+   441  007F5E  0012               	return		;funcret
+   442  007F60                     __end_of_port:
+   443                           	opt stack 0
+   444                           tblptru	equ	0xFF8
+   445                           wreg	equ	0xFE8
+   446                           status	equ	0xFD8
+   447                           
+   448 ;; *************** function _comparar *****************
+   449 ;; Defined at:
+   450 ;;		line 50 in file "main.c"
+   451 ;; Parameters:    Size  Location     Type
+   452 ;;  i               1    wreg     unsigned char 
+   453 ;; Auto vars:     Size  Location     Type
+   454 ;;  i               1    0[COMRAM] unsigned char 
+   455 ;; Return value:  Size  Location     Type
+   456 ;;                  1    wreg      unsigned char 
+   457 ;; Registers used:
+   458 ;;		wreg, status,2, status,0
+   459 ;; Tracked objects:
+   460 ;;		On entry : 0/0
+   461 ;;		On exit  : 0/0
+   462 ;;		Unchanged: 0/0
+   463 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   464 ;;      Params:         0       0       0       0       0       0       0       0       0
+   465 ;;      Locals:         1       0       0       0       0       0       0       0       0
+   466 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   467 ;;      Totals:         1       0       0       0       0       0       0       0       0
+   468 ;;Total ram usage:        1 bytes
+   469 ;; Hardware stack levels used:    1
+   470 ;; This function calls:
+   471 ;;		Nothing
+   472 ;; This function is called by:
+   473 ;;		_main
+   474 ;; This function uses a non-reentrant model
+   475 ;;
+   476                           
+   477                           	psect	text5
+   478  007F60                     __ptext5:
+   479                           	opt stack 0
+   480  007F60                     _comparar:
+   481                           	opt stack 30
+   482                           
+   483                           ;incstack = 0
+   484                           ;comparar@i stored from wreg
+   485  007F60  6E01               	movwf	comparar@i,c
+   486                           
+   487                           ;main.c: 51: if(i==0XFF)
+   488  007F62  2801               	incf	comparar@i,w,c
+   489  007F64  A4D8               	btfss	status,2,c
+   490  007F66  D002               	goto	l684
+   491                           
+   492                           ;main.c: 52: return 0xF0;
+   493  007F68  0EF0               	movlw	240
+   494  007F6A  0012               	return	
+   495  007F6C                     l684:
+   496                           
+   497                           ;main.c: 53: else if (i==0x0F)
+   498  007F6C  0E0F               	movlw	15
+   499  007F6E  1801               	xorwf	comparar@i,w,c
+   500  007F70  A4D8               	btfss	status,2,c
+   501  007F72  D002               	goto	l692
+   502                           
+   503                           ;main.c: 54: return 0;
+   504  007F74  0E00               	movlw	0
+   505  007F76  0012               	return	
+   506  007F78                     l692:
+   507                           
+   508                           ;main.c: 55: else
+   509                           ;main.c: 56: return 0xAA;
+   510  007F78  0EAA               	movlw	170
+   511  007F7A  0012               	return	
+   512  007F7C                     __end_of_comparar:
+   513                           	opt stack 0
+   514  0000                     tblptru	equ	0xFF8
+   515                           wreg	equ	0xFE8
+   516                           status	equ	0xFD8
+   517                           tblptru	equ	0xFF8
+   518                           wreg	equ	0xFE8
+   519                           status	equ	0xFD8
+   520                           
+   521                           	psect	rparam
+   522  0000                     tblptru	equ	0xFF8
+   523                           wreg	equ	0xFE8
+   524                           status	equ	0xFD8
+
+
+Data Sizes:
+    Strings     0
+    Constant    0
+    Data        0
+    BSS         0
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMRAM           95      5       5
+    BANK0           160      0       0
+    BANK1           256      0       0
+    BANK2           256      0       0
+    BANK3           256      0       0
+    BANK4           256      0       0
+    BANK5           256      0       0
+    BANK6           256      0       0
+    BANK7           256      0       0
+
+Pointer List with Targets:
+
+    None.
+
+Critical Paths under _main in COMRAM
+
+    _main->_contador
+    _contador->_port
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Critical Paths under _main in BANK3
+
+    None.
+
+Critical Paths under _main in BANK4
+
+    None.
+
+Critical Paths under _main in BANK5
+
+    None.
+
+Critical Paths under _main in BANK6
+
+    None.
+
+Critical Paths under _main in BANK7
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 2     2      0     195
+                                              3 COMRAM     2     2      0
+                           _comparar
+                           _contador
+                            _input_d
+                               _port
+                           _set_leds
+ ---------------------------------------------------------------------------------
+ (1) _set_leds                                             0     0      0       0
+ ---------------------------------------------------------------------------------
+ (1) _input_d                                              1     1      0      30
+                                              0 COMRAM     1     1      0
+ ---------------------------------------------------------------------------------
+ (1) _contador                                             2     2      0      60
+                                              1 COMRAM     2     2      0
+                               _port
+ ---------------------------------------------------------------------------------
+ (1) _port                                                 1     1      0      30
+                                              0 COMRAM     1     1      0
+ ---------------------------------------------------------------------------------
+ (1) _comparar                                             1     1      0      30
+                                              0 COMRAM     1     1      0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 1
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   _comparar
+   _contador
+     _port
+   _input_d
+   _port
+   _set_leds
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BITCOMRAM           5F      0       0       0        0.0%
+EEDATA             100      0       0       0        0.0%
+NULL                 0      0       0       0        0.0%
+CODE                 0      0       0       0        0.0%
+COMRAM              5F      5       5       1        5.3%
+STACK                0      0       0       2        0.0%
+DATA                 0      0       0       3        0.0%
+BITBANK0            A0      0       0       4        0.0%
+BANK0               A0      0       0       5        0.0%
+BITBANK1           100      0       0       6        0.0%
+BANK1              100      0       0       7        0.0%
+BITBANK2           100      0       0       8        0.0%
+BANK2              100      0       0       9        0.0%
+BITBANK3           100      0       0      10        0.0%
+BANK3              100      0       0      11        0.0%
+BITBANK4           100      0       0      12        0.0%
+BANK4              100      0       0      13        0.0%
+BITBANK5           100      0       0      14        0.0%
+BANK5              100      0       0      15        0.0%
+BITBANK6           100      0       0      16        0.0%
+BANK6              100      0       0      17        0.0%
+BITBANK7           100      0       0      18        0.0%
+BANK7              100      0       0      19        0.0%
+ABS                  0      0       0      20        0.0%
+BIGRAM             7FF      0       0      21        0.0%
+BITSFR               0      0       0      40        0.0%
+SFR                  0      0       0      40        0.0%
+
+
+Microchip Technology PIC18 Macro Assembler V1.35 build -356382666 
+Symbol Table                                                                                   Thu May  4 04:25:20 2017
+
+                     u37 7FE4                       u47 7F8C              __CFG_BOR$ON 000000  
+            __CFG_BORV$3 000000             __CFG_CP0$OFF 000000             __CFG_CP1$OFF 000000  
+           __CFG_CP2$OFF 000000             __CFG_CP3$OFF 000000              __CFG_LVP$ON 000000  
+                    l700 7FC6                      l702 7FD0                      l708 7FEE  
+                    l692 7F78                      l684 7F6C             __CFG_CPB$OFF 000000  
+           __CFG_CPD$OFF 000000                      wreg 000FE8             __CFG_WDT$OFF 000000  
+                   _LATB 000F8A                     _LATC 000F8B                     _LATD 000F8C  
+                   _main 7FBA                     _port 7F48                     start 0000  
+          __CFG_IESO$OFF 000000            __CFG_MCLRE$ON 000000             ___param_bank 000010  
+          __CFG_PLLDIV$1 000000           __CFG_CCP2MX$ON 000000                    ?_main 0001  
+                  ?_port 0001                    _PORTB 000F81                    _PORTC 000F82  
+                  _PORTD 000F83            __CFG_USBDIV$1 000000                    _TRISA 000F92  
+                  _TRISB 000F93                    _TRISC 000F94                    _TRISD 000F95  
+          __CFG_PWRT$OFF 000000            __CFG_WRT0$OFF 000000            __CFG_WRT1$OFF 000000  
+          __CFG_WRT2$OFF 000000            __CFG_WRT3$OFF 000000           __CFG_EBTR0$OFF 000000  
+         __CFG_FCMEN$OFF 000000           __CFG_EBTR1$OFF 000000           __CFG_EBTR2$OFF 000000  
+         __CFG_EBTR3$OFF 000000            __CFG_WRTB$OFF 000000            __CFG_WRTC$OFF 000000  
+          __CFG_WRTD$OFF 000000           __CFG_EBTRB$OFF 000000          __end_of_input_d 7F48  
+                  main@i 0005                    port@c 0001                    status 000FD8  
+         __CFG_ICPRT$OFF 000000           __CFG_PBADEN$ON 000000          __initialization 7F2E  
+           __end_of_main 8000             __end_of_port 7F60                   ??_main 0004  
+                 ??_port 0001            __activetblptr 000002           __CFG_XINST$OFF 000000  
+       __end_of_comparar 7F7C         __end_of_contador 7F9A           __CFG_STVREN$ON 000000  
+       __end_of_set_leds 7FBA                ??_input_d 0001                   tblptru 000FF8  
+             __accesstop 0060  __end_of__initialization 7F2E            ___rparam_used 000001  
+         __pcstackCOMRAM 0001                ?_comparar 0001                ?_contador 0001  
+        __CFG_VREGEN$OFF 000000                  __Hparam 0000                  __Lparam 0000  
+              ?_set_leds 0001                  __pcinit 7F2E                  __ramtop 0800  
+                __ptext0 7FBA                  __ptext1 7F9A                  __ptext2 7F38  
+                __ptext3 7F7C                  __ptext4 7F48                  __ptext5 7F60  
+                _input_d 7F38               ??_comparar 0001     end_of_initialization 7F2E  
+             ??_contador 0002            __Lmediumconst 0000               ??_set_leds 0001  
+    start_initialization 7F2E         __CFG_LPT1OSC$OFF 000000        __size_of_comparar 001C  
+      __size_of_contador 001E        __size_of_set_leds 0020                 ?_input_d 0001  
+       __CFG_WDTPS$32768 000000                comparar@i 0001                contador@i 0003  
+               __Hrparam 0000                 __Lrparam 0000         __size_of_input_d 0010  
+               _comparar 7F60                 _contador 7F7C            __size_of_main 0046  
+          __size_of_port 0018                 _set_leds 7F9A    __CFG_CPUDIV$OSC1_PLL2 000000  
+               input_d@d 0001               _OSCCONbits 000FD3      __CFG_FOSC$INTOSC_EC 000000  

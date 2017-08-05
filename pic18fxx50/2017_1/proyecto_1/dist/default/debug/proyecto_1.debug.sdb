@@ -1,0 +1,72 @@
+[p LITE_MODE AUTOSTATIC LFSROK EMI_WORD ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 18F4550 ]
+[d frameptr 4065 ]
+"62 /opt/microchip/xc8/v1.35/sources/common/float.c
+[v ___ftpack __ftpack `(f  1 e 3 0 ]
+"86 /opt/microchip/xc8/v1.35/sources/common/ftadd.c
+[v ___ftadd __ftadd `(f  1 e 3 0 ]
+"54 /opt/microchip/xc8/v1.35/sources/common/ftdiv.c
+[v ___ftdiv __ftdiv `(f  1 e 3 0 ]
+"62 /opt/microchip/xc8/v1.35/sources/common/ftmul.c
+[v ___ftmul __ftmul `(f  1 e 3 0 ]
+"20 /opt/microchip/xc8/v1.35/sources/common/ftsub.c
+[v ___ftsub __ftsub `(f  1 e 3 0 ]
+"10 /opt/microchip/xc8/v1.35/sources/common/sprcadd.c
+[v ___fladd __fladd `(d  1 e 3 0 ]
+"245
+[v ___flsub __flsub `(d  1 e 3 0 ]
+"11 /opt/microchip/xc8/v1.35/sources/common/sprcdiv.c
+[v ___fldiv __fldiv `(d  1 e 3 0 ]
+"8 /opt/microchip/xc8/v1.35/sources/common/sprcmul.c
+[v ___flmul __flmul `(d  1 e 3 0 ]
+"15 /opt/microchip/xc8/v1.35/sources/common/Umul32.c
+[v ___lmul __lmul `(ul  1 e 4 0 ]
+"13 /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic18fxx50/proyecto_1/main.c
+[v _set_leds set_leds `(v  1 e 0 0 ]
+"23
+[v _port port `(v  1 e 0 0 ]
+"30
+[v _ss ss `(v  1 e 0 0 ]
+"37
+[v _main main `(v  1 e 0 0 ]
+"2727 /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic18fxx50/proyecto_1/pic18f4550.h
+[v _PORTB PORTB `VEuc  1 e 1 @3969 ]
+"2989
+[v _PORTD PORTD `VEuc  1 e 1 @3971 ]
+"3495
+[v _LATB LATB `VEuc  1 e 1 @3978 ]
+"3742
+[v _LATD LATD `VEuc  1 e 1 @3980 ]
+"3976
+[v _TRISA TRISA `VEuc  1 e 1 @3986 ]
+"4173
+[v _TRISB TRISB `VEuc  1 e 1 @3987 ]
+"4565
+[v _TRISD TRISD `VEuc  1 e 1 @3989 ]
+"37 /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic18fxx50/proyecto_1/main.c
+[v _main main `(v  1 e 0 0 ]
+{
+"44
+} 0
+"30
+[v _ss ss `(v  1 e 0 0 ]
+{
+"31
+[v ss@d d `uc  1 a 1 0 ]
+"34
+} 0
+"13
+[v _set_leds set_leds `(v  1 e 0 0 ]
+{
+"21
+} 0
+"23
+[v _port port `(v  1 e 0 0 ]
+{
+[v port@c c `uc  1 a 1 wreg ]
+[v port@c c `uc  1 a 1 wreg ]
+[v port@c c `uc  1 a 1 0 ]
+"28
+} 0

@@ -1,0 +1,915 @@
+
+
+Microchip Technology PIC18 LITE Macro Assembler V1.35 build -356382666 
+                                                                                               Thu Jun  1 03:08:41 2017
+
+Microchip Technology Omniscient Code Generator v1.35 (Free mode) build 201507080246
+     1                           	processor	18F4550
+     2                           	fnconf	rparam,??,?,0
+     3                           	opt	pw 120
+     4                           	opt	lm
+     5                           	psect	idataCOMRAM,global,class=CODE,delta=1
+     6                           	psect	cinit,global,reloc=2,class=CODE,delta=1
+     7                           	psect	bssCOMRAM,global,class=COMRAM,space=1,delta=1
+     8                           	psect	dataCOMRAM,global,class=COMRAM,space=1,delta=1
+     9                           	psect	cstackCOMRAM,global,class=COMRAM,space=1,delta=1
+    10                           	psect	text0,global,reloc=2,class=CODE,delta=1
+    11                           	psect	text1,global,reloc=2,class=CODE,delta=1
+    12                           	psect	text2,global,reloc=2,class=CODE,delta=1
+    13                           	psect	text3,global,reloc=2,class=CODE,delta=1
+    14                           	psect	text4,global,reloc=2,class=CODE,delta=1
+    15                           	psect	text5,global,reloc=2,class=CODE,delta=1
+    16                           	psect	intsave_regs,global,class=BIGRAM,space=1,delta=1
+    17                           	psect	rparam,global,class=COMRAM,space=1,delta=1
+    18  0000                     
+    19                           	psect	idataCOMRAM
+    20  007EDF                     __pidataCOMRAM:
+    21                           	opt stack 0
+    22                           
+    23                           ;initializer for _msm
+    24  007EDF  45                 	db	69
+    25  007EE0  53                 	db	83
+    26  007EE1  43                 	db	67
+    27  007EE2  52                 	db	82
+    28  007EE3  49                 	db	73
+    29  007EE4  42                 	db	66
+    30  007EE5  41                 	db	65
+    31  007EE6  20                 	db	32
+    32  007EE7  55                 	db	85
+    33  007EE8  4E                 	db	78
+    34  007EE9  20                 	db	32
+    35  007EEA  4D                 	db	77
+    36  007EEB  53                 	db	83
+    37  007EEC  4D                 	db	77
+    38  007EED  20                 	db	32
+    39  007EEE  0D                 	db	13
+    40  007EEF  00                 	db	0
+    41  0000                     _ADCON0bits	set	4034
+    42  0000                     _ADCON1	set	4033
+    43  0000                     _ADCON2bits	set	4032
+    44  0000                     _ADRESH	set	4036
+    45  0000                     _ADRESL	set	4035
+    46  0000                     _BAUDCONbits	set	4024
+    47  0000                     _OSCCONbits	set	4051
+    48  0000                     _PIR1bits	set	3998
+    49  0000                     _PORTC	set	3970
+    50  0000                     _PORTD	set	3971
+    51  0000                     _RCREG	set	4014
+    52  0000                     _RCSTAbits	set	4011
+    53  0000                     _SPBRG	set	4015
+    54  0000                     _SPBRGH	set	4016
+    55  0000                     _TRISAbits	set	3986
+    56  0000                     _TRISB	set	3987
+    57  0000                     _TRISCbits	set	3988
+    58  0000                     _TRISD	set	3989
+    59  0000                     _TXREG	set	4013
+    60  0000                     _TXSTAbits	set	4012
+    61                           
+    62                           ; #config settings
+    63  0000                     
+    64                           	psect	cinit
+    65  007F0E                     __pcinit:
+    66                           	opt stack 0
+    67  007F0E                     start_initialization:
+    68                           	opt stack 0
+    69  007F0E                     __initialization:
+    70                           	opt stack 0
+    71                           
+    72                           ; Clear objects allocated to COMRAM (27 bytes)
+    73  007F0E  EE00  F001         	lfsr	0,__pbssCOMRAM
+    74  007F12  0E1B               	movlw	27
+    75  007F14                     clear_0:
+    76  007F14  6AEE               	clrf	postinc0,c
+    77  007F16  06E8               	decf	wreg,f,c
+    78  007F18  E1FD               	bnz	clear_0
+    79                           
+    80                           ; Initialize objects allocated to COMRAM (17 bytes)
+    81                           ; load TBLPTR registers with __pidataCOMRAM
+    82  007F1A  0EDF               	movlw	low __pidataCOMRAM
+    83  007F1C  6EF6               	movwf	tblptrl,c
+    84  007F1E  0E7E               	movlw	high __pidataCOMRAM
+    85  007F20  6EF7               	movwf	tblptrh,c
+    86  007F22  0E00               	movlw	low (__pidataCOMRAM shr (0+16))
+    87  007F24  6EF8               	movwf	tblptru,c
+    88  007F26  EE00  F01C         	lfsr	0,__pdataCOMRAM
+    89  007F2A  EE10 F011          	lfsr	1,17
+    90  007F2E                     copy_data0:
+    91  007F2E  0009               	tblrd		*+
+    92  007F30  CFF5 FFEE          	movff	tablat,postinc0
+    93  007F34  50E5               	movf	postdec1,w,c
+    94  007F36  50E1               	movf	fsr1l,w,c
+    95  007F38  E1FA               	bnz	copy_data0
+    96  007F3A                     end_of_initialization:
+    97                           	opt stack 0
+    98  007F3A                     __end_of__initialization:
+    99                           	opt stack 0
+   100  007F3A  0100               	movlb	0
+   101  007F3C  EFBE  F03F         	goto	_main	;jump to C main() function
+   102                           tblptru	equ	0xFF8
+   103                           tblptrh	equ	0xFF7
+   104                           tblptrl	equ	0xFF6
+   105                           tablat	equ	0xFF5
+   106                           postinc0	equ	0xFEE
+   107                           wreg	equ	0xFE8
+   108                           postdec1	equ	0xFE5
+   109                           fsr1l	equ	0xFE1
+   110                           
+   111                           	psect	bssCOMRAM
+   112  000001                     __pbssCOMRAM:
+   113                           	opt stack 0
+   114  000001                     _buffer:
+   115                           	opt stack 0
+   116  000001                     	ds	2
+   117  000003                     read_msm@buffer:
+   118                           	opt stack 0
+   119  000003                     	ds	25
+   120                           tblptru	equ	0xFF8
+   121                           tblptrh	equ	0xFF7
+   122                           tblptrl	equ	0xFF6
+   123                           tablat	equ	0xFF5
+   124                           postinc0	equ	0xFEE
+   125                           wreg	equ	0xFE8
+   126                           postdec1	equ	0xFE5
+   127                           fsr1l	equ	0xFE1
+   128                           
+   129                           	psect	dataCOMRAM
+   130  00001C                     __pdataCOMRAM:
+   131                           	opt stack 0
+   132  00001C                     _msm:
+   133                           	opt stack 0
+   134  00001C                     	ds	17
+   135                           tblptru	equ	0xFF8
+   136                           tblptrh	equ	0xFF7
+   137                           tblptrl	equ	0xFF6
+   138                           tablat	equ	0xFF5
+   139                           postinc0	equ	0xFEE
+   140                           wreg	equ	0xFE8
+   141                           postdec1	equ	0xFE5
+   142                           fsr1l	equ	0xFE1
+   143                           
+   144                           	psect	cstackCOMRAM
+   145  00002D                     __pcstackCOMRAM:
+   146                           	opt stack 0
+   147  00002D                     ?_read_msm:
+   148                           	opt stack 0
+   149  00002D                     write_uart@a:
+   150                           	opt stack 0
+   151  00002D                     init_uart@baudios:
+   152                           	opt stack 0
+   153                           
+   154                           ; 2 bytes @ 0x0
+   155  00002D                     	ds	1
+   156  00002E                     send_msm@msm:
+   157                           	opt stack 0
+   158                           
+   159                           ; 2 bytes @ 0x1
+   160  00002E                     	ds	1
+   161  00002F                     read_msm@c:
+   162                           	opt stack 0
+   163                           
+   164                           ; 1 bytes @ 0x2
+   165  00002F                     	ds	1
+   166  000030                     read_msm@a:
+   167                           	opt stack 0
+   168                           
+   169                           ; 1 bytes @ 0x3
+   170  000030                     	ds	1
+   171  000031                     send_msm@a:
+   172                           	opt stack 0
+   173                           
+   174                           ; 1 bytes @ 0x4
+   175  000031                     	ds	1
+   176  000032                     tblptru	equ	0xFF8
+   177                           tblptrh	equ	0xFF7
+   178                           tblptrl	equ	0xFF6
+   179                           tablat	equ	0xFF5
+   180                           postinc0	equ	0xFEE
+   181                           wreg	equ	0xFE8
+   182                           postdec1	equ	0xFE5
+   183                           fsr1l	equ	0xFE1
+   184                           
+   185                           ; 0 bytes @ 0x5
+   186 ;;
+   187 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   188 ;;
+   189 ;; *************** function _main *****************
+   190 ;; Defined at:
+   191 ;;		line 34 in file "main.c"
+   192 ;; Parameters:    Size  Location     Type
+   193 ;;		None
+   194 ;; Auto vars:     Size  Location     Type
+   195 ;;		None
+   196 ;; Return value:  Size  Location     Type
+   197 ;;		None               void
+   198 ;; Registers used:
+   199 ;;		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
+   200 ;; Tracked objects:
+   201 ;;		On entry : 0/0
+   202 ;;		On exit  : 0/0
+   203 ;;		Unchanged: 0/0
+   204 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   205 ;;      Params:         0       0       0       0       0       0       0       0       0
+   206 ;;      Locals:         0       0       0       0       0       0       0       0       0
+   207 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   208 ;;      Totals:         0       0       0       0       0       0       0       0       0
+   209 ;;Total ram usage:        0 bytes
+   210 ;; Hardware stack levels required when called:    2
+   211 ;; This function calls:
+   212 ;;		_init_uart
+   213 ;;		_read_msm
+   214 ;;		_send_msm
+   215 ;;		_write_uart
+   216 ;; This function is called by:
+   217 ;;		Startup code after reset
+   218 ;; This function uses a non-reentrant model
+   219 ;;
+   220                           
+   221                           	psect	text0
+   222  007F7C                     __ptext0:
+   223                           	opt stack 0
+   224  007F7C                     _main:
+   225                           	opt stack 29
+   226                           
+   227                           ;main.c: 35: OSCCONbits.IRCF=7;
+   228                           
+   229                           ;incstack = 0
+   230  007F7C  88D3               	bsf	4051,4,c	;volatile
+   231  007F7E  8AD3               	bsf	4051,5,c	;volatile
+   232  007F80  8CD3               	bsf	4051,6,c	;volatile
+   233                           
+   234                           ;main.c: 40: init_uart(9600);
+   235  007F82  0E25               	movlw	37
+   236  007F84  6E2E               	movwf	init_uart@baudios+1,c
+   237  007F86  0E80               	movlw	128
+   238  007F88  6E2D               	movwf	init_uart@baudios,c
+   239  007F8A  EC78  F03F         	call	_init_uart	;wreg free
+   240  007F8E                     l889:
+   241                           
+   242                           ;main.c: 42: send_msm(msm);
+   243  007F8E  0E1C               	movlw	low _msm
+   244  007F90  6E2E               	movwf	send_msm@msm,c
+   245  007F92  0E00               	movlw	high _msm
+   246  007F94  6E2F               	movwf	send_msm@msm+1,c
+   247  007F96  ECA0  F03F         	call	_send_msm	;wreg free
+   248                           
+   249                           ;main.c: 48: buffer=read_msm();
+   250  007F9A  ECDD  F03F         	call	_read_msm	;wreg free
+   251  007F9E  C02D  F001         	movff	?_read_msm,_buffer
+   252  007FA2  C02E  F002         	movff	?_read_msm+1,_buffer+1
+   253                           
+   254                           ;main.c: 49: write_uart('\r');
+   255  007FA6  0E0D               	movlw	13
+   256  007FA8  EC69  F03F         	call	_write_uart
+   257                           
+   258                           ;main.c: 50: send_msm(buffer);
+   259  007FAC  C001  F02E         	movff	_buffer,send_msm@msm
+   260  007FB0  C002  F02F         	movff	_buffer+1,send_msm@msm+1
+   261  007FB4  ECA0  F03F         	call	_send_msm	;wreg free
+   262  007FB8  D7EA               	goto	l889
+   263  007FBA                     __end_of_main:
+   264                           	opt stack 0
+   265                           tblptru	equ	0xFF8
+   266                           tblptrh	equ	0xFF7
+   267                           tblptrl	equ	0xFF6
+   268                           tablat	equ	0xFF5
+   269                           postinc0	equ	0xFEE
+   270                           wreg	equ	0xFE8
+   271                           postdec1	equ	0xFE5
+   272                           fsr1l	equ	0xFE1
+   273                           
+   274 ;; *************** function _send_msm *****************
+   275 ;; Defined at:
+   276 ;;		line 32 in file "UART.c"
+   277 ;; Parameters:    Size  Location     Type
+   278 ;;  msm             2    1[COMRAM] PTR unsigned char 
+   279 ;;		 -> NULL(0), read_msm@buffer(25), msm(17), 
+   280 ;; Auto vars:     Size  Location     Type
+   281 ;;  a               1    4[COMRAM] unsigned char 
+   282 ;; Return value:  Size  Location     Type
+   283 ;;                  1    wreg      unsigned char 
+   284 ;; Registers used:
+   285 ;;		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
+   286 ;; Tracked objects:
+   287 ;;		On entry : 0/0
+   288 ;;		On exit  : 0/0
+   289 ;;		Unchanged: 0/0
+   290 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   291 ;;      Params:         2       0       0       0       0       0       0       0       0
+   292 ;;      Locals:         1       0       0       0       0       0       0       0       0
+   293 ;;      Temps:          1       0       0       0       0       0       0       0       0
+   294 ;;      Totals:         4       0       0       0       0       0       0       0       0
+   295 ;;Total ram usage:        4 bytes
+   296 ;; Hardware stack levels used:    1
+   297 ;; Hardware stack levels required when called:    1
+   298 ;; This function calls:
+   299 ;;		_write_uart
+   300 ;; This function is called by:
+   301 ;;		_main
+   302 ;; This function uses a non-reentrant model
+   303 ;;
+   304                           
+   305                           	psect	text1
+   306  007F40                     __ptext1:
+   307                           	opt stack 0
+   308  007F40                     _send_msm:
+   309                           	opt stack 29
+   310                           
+   311                           ;UART.c: 33: u8 a=0;
+   312                           
+   313                           ;incstack = 0
+   314  007F40  0E00               	movlw	0
+   315  007F42  6E31               	movwf	send_msm@a,c
+   316  007F44                     l861:
+   317                           
+   318                           ;UART.c: 35: write_uart(msm[a++]);
+   319  007F44  5031               	movf	send_msm@a,w,c
+   320  007F46  0D01               	mullw	1
+   321  007F48  50F3               	movf	prodl,w,c
+   322  007F4A  242E               	addwf	send_msm@msm,w,c
+   323  007F4C  6ED9               	movwf	fsr2l,c
+   324  007F4E  50F4               	movf	prodh,w,c
+   325  007F50  202F               	addwfc	send_msm@msm+1,w,c
+   326  007F52  6EDA               	movwf	fsr2h,c
+   327  007F54  50DF               	movf	indf2,w,c
+   328  007F56  EC69  F03F         	call	_write_uart
+   329  007F5A  2A31               	incf	send_msm@a,f,c
+   330                           
+   331                           ;UART.c: 36: while (msm[a]!='\r');
+   332  007F5C  5031               	movf	send_msm@a,w,c
+   333  007F5E  0D01               	mullw	1
+   334  007F60  50F3               	movf	prodl,w,c
+   335  007F62  242E               	addwf	send_msm@msm,w,c
+   336  007F64  6ED9               	movwf	fsr2l,c
+   337  007F66  50F4               	movf	prodh,w,c
+   338  007F68  202F               	addwfc	send_msm@msm+1,w,c
+   339  007F6A  6EDA               	movwf	fsr2h,c
+   340  007F6C  0E0D               	movlw	13
+   341  007F6E  18DE               	xorwf	postinc2,w,c
+   342  007F70  A4D8               	btfss	status,2,c
+   343  007F72  D7E8               	goto	l861
+   344                           
+   345                           ;UART.c: 37: write_uart('\r');
+   346  007F74  0E0D               	movlw	13
+   347  007F76  EC69  F03F         	call	_write_uart
+   348  007F7A  0012               	return		;funcret
+   349  007F7C                     __end_of_send_msm:
+   350                           	opt stack 0
+   351                           tblptru	equ	0xFF8
+   352                           tblptrh	equ	0xFF7
+   353                           tblptrl	equ	0xFF6
+   354                           tablat	equ	0xFF5
+   355                           prodh	equ	0xFF4
+   356                           prodl	equ	0xFF3
+   357                           postinc0	equ	0xFEE
+   358                           wreg	equ	0xFE8
+   359                           postdec1	equ	0xFE5
+   360                           fsr1l	equ	0xFE1
+   361                           indf2	equ	0xFDF
+   362                           postinc2	equ	0xFDE
+   363                           fsr2h	equ	0xFDA
+   364                           fsr2l	equ	0xFD9
+   365                           status	equ	0xFD8
+   366                           
+   367 ;; *************** function _write_uart *****************
+   368 ;; Defined at:
+   369 ;;		line 23 in file "UART.c"
+   370 ;; Parameters:    Size  Location     Type
+   371 ;;  a               1    wreg     unsigned char 
+   372 ;; Auto vars:     Size  Location     Type
+   373 ;;  a               1    0[COMRAM] unsigned char 
+   374 ;; Return value:  Size  Location     Type
+   375 ;;		None               void
+   376 ;; Registers used:
+   377 ;;		wreg
+   378 ;; Tracked objects:
+   379 ;;		On entry : 0/0
+   380 ;;		On exit  : 0/0
+   381 ;;		Unchanged: 0/0
+   382 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   383 ;;      Params:         0       0       0       0       0       0       0       0       0
+   384 ;;      Locals:         1       0       0       0       0       0       0       0       0
+   385 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   386 ;;      Totals:         1       0       0       0       0       0       0       0       0
+   387 ;;Total ram usage:        1 bytes
+   388 ;; Hardware stack levels used:    1
+   389 ;; This function calls:
+   390 ;;		Nothing
+   391 ;; This function is called by:
+   392 ;;		_main
+   393 ;;		_send_msm
+   394 ;; This function uses a non-reentrant model
+   395 ;;
+   396                           
+   397                           	psect	text2
+   398  007ED2                     __ptext2:
+   399                           	opt stack 0
+   400  007ED2                     _write_uart:
+   401                           	opt stack 30
+   402                           
+   403                           ;incstack = 0
+   404                           ;write_uart@a stored from wreg
+   405  007ED2  6E2D               	movwf	write_uart@a,c
+   406  007ED4                     l98:
+   407  007ED4  A2AC               	btfss	4012,1,c	;volatile
+   408  007ED6  D7FE               	goto	l98
+   409                           
+   410                           ;UART.c: 25: TXREG=a;
+   411  007ED8  C02D  FFAD         	movff	write_uart@a,4013	;volatile
+   412  007EDC  0012               	return		;funcret
+   413  007EDE                     __end_of_write_uart:
+   414                           	opt stack 0
+   415                           tblptru	equ	0xFF8
+   416                           tblptrh	equ	0xFF7
+   417                           tblptrl	equ	0xFF6
+   418                           tablat	equ	0xFF5
+   419                           prodh	equ	0xFF4
+   420                           prodl	equ	0xFF3
+   421                           postinc0	equ	0xFEE
+   422                           wreg	equ	0xFE8
+   423                           postdec1	equ	0xFE5
+   424                           fsr1l	equ	0xFE1
+   425                           indf2	equ	0xFDF
+   426                           postinc2	equ	0xFDE
+   427                           fsr2h	equ	0xFDA
+   428                           fsr2l	equ	0xFD9
+   429                           status	equ	0xFD8
+   430                           
+   431 ;; *************** function _read_msm *****************
+   432 ;; Defined at:
+   433 ;;		line 40 in file "UART.c"
+   434 ;; Parameters:    Size  Location     Type
+   435 ;;		None
+   436 ;; Auto vars:     Size  Location     Type
+   437 ;;  a               1    3[COMRAM] unsigned char 
+   438 ;;  c               1    2[COMRAM] unsigned char 
+   439 ;; Return value:  Size  Location     Type
+   440 ;;                  2    0[COMRAM] PTR unsigned char 
+   441 ;; Registers used:
+   442 ;;		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
+   443 ;; Tracked objects:
+   444 ;;		On entry : 0/0
+   445 ;;		On exit  : 0/0
+   446 ;;		Unchanged: 0/0
+   447 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   448 ;;      Params:         2       0       0       0       0       0       0       0       0
+   449 ;;      Locals:         2       0       0       0       0       0       0       0       0
+   450 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   451 ;;      Totals:         4       0       0       0       0       0       0       0       0
+   452 ;;Total ram usage:        4 bytes
+   453 ;; Hardware stack levels used:    1
+   454 ;; Hardware stack levels required when called:    1
+   455 ;; This function calls:
+   456 ;;		_read_uart
+   457 ;; This function is called by:
+   458 ;;		_main
+   459 ;; This function uses a non-reentrant model
+   460 ;;
+   461                           
+   462                           	psect	text3
+   463  007FBA                     __ptext3:
+   464                           	opt stack 0
+   465  007FBA                     _read_msm:
+   466                           	opt stack 29
+   467                           
+   468                           ;UART.c: 41: u8 a=0;
+   469                           
+   470                           ;incstack = 0
+   471  007FBA  0E00               	movlw	0
+   472  007FBC  6E30               	movwf	read_msm@a,c
+   473  007FBE                     l871:
+   474                           
+   475                           ;UART.c: 45: c=read_uart();
+   476  007FBE  EC65  F03F         	call	_read_uart	;wreg free
+   477  007FC2  6E2F               	movwf	read_msm@c,c
+   478                           
+   479                           ;UART.c: 46: buffer[a++]=c;
+   480  007FC4  5030               	movf	read_msm@a,w,c
+   481  007FC6  0D01               	mullw	1
+   482  007FC8  0E03               	movlw	low read_msm@buffer
+   483  007FCA  24F3               	addwf	prodl,w,c
+   484  007FCC  6ED9               	movwf	fsr2l,c
+   485  007FCE  0E00               	movlw	high read_msm@buffer
+   486  007FD0  20F4               	addwfc	prodh,w,c
+   487  007FD2  6EDA               	movwf	fsr2h,c
+   488  007FD4  C02F  FFDF         	movff	read_msm@c,indf2
+   489  007FD8  2A30               	incf	read_msm@a,f,c
+   490                           
+   491                           ;UART.c: 47: }
+   492                           ;UART.c: 48: while (c!='\r');
+   493  007FDA  0E0D               	movlw	13
+   494  007FDC  182F               	xorwf	read_msm@c,w,c
+   495  007FDE  A4D8               	btfss	status,2,c
+   496  007FE0  D7EE               	goto	l871
+   497                           
+   498                           ;UART.c: 49: buffer[a]='\r';
+   499  007FE2  5030               	movf	read_msm@a,w,c
+   500  007FE4  0D01               	mullw	1
+   501  007FE6  0E03               	movlw	low read_msm@buffer
+   502  007FE8  24F3               	addwf	prodl,w,c
+   503  007FEA  6ED9               	movwf	fsr2l,c
+   504  007FEC  0E00               	movlw	high read_msm@buffer
+   505  007FEE  20F4               	addwfc	prodh,w,c
+   506  007FF0  6EDA               	movwf	fsr2h,c
+   507  007FF2  0E0D               	movlw	13
+   508  007FF4  6EDF               	movwf	indf2,c
+   509                           
+   510                           ;UART.c: 50: return (buffer);
+   511  007FF6  0E03               	movlw	low read_msm@buffer
+   512  007FF8  6E2D               	movwf	?_read_msm,c
+   513  007FFA  0E00               	movlw	high read_msm@buffer
+   514  007FFC  6E2E               	movwf	?_read_msm+1,c
+   515  007FFE  0012               	return	
+   516  008000                     __end_of_read_msm:
+   517                           	opt stack 0
+   518                           tblptru	equ	0xFF8
+   519                           tblptrh	equ	0xFF7
+   520                           tblptrl	equ	0xFF6
+   521                           tablat	equ	0xFF5
+   522                           prodh	equ	0xFF4
+   523                           prodl	equ	0xFF3
+   524                           postinc0	equ	0xFEE
+   525                           wreg	equ	0xFE8
+   526                           postdec1	equ	0xFE5
+   527                           fsr1l	equ	0xFE1
+   528                           indf2	equ	0xFDF
+   529                           postinc2	equ	0xFDE
+   530                           fsr2h	equ	0xFDA
+   531                           fsr2l	equ	0xFD9
+   532                           status	equ	0xFD8
+   533                           
+   534 ;; *************** function _read_uart *****************
+   535 ;; Defined at:
+   536 ;;		line 27 in file "UART.c"
+   537 ;; Parameters:    Size  Location     Type
+   538 ;;		None
+   539 ;; Auto vars:     Size  Location     Type
+   540 ;;		None
+   541 ;; Return value:  Size  Location     Type
+   542 ;;                  1    wreg      unsigned char 
+   543 ;; Registers used:
+   544 ;;		wreg, status,2
+   545 ;; Tracked objects:
+   546 ;;		On entry : 0/0
+   547 ;;		On exit  : 0/0
+   548 ;;		Unchanged: 0/0
+   549 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   550 ;;      Params:         0       0       0       0       0       0       0       0       0
+   551 ;;      Locals:         0       0       0       0       0       0       0       0       0
+   552 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   553 ;;      Totals:         0       0       0       0       0       0       0       0       0
+   554 ;;Total ram usage:        0 bytes
+   555 ;; Hardware stack levels used:    1
+   556 ;; This function calls:
+   557 ;;		Nothing
+   558 ;; This function is called by:
+   559 ;;		_read_msm
+   560 ;; This function uses a non-reentrant model
+   561 ;;
+   562                           
+   563                           	psect	text4
+   564  007ECA                     __ptext4:
+   565                           	opt stack 0
+   566  007ECA                     _read_uart:
+   567                           	opt stack 29
+   568  007ECA                     l104:
+   569  007ECA  AA9E               	btfss	3998,5,c	;volatile
+   570  007ECC  D7FE               	goto	l104
+   571                           
+   572                           ;UART.c: 29: return RCREG;
+   573  007ECE  50AE               	movf	4014,w,c	;volatile
+   574  007ED0  0012               	return	
+   575  007ED2                     __end_of_read_uart:
+   576                           	opt stack 0
+   577                           tblptru	equ	0xFF8
+   578                           tblptrh	equ	0xFF7
+   579                           tblptrl	equ	0xFF6
+   580                           tablat	equ	0xFF5
+   581                           prodh	equ	0xFF4
+   582                           prodl	equ	0xFF3
+   583                           postinc0	equ	0xFEE
+   584                           wreg	equ	0xFE8
+   585                           postdec1	equ	0xFE5
+   586                           fsr1l	equ	0xFE1
+   587                           indf2	equ	0xFDF
+   588                           postinc2	equ	0xFDE
+   589                           fsr2h	equ	0xFDA
+   590                           fsr2l	equ	0xFD9
+   591                           status	equ	0xFD8
+   592                           
+   593 ;; *************** function _init_uart *****************
+   594 ;; Defined at:
+   595 ;;		line 5 in file "UART.c"
+   596 ;; Parameters:    Size  Location     Type
+   597 ;;  baudios         2    0[COMRAM] unsigned int 
+   598 ;; Auto vars:     Size  Location     Type
+   599 ;;		None
+   600 ;; Return value:  Size  Location     Type
+   601 ;;		None               void
+   602 ;; Registers used:
+   603 ;;		wreg, status,2
+   604 ;; Tracked objects:
+   605 ;;		On entry : 0/0
+   606 ;;		On exit  : 0/0
+   607 ;;		Unchanged: 0/0
+   608 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   609 ;;      Params:         2       0       0       0       0       0       0       0       0
+   610 ;;      Locals:         0       0       0       0       0       0       0       0       0
+   611 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   612 ;;      Totals:         2       0       0       0       0       0       0       0       0
+   613 ;;Total ram usage:        2 bytes
+   614 ;; Hardware stack levels used:    1
+   615 ;; This function calls:
+   616 ;;		Nothing
+   617 ;; This function is called by:
+   618 ;;		_main
+   619 ;; This function uses a non-reentrant model
+   620 ;;
+   621                           
+   622                           	psect	text5
+   623  007EF0                     __ptext5:
+   624                           	opt stack 0
+   625  007EF0                     _init_uart:
+   626                           	opt stack 30
+   627                           
+   628                           ;UART.c: 6: TRISCbits.RC6=1;
+   629                           
+   630                           ;incstack = 0
+   631  007EF0  8C94               	bsf	3988,6,c	;volatile
+   632                           
+   633                           ;UART.c: 7: TRISCbits.RC7=1;
+   634  007EF2  8E94               	bsf	3988,7,c	;volatile
+   635                           
+   636                           ;UART.c: 9: BAUDCONbits.BRG16=1;
+   637  007EF4  86B8               	bsf	4024,3,c	;volatile
+   638                           
+   639                           ;UART.c: 10: SPBRGH=0x00;
+   640  007EF6  0E00               	movlw	0
+   641  007EF8  6EB0               	movwf	4016,c	;volatile
+   642                           
+   643                           ;UART.c: 11: SPBRG=207;
+   644  007EFA  0ECF               	movlw	207
+   645  007EFC  6EAF               	movwf	4015,c	;volatile
+   646                           
+   647                           ;UART.c: 13: TXSTAbits.SYNC=0;
+   648  007EFE  98AC               	bcf	4012,4,c	;volatile
+   649                           
+   650                           ;UART.c: 14: TXSTAbits.BRGH=1;
+   651  007F00  84AC               	bsf	4012,2,c	;volatile
+   652                           
+   653                           ;UART.c: 15: TXSTAbits.TX9=0;
+   654  007F02  9CAC               	bcf	4012,6,c	;volatile
+   655                           
+   656                           ;UART.c: 16: TXSTAbits.TXEN=1;
+   657  007F04  8AAC               	bsf	4012,5,c	;volatile
+   658                           
+   659                           ;UART.c: 18: RCSTAbits.RX9=0;
+   660  007F06  9CAB               	bcf	4011,6,c	;volatile
+   661                           
+   662                           ;UART.c: 19: RCSTAbits.CREN=1;
+   663  007F08  88AB               	bsf	4011,4,c	;volatile
+   664                           
+   665                           ;UART.c: 20: RCSTAbits.SPEN=1;
+   666  007F0A  8EAB               	bsf	4011,7,c	;volatile
+   667  007F0C  0012               	return		;funcret
+   668  007F0E                     __end_of_init_uart:
+   669                           	opt stack 0
+   670  0000                     tblptru	equ	0xFF8
+   671                           tblptrh	equ	0xFF7
+   672                           tblptrl	equ	0xFF6
+   673                           tablat	equ	0xFF5
+   674                           prodh	equ	0xFF4
+   675                           prodl	equ	0xFF3
+   676                           postinc0	equ	0xFEE
+   677                           wreg	equ	0xFE8
+   678                           postdec1	equ	0xFE5
+   679                           fsr1l	equ	0xFE1
+   680                           indf2	equ	0xFDF
+   681                           postinc2	equ	0xFDE
+   682                           fsr2h	equ	0xFDA
+   683                           fsr2l	equ	0xFD9
+   684                           status	equ	0xFD8
+   685                           tblptru	equ	0xFF8
+   686                           tblptrh	equ	0xFF7
+   687                           tblptrl	equ	0xFF6
+   688                           tablat	equ	0xFF5
+   689                           prodh	equ	0xFF4
+   690                           prodl	equ	0xFF3
+   691                           postinc0	equ	0xFEE
+   692                           wreg	equ	0xFE8
+   693                           postdec1	equ	0xFE5
+   694                           fsr1l	equ	0xFE1
+   695                           indf2	equ	0xFDF
+   696                           postinc2	equ	0xFDE
+   697                           fsr2h	equ	0xFDA
+   698                           fsr2l	equ	0xFD9
+   699                           status	equ	0xFD8
+   700                           
+   701                           	psect	rparam
+   702  0000                     tblptru	equ	0xFF8
+   703                           tblptrh	equ	0xFF7
+   704                           tblptrl	equ	0xFF6
+   705                           tablat	equ	0xFF5
+   706                           prodh	equ	0xFF4
+   707                           prodl	equ	0xFF3
+   708                           postinc0	equ	0xFEE
+   709                           wreg	equ	0xFE8
+   710                           postdec1	equ	0xFE5
+   711                           fsr1l	equ	0xFE1
+   712                           indf2	equ	0xFDF
+   713                           postinc2	equ	0xFDE
+   714                           fsr2h	equ	0xFDA
+   715                           fsr2l	equ	0xFD9
+   716                           status	equ	0xFD8
+
+
+Data Sizes:
+    Strings     0
+    Constant    0
+    Data        17
+    BSS         27
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMRAM           95      5      49
+    BANK0           160      0       0
+    BANK1           256      0       0
+    BANK2           256      0       0
+    BANK3           256      0       0
+    BANK4           256      0       0
+    BANK5           256      0       0
+    BANK6           256      0       0
+    BANK7           256      0       0
+
+Pointer List with Targets:
+
+    send_msm@msm	PTR unsigned char  size(2) Largest target is 25
+		 -> NULL(NULL[0]), read_msm@buffer(COMRAM[25]), msm(COMRAM[17]), 
+
+    sp__read_msm	PTR unsigned char  size(2) Largest target is 25
+		 -> read_msm@buffer(COMRAM[25]), 
+
+    buffer	PTR unsigned char  size(2) Largest target is 25
+		 -> NULL(NULL[0]), read_msm@buffer(COMRAM[25]), 
+
+
+Critical Paths under _main in COMRAM
+
+    _main->_send_msm
+    _send_msm->_write_uart
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Critical Paths under _main in BANK3
+
+    None.
+
+Critical Paths under _main in BANK4
+
+    None.
+
+Critical Paths under _main in BANK5
+
+    None.
+
+Critical Paths under _main in BANK6
+
+    None.
+
+Critical Paths under _main in BANK7
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 0     0      0     403
+                          _init_uart
+                           _read_msm
+                           _send_msm
+                         _write_uart
+ ---------------------------------------------------------------------------------
+ (1) _send_msm                                             4     2      2     233
+                                              1 COMRAM     4     2      2
+                         _write_uart
+ ---------------------------------------------------------------------------------
+ (1) _write_uart                                           1     1      0      15
+                                              0 COMRAM     1     1      0
+ ---------------------------------------------------------------------------------
+ (1) _read_msm                                             4     2      2      91
+                                              0 COMRAM     4     2      2
+                          _read_uart
+ ---------------------------------------------------------------------------------
+ (2) _read_uart                                            0     0      0       0
+ ---------------------------------------------------------------------------------
+ (1) _init_uart                                            2     0      2      64
+                                              0 COMRAM     2     0      2
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 2
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   _init_uart
+   _read_msm
+     _read_uart
+   _send_msm
+     _write_uart
+   _write_uart
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BIGRAM             7FF      0       0      21        0.0%
+EEDATA             100      0       0       0        0.0%
+BITBANK7           100      0       0      18        0.0%
+BANK7              100      0       0      19        0.0%
+BITBANK6           100      0       0      16        0.0%
+BANK6              100      0       0      17        0.0%
+BITBANK5           100      0       0      14        0.0%
+BANK5              100      0       0      15        0.0%
+BITBANK4           100      0       0      12        0.0%
+BANK4              100      0       0      13        0.0%
+BITBANK3           100      0       0      10        0.0%
+BANK3              100      0       0      11        0.0%
+BITBANK2           100      0       0       8        0.0%
+BANK2              100      0       0       9        0.0%
+BITBANK1           100      0       0       6        0.0%
+BANK1              100      0       0       7        0.0%
+BITBANK0            A0      0       0       4        0.0%
+BANK0               A0      0       0       5        0.0%
+BITCOMRAM           5F      0       0       0        0.0%
+COMRAM              5F      5      31       1       51.6%
+BITSFR               0      0       0      40        0.0%
+SFR                  0      0       0      40        0.0%
+STACK                0      0       0       2        0.0%
+NULL                 0      0       0       0        0.0%
+ABS                  0      0      31      20        0.0%
+DATA                 0      0      31       3        0.0%
+CODE                 0      0       0       0        0.0%
+
+
+Microchip Technology PIC18 Macro Assembler V1.35 build -356382666 
+Symbol Table                                                                                   Thu Jun  1 03:08:41 2017
+
+                     l98 7ED4              __CFG_BOR$ON 000000              __CFG_BORV$3 000000  
+           __CFG_CP0$OFF 000000             __CFG_CP1$OFF 000000             __CFG_CP2$OFF 000000  
+           __CFG_CP3$OFF 000000              __CFG_LVP$ON 000000                      l104 7ECA  
+                    l861 7F44                      l871 7FBE                      l889 7F8E  
+           __CFG_CPB$OFF 000000             __CFG_CPD$OFF 000000                      _msm 001C  
+                    prod 000FF3                      wreg 000FE8             __CFG_WDT$OFF 000000  
+                   _main 7F7C                     fsr1l 000FE1                     indf2 000FDF  
+                   fsr2l 000FD9                     prodh 000FF4                     prodl 000FF3  
+                   start 0000            __CFG_IESO$OFF 000000            __CFG_MCLRE$ON 000000  
+           ___param_bank 000010            __CFG_PLLDIV$1 000000           __CFG_CCP2MX$ON 000000  
+                  ?_main 002D                    _RCREG 000FAE                    _SPBRG 000FAF  
+                  _PORTC 000F82                    _PORTD 000F83            __CFG_USBDIV$1 000000  
+                  _TRISB 000F93                    _TRISD 000F95                    _TXREG 000FAD  
+          __CFG_PWRT$OFF 000000            __CFG_WRT0$OFF 000000            __CFG_WRT1$OFF 000000  
+          __CFG_WRT2$OFF 000000            __CFG_WRT3$OFF 000000           __CFG_EBTR0$OFF 000000  
+         __CFG_FCMEN$OFF 000000           __CFG_EBTR1$OFF 000000           __CFG_EBTR2$OFF 000000  
+         __CFG_EBTR3$OFF 000000            __CFG_WRTB$OFF 000000            __CFG_WRTC$OFF 000000  
+          __CFG_WRTD$OFF 000000           __CFG_EBTRB$OFF 000000                    tablat 000FF5  
+                  status 000FD8           __CFG_ICPRT$OFF 000000           __CFG_PBADEN$ON 000000  
+        __initialization 7F0E             __end_of_main 7FBA                   ??_main 0032  
+          __activetblptr 000000                   _ADCON1 000FC1                   _ADRESH 000FC4  
+                 _ADRESL 000FC3                   _SPBRGH 000FB0           __CFG_XINST$OFF 000000  
+         __CFG_STVREN$ON 000000                   _buffer 0001                   clear_0 7F14  
+       __end_of_read_msm 8000         __end_of_send_msm 7F7C             __pdataCOMRAM 001C  
+                 tblptrh 000FF7                   tblptrl 000FF6                   tblptru 000FF8  
+             __accesstop 0060  __end_of__initialization 7F3A            ___rparam_used 000001  
+         __pcstackCOMRAM 002D         init_uart@baudios 002D       __size_of_init_uart 001E  
+     __size_of_read_uart 0008          __CFG_VREGEN$OFF 000000              send_msm@msm 002E  
+              ?_read_msm 002D                  __Hparam 0000                ?_send_msm 002E  
+                __Lparam 0000                  __pcinit 7F0E                  __ramtop 0800  
+                __ptext0 7F7C                  __ptext1 7F40                  __ptext2 7ED2  
+                __ptext3 7FBA                  __ptext4 7ECA                  __ptext5 7EF0  
+      __end_of_init_uart 7F0E        __end_of_read_uart 7ED2     end_of_initialization 7F3A  
+             ??_read_msm 002F               ??_send_msm 0030                _RCSTAbits 000FAB  
+                postdec1 000FE5                  postinc0 000FEE                  postinc2 000FDE  
+              _TRISAbits 000F92                _TRISCbits 000F94                _TXSTAbits 000FAC  
+            _BAUDCONbits 000FB8            __pidataCOMRAM 7EDF               _write_uart 7ED2  
+    start_initialization 7F0E         __CFG_LPT1OSC$OFF 000000              __pbssCOMRAM 0001  
+      __size_of_read_msm 0046        __size_of_send_msm 003C              ?_write_uart 002D  
+              _init_uart 7EF0                _read_uart 7ECA                 _PIR1bits 000F9E  
+       __CFG_WDTPS$32768 000000               _ADCON0bits 000FC2               _ADCON2bits 000FC0  
+            write_uart@a 002D               ?_init_uart 002D                copy_data0 7F2E  
+             ?_read_uart 002D      __size_of_write_uart 000C                 __Hrparam 0000  
+               __Lrparam 0000                read_msm@a 0030                read_msm@c 002F  
+              send_msm@a 0031            __size_of_main 003E                 _read_msm 7FBA  
+               _send_msm 7F40    __CFG_CPUDIV$OSC1_PLL2 000000              ??_init_uart 002F  
+            ??_read_uart 002D               _OSCCONbits 000FD3           read_msm@buffer 0003  
+           ??_write_uart 002D      __CFG_FOSC$INTOSC_EC 000000       __end_of_write_uart 7EDE  

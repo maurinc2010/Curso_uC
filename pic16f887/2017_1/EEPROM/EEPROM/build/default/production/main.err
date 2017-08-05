@@ -1,0 +1,24 @@
+Warning[205] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/EEPROM/EEPROM/main.asm 2 : Found directive in column 1. (list)
+Warning[205] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/EEPROM/EEPROM/main.asm 3 : Found directive in column 1. (INCLUDE)
+Warning[205] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/EEPROM/EEPROM/main.asm 14 : Found directive in column 1. (CBLOCK)
+Warning[205] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/EEPROM/EEPROM/main.asm 27 : Found directive in column 1. (ENDC)
+Warning[205] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/EEPROM/EEPROM/main.asm 28 : Found directive in column 1. (CBLOCK)
+Warning[205] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/EEPROM/EEPROM/main.asm 33 : Found directive in column 1. (ENDC)
+Warning[205] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/EEPROM/EEPROM/main.asm 44 : Found directive in column 1. (ORG)
+Message[302] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/EEPROM/EEPROM/main.asm 48 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/EEPROM/EEPROM/main.asm 49 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/EEPROM/EEPROM/main.asm 77 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[305] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/EEPROM/EEPROM/main.asm 78 : Using default destination of 1 (file).
+Message[302] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/EEPROM/EEPROM/main.asm 80 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/EEPROM/EEPROM/main.asm 82 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/EEPROM/EEPROM/main.asm 83 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/EEPROM/EEPROM/main.asm 90 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/EEPROM/EEPROM/main.asm 92 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/EEPROM/EEPROM/main.asm 94 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/EEPROM/EEPROM/main.asm 101 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/EEPROM/EEPROM/main.asm 103 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/EEPROM/EEPROM/main.asm 113 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/EEPROM/EEPROM/main.asm 116 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/EEPROM/EEPROM/main.asm 117 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/EEPROM/EEPROM/main.asm 119 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[205] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/EEPROM/EEPROM/main.asm 150 : Found directive in column 1. (END)

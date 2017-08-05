@@ -1,0 +1,15 @@
+Warning[205] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/LCD/LCD4BIT/main.asm 2 : Found directive in column 1. (list)
+Warning[205] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/LCD/LCD4BIT/main.asm 3 : Found directive in column 1. (INCLUDE)
+Warning[205] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/LCD/LCD4BIT/main.asm 14 : Found directive in column 1. (CBLOCK)
+Warning[205] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/LCD/LCD4BIT/main.asm 25 : Found directive in column 1. (ENDC)
+Warning[205] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/LCD/LCD4BIT/main.asm 26 : Found directive in column 1. (CBLOCK)
+Warning[205] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/LCD/LCD4BIT/main.asm 31 : Found directive in column 1. (ENDC)
+Warning[205] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/LCD/LCD4BIT/main.asm 40 : Found directive in column 1. (ORG)
+Message[302] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/LCD/LCD4BIT/main.asm 54 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/LCD/LCD4BIT/main.asm 55 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/LCD/LCD4BIT/main.asm 57 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/LCD/LCD4BIT/main.asm 58 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[207] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/LCD/LCD4BIT/main.asm 82 : Found label after column 1. (BUCLE)
+Message[305] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/LCD/LCD4BIT/main.asm 90 : Using default destination of 1 (file).
+Message[305] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/LCD/LCD4BIT/main.asm 106 : Using default destination of 1 (file).
+Warning[205] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/LCD/LCD4BIT/main.asm 180 : Found directive in column 1. (END)

@@ -1,0 +1,58 @@
+MPLINK 5.08, LINKER
+Linker Map File - Created Tue Apr 18 16:20:02 2017
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                 RES_VECT       code   0x000000    program   0x000002
+                   .cinit    romdata   0x000001    program   0x000004
+                 INT_VECT       code   0x000004    program   0x000002
+                   .org_0       code   0x000005    program   0x0000b0
+.config_2007_BUILD/DEFAULT/PRODUCTION/MAIN.O       code   0x002007    program   0x000002
+.config_2008_BUILD/DEFAULT/PRODUCTION/MAIN.O       code   0x002008    program   0x000002
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000002      
+                            0x000004    0x00005c      
+                            0x002007    0x002008      
+            94 out of 8455 program addresses used, program memory utilization is 1%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                      DOS   0x000052    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/EEPROM/EEPROM_FUENTE/main.asm
+                    EREAD   0x00003c    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/EEPROM/EEPROM_FUENTE/main.asm
+                   EWRITE   0x00001c    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/EEPROM/EEPROM_FUENTE/main.asm
+                    INTER   0x000049    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/EEPROM/EEPROM_FUENTE/main.asm
+                  RETARDO   0x000050    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/EEPROM/EEPROM_FUENTE/main.asm
+                    START   0x000005    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/EEPROM/EEPROM_FUENTE/main.asm
+                      UNO   0x000054    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/EEPROM/EEPROM_FUENTE/main.asm
+             _.org_0_002B   0x00002b    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/EEPROM/EEPROM_FUENTE/main.asm
+             _.org_0_0037   0x000037    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/EEPROM/EEPROM_FUENTE/main.asm
+             _.org_0_0057   0x000057    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/EEPROM/EEPROM_FUENTE/main.asm
+                   cuenta   0x000019    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/EEPROM/EEPROM_FUENTE/main.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                    START   0x000005    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/EEPROM/EEPROM_FUENTE/main.asm
+                   cuenta   0x000019    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/EEPROM/EEPROM_FUENTE/main.asm
+                   EWRITE   0x00001c    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/EEPROM/EEPROM_FUENTE/main.asm
+             _.org_0_002B   0x00002b    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/EEPROM/EEPROM_FUENTE/main.asm
+             _.org_0_0037   0x000037    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/EEPROM/EEPROM_FUENTE/main.asm
+                    EREAD   0x00003c    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/EEPROM/EEPROM_FUENTE/main.asm
+                    INTER   0x000049    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/EEPROM/EEPROM_FUENTE/main.asm
+                  RETARDO   0x000050    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/EEPROM/EEPROM_FUENTE/main.asm
+                      DOS   0x000052    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/EEPROM/EEPROM_FUENTE/main.asm
+                      UNO   0x000054    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/EEPROM/EEPROM_FUENTE/main.asm
+             _.org_0_0057   0x000057    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/EEPROM/EEPROM_FUENTE/main.asm
+
+
