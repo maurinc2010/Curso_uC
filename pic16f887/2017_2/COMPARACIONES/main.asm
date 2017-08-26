@@ -1,0 +1,66 @@
+; TODO INSERT CONFIG CODE HERE USING CONFIG BITS GENERATOR
+list	p=16f887
+INCLUDE	"p16f887.inc"   
+;    STATUS	    EQU H'0003'
+;    FSR		    EQU H'0004'
+;    PORTA	    EQU H'0005'
+;    PORTB	    EQU H'0006'
+;    PORTC	    EQU H'0007'
+;    PORTD	    EQU H'0008'
+;    PORTE	    EQU H'0009'
+;    PCLATCH	    EQU H'000A'
+;    INTCON	    EQU H'000B'
+;    TRISB	    EQU H'0086'
+;    TRISD	    EQU	H'0088'	 
+;_CONFIG1 EQU H'2007'
+ 
+    ; CONFIG1
+ ;__config 0xFBF2    3FFA       3FF7                       3FFF
+ __CONFIG _CONFIG1, _FOSC_HS & _WDTE_OFF & _PWRTE_OFF & _MCLRE_ON & _CP_OFF & _CPD_OFF & _BOREN_ON & _IESO_OFF & _FCMEN_ON & _LVP_ON
+; CONFIG2
+ ;__config 0xFFFF
+ __CONFIG _CONFIG2, _BOR4V_BOR40V & _WRT_OFF
+
+RES_VECT  CODE    0x0000            ; processor reset vector
+    GOTO    START                   ; go to beginning of program
+
+; TODO ADD INTERRUPTS HERE IF USED
+
+MAIN_PROG CODE	0x0005                     ; let linker place main program
+
+START
+ ;OPERACIONES DE BIT
+    CLRF    PORTB
+    BSF	    STATUS,5
+    ;BCF	    TRISB,2
+    CLRF    TRISB
+    CLRF    TRISD
+    CLRF    TRISC
+    BCF	    STATUS,5
+    BSF	    PORTB,2
+    BANKSEL ANSELH
+    CLRF    ANSELH
+    BANKSEL PORTB
+    CLRF    PORTD	;PARTE BAJA DE LA CUENTA DE 16 BITS
+    CLRF    PORTC	;PARTE ALTA DE LA CUENTA DE 16 BITS
+ 
+ 
+    
+  ;OPERACIONES DE MOVIEMIENTO
+;    MOVLW   0XAA	;MOVER DE MEMORIA DE PROGRAMA AL ACUMULADOR
+;    MOVWF   PORTB	;MUEVE DEL ACUMULADOR AL PUERTO B
+;    MOVF    PORTB,W	;MUEVE EL VALOR DE PORTB AL ACUMULADOR
+;    
+;    COMF    PORTB,W
+;    CLRW    
+;    COMF    PORTB,W	;OPERARCION COMPLEMENTO O NEGACION
+;    MOVWF   PORTC
+CICLO  
+    INCFSZ    PORTD,F
+    GOTO      CICLO
+    INCF      PORTC
+    
+    GOTO    CICLO
+    GOTO $                          ; loop forever
+
+    END
