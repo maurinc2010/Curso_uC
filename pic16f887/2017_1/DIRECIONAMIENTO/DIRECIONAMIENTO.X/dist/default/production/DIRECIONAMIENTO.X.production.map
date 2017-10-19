@@ -1,5 +1,5 @@
 MPLINK 5.08, LINKER
-Linker Map File - Created Wed Mar  8 16:37:12 2017
+Linker Map File - Created Thu Oct 19 03:15:02 2017
 
                                  Section Info
                   Section       Type    Address   Location Size(Bytes)
@@ -25,33 +25,33 @@ Linker Map File - Created Wed Mar  8 16:37:12 2017
                               Symbols - Sorted by Name
                      Name    Address   Location    Storage File                     
                 ---------  ---------  ---------  --------- ---------                
-                     BCDD   0x00002f    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm
-                 CONTADOR   0x000049    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm
-                      DOS   0x000056    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm
-                    MENOR   0x000052    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm
-                  RETARDO   0x000054    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm
-                    START   0x000022    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm
-                    TABLA   0x000005    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm
-                   TABLA1   0x000017    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm
-                      UNO   0x000058    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm
-             _.org_0_0048   0x000048    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm
-             _.org_0_005B   0x00005b    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm
+                     BCDD   0x00002f    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_1/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm
+                 CONTADOR   0x000049    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_1/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm
+                      DOS   0x000056    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_1/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm
+                    MENOR   0x000052    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_1/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm
+                  RETARDO   0x000054    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_1/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm
+                    START   0x000022    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_1/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm
+                    TABLA   0x000005    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_1/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm
+                   TABLA1   0x000017    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_1/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm
+                      UNO   0x000058    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_1/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm
+             _.org_0_0048   0x000048    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_1/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm
+             _.org_0_005B   0x00005b    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_1/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm
 
 
 
                               Symbols - Sorted by Address
                      Name    Address   Location    Storage File                     
                 ---------  ---------  ---------  --------- ---------                
-                    TABLA   0x000005    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm
-                   TABLA1   0x000017    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm
-                    START   0x000022    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm
-                     BCDD   0x00002f    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm
-             _.org_0_0048   0x000048    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm
-                 CONTADOR   0x000049    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm
-                    MENOR   0x000052    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm
-                  RETARDO   0x000054    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm
-                      DOS   0x000056    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm
-                      UNO   0x000058    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm
-             _.org_0_005B   0x00005b    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm
+                    TABLA   0x000005    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_1/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm
+                   TABLA1   0x000017    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_1/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm
+                    START   0x000022    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_1/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm
+                     BCDD   0x00002f    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_1/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm
+             _.org_0_0048   0x000048    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_1/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm
+                 CONTADOR   0x000049    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_1/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm
+                    MENOR   0x000052    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_1/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm
+                  RETARDO   0x000054    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_1/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm
+                      DOS   0x000056    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_1/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm
+                      UNO   0x000058    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_1/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm
+             _.org_0_005B   0x00005b    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_1/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm
 
 

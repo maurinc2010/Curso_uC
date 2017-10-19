@@ -1,13 +1,13 @@
-Warning[205] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm 2 : Found directive in column 1. (list)
-Warning[205] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm 3 : Found directive in column 1. (INCLUDE)
-Warning[205] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm 14 : Found directive in column 1. (CBLOCK)
-Warning[205] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm 23 : Found directive in column 1. (ENDC)
-Warning[205] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm 25 : Found directive in column 1. (CBLOCK)
-Warning[205] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm 28 : Found directive in column 1. (ENDC)
-Warning[205] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm 40 : Found directive in column 1. (ORG)
-Message[302] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm 65 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Message[302] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm 66 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Message[302] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm 67 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Message[305] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm 89 : Using default destination of 1 (file).
-Message[305] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm 111 : Using default destination of 1 (file).
-Warning[205] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm 138 : Found directive in column 1. (END)
+Warning[205] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_1/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm 2 : Found directive in column 1. (list)
+Warning[205] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_1/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm 3 : Found directive in column 1. (INCLUDE)
+Warning[205] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_1/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm 14 : Found directive in column 1. (CBLOCK)
+Warning[205] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_1/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm 23 : Found directive in column 1. (ENDC)
+Warning[205] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_1/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm 25 : Found directive in column 1. (CBLOCK)
+Warning[205] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_1/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm 28 : Found directive in column 1. (ENDC)
+Warning[205] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_1/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm 40 : Found directive in column 1. (ORG)
+Message[302] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_1/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm 65 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_1/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm 66 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_1/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm 67 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[305] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_1/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm 89 : Using default destination of 1 (file).
+Message[305] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_1/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm 111 : Using default destination of 1 (file).
+Warning[205] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_1/DIRECIONAMIENTO/DIRECIONAMIENTO.X/main.asm 138 : Found directive in column 1. (END)

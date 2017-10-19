@@ -1,4 +1,4 @@
-MPASM 5.70  /MEDIA/GAME/C1570FAF-5FE1-4385-A   3-8-2017  16:37:11         PAGE  1
+MPASM 5.74  /MEDIA/GAME/C1570FAF-5FE1-4385-A   10-18-2017  22:15:02         PAGE  1
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -57,7 +57,7 @@ Warning[205]: Found directive in column 1. (ENDC)
 0000   2???           00034     GOTO    START                   ; go to beginning of program
                       00035 
                       00036 ; TODO ADD INTERRUPTS HERE IF USED
-MPASM 5.70  /MEDIA/GAME/C1570FAF-5FE1-4385-A   3-8-2017  16:37:11         PAGE  2
+MPASM 5.74  /MEDIA/GAME/C1570FAF-5FE1-4385-A   10-18-2017  22:15:02         PAGE  2
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -116,7 +116,7 @@ Message[302]: Register in operand not in bank 0.  Ensure that bank bits are corr
 0030   0826           00080     MOVF    UNIDADES,W
 0031   1025           00081     BCF     FLAG,0
 0032   2???           00082     CALL    CONTADOR
-MPASM 5.70  /MEDIA/GAME/C1570FAF-5FE1-4385-A   3-8-2017  16:37:11         PAGE  3
+MPASM 5.74  /MEDIA/GAME/C1570FAF-5FE1-4385-A   10-18-2017  22:15:02         PAGE  3
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -175,7 +175,7 @@ Message[305]: Using default destination of 1 (file).
 005C   0BA2           00131                 DECFSZ  REG2,1
 005D   2???           00132                 GOTO    UNO
 005E   0BA3           00133                 DECFSZ  REG3,1
-MPASM 5.70  /MEDIA/GAME/C1570FAF-5FE1-4385-A   3-8-2017  16:37:11         PAGE  4
+MPASM 5.74  /MEDIA/GAME/C1570FAF-5FE1-4385-A   10-18-2017  22:15:02         PAGE  4
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -187,7 +187,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
                       00137    
 Warning[205]: Found directive in column 1. (END)
 3BF2 3FFF             00138 END
-MPASM 5.70  /MEDIA/GAME/C1570FAF-5FE1-4385-A   3-8-2017  16:37:11         PAGE  5
+MPASM 5.74  /MEDIA/GAME/C1570FAF-5FE1-4385-A   10-18-2017  22:15:02         PAGE  5
 
 
 SYMBOL TABLE
@@ -246,7 +246,7 @@ BRG5                              00000005
 BRG6                              00000006
 BRG7                              00000007
 BRG8                              00000000
-MPASM 5.70  /MEDIA/GAME/C1570FAF-5FE1-4385-A   3-8-2017  16:37:11         PAGE  6
+MPASM 5.74  /MEDIA/GAME/C1570FAF-5FE1-4385-A   10-18-2017  22:15:02         PAGE  6
 
 
 SYMBOL TABLE
@@ -305,7 +305,7 @@ CCPR2L                            0000001B
 CHS0                              00000002
 CHS1                              00000003
 CHS2                              00000004
-MPASM 5.70  /MEDIA/GAME/C1570FAF-5FE1-4385-A   3-8-2017  16:37:11         PAGE  7
+MPASM 5.74  /MEDIA/GAME/C1570FAF-5FE1-4385-A   10-18-2017  22:15:02         PAGE  7
 
 
 SYMBOL TABLE
@@ -364,7 +364,7 @@ I2C_STOP                          00000004
 INDF                              00000000
 INTCON                            0000000B
 INTE                              00000004
-MPASM 5.70  /MEDIA/GAME/C1570FAF-5FE1-4385-A   3-8-2017  16:37:11         PAGE  8
+MPASM 5.74  /MEDIA/GAME/C1570FAF-5FE1-4385-A   10-18-2017  22:15:02         PAGE  8
 
 
 SYMBOL TABLE
@@ -423,7 +423,7 @@ P                                 00000004
 P1M0                              00000006
 P1M1                              00000007
 PCL                               00000002
-MPASM 5.70  /MEDIA/GAME/C1570FAF-5FE1-4385-A   3-8-2017  16:37:11         PAGE  9
+MPASM 5.74  /MEDIA/GAME/C1570FAF-5FE1-4385-A   10-18-2017  22:15:02         PAGE  9
 
 
 SYMBOL TABLE
@@ -482,7 +482,7 @@ RB5                               00000005
 RB6                               00000006
 RB7                               00000007
 RBIE                              00000003
-MPASM 5.70  /MEDIA/GAME/C1570FAF-5FE1-4385-A   3-8-2017  16:37:11         PAGE 10
+MPASM 5.74  /MEDIA/GAME/C1570FAF-5FE1-4385-A   10-18-2017  22:15:02         PAGE 10
 
 
 SYMBOL TABLE
@@ -541,7 +541,7 @@ SCS                               00000000
 SEN                               00000000
 SENDB                             00000003
 SMP                               00000007
-MPASM 5.70  /MEDIA/GAME/C1570FAF-5FE1-4385-A   3-8-2017  16:37:11         PAGE 11
+MPASM 5.74  /MEDIA/GAME/C1570FAF-5FE1-4385-A   10-18-2017  22:15:02         PAGE 11
 
 
 SYMBOL TABLE
@@ -600,7 +600,7 @@ TMR0IE                            00000005
 TMR0IF                            00000002
 TMR1                              0000000E
 TMR1CS                            00000001
-MPASM 5.70  /MEDIA/GAME/C1570FAF-5FE1-4385-A   3-8-2017  16:37:11         PAGE 12
+MPASM 5.74  /MEDIA/GAME/C1570FAF-5FE1-4385-A   10-18-2017  22:15:02         PAGE 12
 
 
 SYMBOL TABLE
@@ -659,7 +659,7 @@ TRISD7                            00000007
 TRISE                             00000089
 TRISE0                            00000000
 TRISE1                            00000001
-MPASM 5.70  /MEDIA/GAME/C1570FAF-5FE1-4385-A   3-8-2017  16:37:11         PAGE 13
+MPASM 5.74  /MEDIA/GAME/C1570FAF-5FE1-4385-A   10-18-2017  22:15:02         PAGE 13
 
 
 SYMBOL TABLE
@@ -718,7 +718,7 @@ WPUB7                             00000007
 WR                                00000001
 WREN                              00000002
 WRERR                             00000003
-MPASM 5.70  /MEDIA/GAME/C1570FAF-5FE1-4385-A   3-8-2017  16:37:11         PAGE 14
+MPASM 5.74  /MEDIA/GAME/C1570FAF-5FE1-4385-A   10-18-2017  22:15:02         PAGE 14
 
 
 SYMBOL TABLE
@@ -777,7 +777,7 @@ _INTRC_OSC_CLKOUT                 00003FFD
 _INTRC_OSC_NOCLKOUT               00003FFC
 _LP_OSC                           00003FF8
 _LVP_OFF                          00002FFF
-MPASM 5.70  /MEDIA/GAME/C1570FAF-5FE1-4385-A   3-8-2017  16:37:11         PAGE 15
+MPASM 5.74  /MEDIA/GAME/C1570FAF-5FE1-4385-A   10-18-2017  22:15:02         PAGE 15
 
 
 SYMBOL TABLE

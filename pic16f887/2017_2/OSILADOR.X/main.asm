@@ -42,26 +42,7 @@ RES_VECT  CODE    0x0000            ; processor reset vector
 MAIN_PROG CODE                      ; let linker place main program
 ORG 0X05
  
- TABLA	ADDWF	PCL,1				;7448
-	retlw	b'00111111'	;0  0X3F
-	retlw	b'00000110'	;1  0X06
-	retlw	b'01011011'	;2  0X5B
-	retlw	b'01001111'	;3  0X4F
-	retlw	b'01100110'	;4  0X66
-	retlw	b'01101101'	;5  0X6C
-	retlw	b'01111101'	;6  0X7C
-	retlw	b'00000111'	;7  0X07
-	retlw	b'01111111'	;8  0X7F
-	retlw	b'01101111'	;9  0X6F
-	retlw	b'01110111'	;a  0X77
-	retlw	b'01111100'	;b  0X7B
-	retlw	b'00111001'	;c  0X39
-	retlw	b'01011110'	;d  0X5E
-	retlw	b'01111001'	;e  0X79
-	retlw	b'01110001'	;f  0X71
-	retlw	0
  
-
 
 ; TODO ADD INTERRUPTS HERE IF USED
 
@@ -208,21 +189,47 @@ CF:
     RLF	    DATO,F
     CALL    ROTAR_IZQUIERDA
     
+;    MOVF    DECIMAL_1,W
+;    ANDLW   0X0F
+;    SUBLW   .5
+;    BTFSS   STATUS,C
+;    GOTO    PCLATH_1
+    MOVLW   0X1E  ;00011000
+    MOVWF   PCLATH
     MOVF    DECIMAL_1,W  ;7-4  DECENAS 3-0 UNIDADES
     ANDLW   0X0F
-    CALL    TABLA
+    CALL    SIETE
+    CLRF    PCLATH
     MOVWF   UNIDADES
-    
+;    CLRF    PCLATH
+;    GOTO    DECI
+   
+;PCLATH_1:
+;    MOVLW   0X1F  ;00011000
+;    MOVWF   PCLATH
+;    MOVF    DECIMAL_1,W  ;7-4  DECENAS 3-0 UNIDADES
+;    ANDLW   0X0F
+;    CALL    TABLA
+;    MOVWF   UNIDADES
+  
+DECI:
+    ;MOVLW   0X1E  ;00011000
+    ;MOVWF   PCLATH
+    MOVLW   0X1E  ;00011000
+    MOVWF   PCLATH
     SWAPF   DECIMAL_1,W  ;7-4  DECENAS 3-0 UNIDADES
     ANDLW   0X0F
-    CALL    TABLA
+    CALL    SIETE
+    CLRF    PCLATH
     MOVWF   DECENAS
     
-    
+    MOVLW   0X1E  ;00011000
+    MOVWF   PCLATH
     MOVF    DECIMAL_2,W   ;3-0 CENTENAS
     ANDLW   0X0F
-    CALL    TABLA
+    CALL    SIETE
     MOVWF   CENTENAS
+    CLRF    PCLATH
     
     RETURN                         ; loop forever
     
@@ -251,4 +258,40 @@ LOOP_1:
     RETURN		    ;2	
      ;R=(Tciclo*REG1*4)-1+2*Tciclo
     ;T=(3*REG1*REG2+(2*REG1-1)*REG2+REG2+2*REG2-1+2)*(Tcy)
+    
+ORG 0X1EEF	    ;0b1111011111001
+SIETE:
+    MOVWF	REG5
+    SUBLW	.6
+    BTFSS	STATUS,C
+    GOTO	MAYOR
+    MOVF	REG5,W
+    GOTO	TABLA
+
+MAYOR:
+    MOVLW       0X1F
+    MOVWF	PCLATH
+    MOVF	REG5,W
+   ; GOTO	TABLA
+    TABLA	ADDWF	PCL,1				;7448
+	retlw	b'00111111'	;0  0X3F
+	retlw	b'00000110'	;1  0X06
+	retlw	b'01011011'	;2  0X5B
+	retlw	b'01001111'	;3  0X4F
+	retlw	b'01100110'	;4  0X66
+	retlw	b'01101101'	;5  0X6C
+	retlw	b'01111101'	;6  0X7C
+	
+	retlw	b'00000111'	;7  0X07
+	retlw	b'01111111'	;8  0X7F
+	retlw	b'01101111'	;9  0X6F
+	retlw	b'01110111'	;a  0X77
+	retlw	b'01111100'	;b  0X7B
+	retlw	b'00111001'	;c  0X39
+	retlw	b'01011110'	;d  0X5E
+	retlw	b'01111001'	;e  0X79
+	retlw	b'01110001'	;f  0X71  --1F08 0b1111100001000
+	retlw	0
+ 
+
 END

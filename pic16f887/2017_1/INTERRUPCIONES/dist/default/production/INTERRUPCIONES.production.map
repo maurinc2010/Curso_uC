@@ -1,5 +1,5 @@
 MPLINK 5.08, LINKER
-Linker Map File - Created Wed Apr  5 09:28:39 2017
+Linker Map File - Created Thu Oct 19 03:36:59 2017
 
                                  Section Info
                   Section       Type    Address   Location Size(Bytes)
@@ -26,37 +26,37 @@ Linker Map File - Created Wed Apr  5 09:28:39 2017
                               Symbols - Sorted by Name
                      Name    Address   Location    Storage File                     
                 ---------  ---------  ---------  --------- ---------                
-                       CC   0x00001a    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/INTERRUPCIONES/main.asm
-                      DOS   0x000042    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/INTERRUPCIONES/main.asm
-                   ESTADO   0x00003b    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/INTERRUPCIONES/main.asm
-                    INTER   0x00001b    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/INTERRUPCIONES/main.asm
-                    MULTI   0x000039    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/INTERRUPCIONES/main.asm
-                      RBO   0x000023    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/INTERRUPCIONES/main.asm
-                      RET   0x000034    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/INTERRUPCIONES/main.asm
-                  RETARDO   0x000040    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/INTERRUPCIONES/main.asm
-                    START   0x000005    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/INTERRUPCIONES/main.asm
-                      TMR   0x000028    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/INTERRUPCIONES/main.asm
-                      UNO   0x000044    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/INTERRUPCIONES/main.asm
-             _.org_0_003E   0x00003e    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/INTERRUPCIONES/main.asm
-             _.org_0_0047   0x000047    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/INTERRUPCIONES/main.asm
+                       CC   0x00001a    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_1/INTERRUPCIONES/main.asm
+                      DOS   0x000042    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_1/INTERRUPCIONES/main.asm
+                   ESTADO   0x00003b    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_1/INTERRUPCIONES/main.asm
+                    INTER   0x00001b    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_1/INTERRUPCIONES/main.asm
+                    MULTI   0x000039    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_1/INTERRUPCIONES/main.asm
+                      RBO   0x000023    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_1/INTERRUPCIONES/main.asm
+                      RET   0x000034    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_1/INTERRUPCIONES/main.asm
+                  RETARDO   0x000040    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_1/INTERRUPCIONES/main.asm
+                    START   0x000005    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_1/INTERRUPCIONES/main.asm
+                      TMR   0x000028    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_1/INTERRUPCIONES/main.asm
+                      UNO   0x000044    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_1/INTERRUPCIONES/main.asm
+             _.org_0_003E   0x00003e    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_1/INTERRUPCIONES/main.asm
+             _.org_0_0047   0x000047    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_1/INTERRUPCIONES/main.asm
 
 
 
                               Symbols - Sorted by Address
                      Name    Address   Location    Storage File                     
                 ---------  ---------  ---------  --------- ---------                
-                    START   0x000005    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/INTERRUPCIONES/main.asm
-                       CC   0x00001a    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/INTERRUPCIONES/main.asm
-                    INTER   0x00001b    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/INTERRUPCIONES/main.asm
-                      RBO   0x000023    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/INTERRUPCIONES/main.asm
-                      TMR   0x000028    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/INTERRUPCIONES/main.asm
-                      RET   0x000034    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/INTERRUPCIONES/main.asm
-                    MULTI   0x000039    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/INTERRUPCIONES/main.asm
-                   ESTADO   0x00003b    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/INTERRUPCIONES/main.asm
-             _.org_0_003E   0x00003e    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/INTERRUPCIONES/main.asm
-                  RETARDO   0x000040    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/INTERRUPCIONES/main.asm
-                      DOS   0x000042    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/INTERRUPCIONES/main.asm
-                      UNO   0x000044    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/INTERRUPCIONES/main.asm
-             _.org_0_0047   0x000047    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/IDEAS/cursos2017/u_C/u_c/pic16f887/INTERRUPCIONES/main.asm
+                    START   0x000005    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_1/INTERRUPCIONES/main.asm
+                       CC   0x00001a    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_1/INTERRUPCIONES/main.asm
+                    INTER   0x00001b    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_1/INTERRUPCIONES/main.asm
+                      RBO   0x000023    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_1/INTERRUPCIONES/main.asm
+                      TMR   0x000028    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_1/INTERRUPCIONES/main.asm
+                      RET   0x000034    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_1/INTERRUPCIONES/main.asm
+                    MULTI   0x000039    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_1/INTERRUPCIONES/main.asm
+                   ESTADO   0x00003b    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_1/INTERRUPCIONES/main.asm
+             _.org_0_003E   0x00003e    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_1/INTERRUPCIONES/main.asm
+                  RETARDO   0x000040    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_1/INTERRUPCIONES/main.asm
+                      DOS   0x000042    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_1/INTERRUPCIONES/main.asm
+                      UNO   0x000044    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_1/INTERRUPCIONES/main.asm
+             _.org_0_0047   0x000047    program     static /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_1/INTERRUPCIONES/main.asm
 
 
