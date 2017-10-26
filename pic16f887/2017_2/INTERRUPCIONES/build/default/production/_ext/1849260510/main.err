@@ -1,0 +1,15 @@
+Warning[205] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_2/main.asm 14 : Found directive in column 1. (CBLOCK)
+Warning[205] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_2/main.asm 27 : Found directive in column 1. (ENDC)
+Warning[205] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_2/main.asm 28 : Found directive in column 1. (CBLOCK)
+Warning[205] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_2/main.asm 35 : Found directive in column 1. (ENDC)
+Warning[205] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_2/main.asm 43 : Found directive in column 1. (ORG)
+Message[302] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_2/main.asm 48 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_2/main.asm 49 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_2/main.asm 51 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_2/main.asm 53 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_2/main.asm 54 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_2/main.asm 55 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[305] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_2/main.asm 61 : Using default destination of 1 (file).
+Warning[207] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_2/main.asm 75 : Found label after column 1. (LOOP)
+Warning[205] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_2/main.asm 87 : Found directive in column 1. (ORG)
+Message[305] /media/game/c1570faf-5fe1-4385-acf3-e76653d0f11e/mauricio/cursos2017/u_C/u_c/pic16f887/2017_2/main.asm 96 : Using default destination of 1 (file).
