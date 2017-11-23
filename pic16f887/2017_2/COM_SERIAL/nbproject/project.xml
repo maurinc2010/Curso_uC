@@ -3,8 +3,8 @@
     <type>com.microchip.mplab.nbide.embedded.makeproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
-            <name>interrupciones</name>
-            <creation-uuid>914e5bbc-6448-494f-864e-74e29dbf6a13</creation-uuid>
+            <name>COM_SERIAL</name>
+            <creation-uuid>88bdd093-1ce8-407c-b595-dbd3e4c9782a</creation-uuid>
             <make-project-type>0</make-project-type>
             <c-extensions/>
             <cpp-extensions/>

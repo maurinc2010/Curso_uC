@@ -1,0 +1,154 @@
+; TODO INSERT CONFIG CODE HERE USING CONFIG BITS GENERATOR
+; PIC16F887 Configuration Bit Settings
+
+; Assembly source line config statements
+
+#include "p16f887.inc"
+
+
+; CONFIG1
+; __config 0xFFFC
+ __CONFIG _CONFIG1, _FOSC_INTRC_NOCLKOUT & _WDTE_OFF & _PWRTE_OFF & _MCLRE_ON & _CP_OFF & _CPD_OFF & _BOREN_ON & _IESO_ON & _FCMEN_ON & _LVP_ON
+; CONFIG2
+; __config 0xFFFF
+ __CONFIG _CONFIG2, _BOR4V_BOR40V & _WRT_OFF
+ 
+CBLOCK 0X30
+ A
+ AUX_W
+ AUX_S
+ AUX_RX
+ AUX_C
+ AUX_D
+ENDC
+
+RES_VECT  CODE    0x0000            ; processor reset vector
+    GOTO    START                   ; go to beginning of program
+    
+INT_VECT  CODE	  0X0004
+    GOTO    INTERRUPCION
+
+; TODO ADD INTERRUPTS HERE IF USED
+
+    
+MAIN_PROG CODE                      ; let linker place main program
+org 0x05
+PROGRAMA_PRUEBA
+    ADDWF   PCL,1
+    DT	    0X08,0X08,0X02,0X3E,0X88,0X00,0X10,0X29
+   
+START
+      ;CONFIGURA LOS PUERTOS
+    BANKSEL TRISB
+    CLRF    TRISB
+    CLRF    TRISD
+    ;CLRF    TRISC
+    BANKSEL PORTB
+    CLRF    PORTB
+    CLRF    PORTD
+    CLRF    PORTB
+    MOVLW   0X20
+    MOVWF   FSR
+    CLRF    AUX_C
+    CALL    INIT_TX_RX
+    CALL    INT_RX
+    
+    GOTO    $
+    
+    ;CARGA LOS DATOS QUE ESTAN EN LA TABLA EN LA MEMORIA DE PROGRAMA
+    MOVLW   0X20
+    MOVWF   FSR
+    CLRF    A
+CARGA:
+    MOVF    A,W
+    CALL    PROGRAMA_PRUEBA
+    MOVWF   INDF
+    INCF    FSR,F
+    INCF    A,F
+    MOVF    A,W
+    XORLW   .8
+    BTFSS   STATUS,Z
+    GOTO    CARGA
+    
+  
+    
+    BANKSEL EEADR
+    ;SE UBICA LA MEMORIA DE PROGRAMA EN LA POSICION 0X400
+    MOVLW   0X01
+    MOVWF   ADDRH
+    MOVLW   0X20
+    MOVWF   ADDRL
+    MOVLW   0X20
+    MOVWF   DATAADDR
+    BANKSEL  PORTB
+    
+    CALL    WRITE_FLASH
+    BANKSEL PORTB
+    GOTO    PRUEBA_2
+    GOTO $                          ; loop forever
+    
+INTERRUPCION:
+		BCF	INTCON,7    
+    ;-----SALVAR W Y STATUS
+		MOVWF   AUX_W
+		SWAPF   STATUS,W
+		MOVWF   AUX_S
+		
+		BANKSEL	PIR1
+		BCF	PIR1,5
+		MOVF	RCREG,W
+		MOVWF	AUX_RX
+		;CALL	TX
+		MOVLW	0X30
+		SUBWF	AUX_RX,F
+		MOVF	AUX_C,W
+		BTFSS	STATUS,Z
+		GOTO	NO_CERO
+		
+		SWAPF	AUX_RX,W
+		MOVWF	AUX_D
+		INCF	AUX_C
+		GOTO	FIN_INTER
+	NO_CERO:
+		BTFSS	AUX_C,0
+		GOTO	NO_ES_UNO
+		
+		MOVF	AUX_RX,W
+		ADDWF	AUX_D,F
+		INCF	AUX_C
+		MOVF	AUX_D,W
+	NO_ES_UNO:
+		;LLAMAR RUTINA DE ESCRITURA
+		
+		MOVWF	PORTD
+	FIN_INTER:
+    ;RESTAURAR W Y STATUS
+		SWAPF   AUX_S,W
+		MOVWF   STATUS
+		MOVF    AUX_W,W
+    ;---------------------------
+		BSF	    INTCON,7
+		RETFIE
+    
+    org	0X100	
+PRUEBA:
+    MOVF    PORTD,W
+    ADDLW   .2
+    MOVWF   PORTD
+    GOTO    PRUEBA
+    
+    ORG 0X120
+PRUEBA_2:
+    NOP
+    NOP
+    NOP
+    NOP
+    NOP
+    
+    ORG	0X200
+    #include "flash.inc"
+    #include "COMUNICACION.inc"
+    END
+    
+    
+;

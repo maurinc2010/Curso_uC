@@ -9,7 +9,7 @@ INCLUDE	"p16f887.inc"
 ; __config 0xFFFF
  __CONFIG _CONFIG2, _BOR4V_BOR40V & _WRT_OFF
 
-;cristal 8MHz
+;cristal 1MHz
 
 RES_VECT  CODE    0x0000            ; processor reset vector
     GOTO    START                   ; go to beginning of program
@@ -50,14 +50,14 @@ START
     CLRF    TRISD
     MOVLW   0XFF
     MOVWF   TRISB
-    MOVLW   B'10110000'
+    MOVLW   B'10110000'	    ;activamos global inter, activa int por over TMR0, int por flanco
     MOVWF   INTCON
-    MOVLW   B'00000111'
+    MOVLW   B'00000111'	    ; prescaler de TMR0=256		
     MOVWF   OPTION_REG
     BANKSEL PORTC
     CLRF    PORTC
     CLRF    REG6
-    MOVLW   0X0A
+    MOVLW   0X3D	    ;Valor inicial de TMR0=61
     MOVWF   TMR0
     MOVLW   0XAA
    
@@ -78,7 +78,7 @@ INTER
     MOVWF   SS
     ;----------------
     BTFSS   INTCON,1;   SI LA INT SE PRODUCE POR RB0
-    BTFSS   INTCON,2
+    BTFSS   INTCON,2	;interrupcion por overflow TMR0
     GOTO    RBO
     GOTO    TMR
 RBO
@@ -90,14 +90,14 @@ RBO
     
 TMR 
     BCF	    INTCON,2
-    MOVLW   0X04
+    MOVLW   0X05
     MOVWF   REG4
     MOVF    REG6,W
-    MOVWF   REG3
+    MOVWF   REG3    
     CALL    MULTI
     MOVF    REG3,W
     MOVWF   PORTD
-    MOVLW   0X0A	;TMR0=0.25 SEGUNDOS
+    MOVLW   0X3D	;TMR0=0.2 SEGUNDOS
     MOVWF   TMR0
     CLRF    REG6
     GOTO    RET
